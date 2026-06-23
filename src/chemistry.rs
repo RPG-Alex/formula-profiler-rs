@@ -34,11 +34,11 @@ fn formula_symbols(formula: &str) -> impl Iterator<Item = String> + '_ {
 
             let mut symbol = String::from(ch);
 
-            if let Some(next) = chars.peek() {
-                if next.is_ascii_lowercase() {
-                    symbol.push(*next);
-                    chars.next();
-                }
+            if let Some(next) = chars.peek()
+                && next.is_ascii_lowercase()
+            {
+                symbol.push(*next);
+                chars.next();
             }
 
             return Some(symbol);

@@ -8,7 +8,7 @@ The tool can also profile **all observed elements** in a dataset.
 
 This project is intended to support careful dataset inspection before training models such as MS/MS-to-atom classifiers.
 
-## Why this exists
+## Purpose
 
 Before training a model, it is useful to know what the dataset actually contains.
 
@@ -22,7 +22,7 @@ For example, if we want to train a classifier that predicts whether a spectrum b
 
 `spectra-profiler-rs` generates reports to help answer those questions.
 
-## What it does
+## Functionality
 
 For a selected target element, the profiler:
 
@@ -279,7 +279,7 @@ Current warning types include:
 | `NO_TARGET_POSITIVES` | The group has no target-positive spectra                     |
 | `LOW_TARGET_SUPPORT`  | The group has only a small number of target-positive spectra |
 
-These warnings are especially important for percent-based plots, where small groups can appear highly enriched despite weak support.
+These warnings are important for percent-based plots, where small groups can appear highly enriched despite weak support.
 
 ## Cache and generated files
 
@@ -298,16 +298,6 @@ reports/
 ```
 
 Reports may be committed when they are intended to be published or reviewed.
-
-Recommended `.gitignore` entries:
-
-```gitignore
-/target/
-/cache/
-**/metadata_rows.csv
-```
-
-Do not ignore `reports/` if generated reports are part of the published analysis.
 
 ## Development
 
@@ -343,36 +333,6 @@ cargo run --release -- F
 
 Release mode is recommended for normal profiling because the annotated MS2 dataset is large.
 
-## Continuous integration
-
-The repository is intended to use GitHub Actions for:
-
-* Rust formatting checks,
-* Clippy linting,
-* tests,
-* documentation checks,
-* security auditing,
-* Markdown and HTML link checking,
-* repository hygiene checks.
-
-Repository hygiene checks should reject committed cache files, large temporary metadata dumps, and unrelated analysis artifacts.
-
-## Project structure
-
-```text
-src/
-├── chemistry.rs    # Element normalization and formula parsing helpers
-├── config.rs       # CLI/configuration and target-selection setup
-├── datasets.rs     # Dataset loading
-├── main.rs         # Top-level orchestration
-├── markdown.rs     # Markdown report generation
-├── metadata.rs     # Metadata extraction helpers
-├── population.rs   # Population-map counts and CSV writing
-├── profiler.rs     # Main profiling loop
-├── reports.rs      # Report directory/path helpers
-└── visuals.rs      # SVG visualization generation
-```
-
 ## Contributing
 
 Contributions are welcome.
@@ -397,22 +357,6 @@ cargo fmt --all -- --check
 cargo clippy --all-targets -- -D warnings
 cargo test
 ```
-
-Please avoid committing:
-
-* `target/`
-* `cache/`
-* large per-spectrum metadata dumps
-* temporary analysis files
-* unrelated notebooks or Python scripts
-
-Generated reports under `reports/` may be committed when they are intentionally part of the published analysis.
-
-## Status
-
-This project is an early research utility.
-
-The core profiling workflow works, but the API, CLI, report format, and visualization style may change as the research questions become clearer.
 
 ## License
 
