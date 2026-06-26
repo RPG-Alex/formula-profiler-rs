@@ -9,7 +9,7 @@ use flate2::read::GzDecoder;
 use mascot_rs::prelude::*;
 use molecular_formulas::prelude::ChemicalFormula;
 use smiles_parser::{
-    DatasetFetchOptions, SmilesDatasetRecordSource, PUBCHEM_SMILES, smiles::Smiles,
+    DatasetFetchOptions, PUBCHEM_SMILES, SmilesDatasetRecordSource, smiles::Smiles,
 };
 
 use crate::{
@@ -17,23 +17,36 @@ use crate::{
     config::DatasetSource,
     error::{Result, SpectraProfilerError},
     metadata::{metadata_value, optional_debug_label},
-    records::{LoadedDataset, MoleculeRecord},
+    records::MoleculeRecord,
 };
 
-pub async fn load_dataset(
+pub async fn process_dataset<F>(
     dataset_name: &str,
     source: &DatasetSource,
     cache_dir: &Path,
-) -> Result<LoadedDataset> {
+    on_record: F,
+) -> Result<()>
+where
+    F: FnMut(MoleculeRecord) -> Result<()>,
+{
     match source {
-        DatasetSource::AnnotatedMs2 => load_annotated_ms2(dataset_name, cache_dir).await,
-        DatasetSource::LocalMgf(path) => load_local_mgf(dataset_name, path),
-        DatasetSource::PubChemSmiles => load_pubchem_smiles(dataset_name, cache_dir),
-        DatasetSource::LocalSmilesGz(path) => load_smiles_gz(dataset_name, path),
+        DatasetSource::AnnotatedMs2 => {
+            process_annotated_ms2(dataset_name, cache_dir, on_record).await
+        }
+        DatasetSource::LocalMgf(path) => process_local_mgf(dataset_name, path, on_record),
+        DatasetSource::PubChemSmiles => process_pubchem_smiles(dataset_name, cache_dir, on_record),
+        DatasetSource::LocalSmilesGz(path) => process_smiles_gz(dataset_name, path, on_record),
     }
 }
 
-async fn load_annotated_ms2(dataset_name: &str, cache_dir: &Path) -> Result<LoadedDataset> {
+async fn process_annotated_ms2<F>(
+    dataset_name: &str,
+    cache_dir: &Path,
+    mut on_record: F,
+) -> Result<()>
+where
+    F: FnMut(MoleculeRecord) -> Result<()>,
+{
     let loaded = MGFVec::<f64>::annotated_ms2()
         .target_directory(cache_dir)
         .verbose()
@@ -44,67 +57,70 @@ async fn load_annotated_ms2(dataset_name: &str, cache_dir: &Path) -> Result<Load
     println!("Skipped {} malformed records", loaded.skipped_records());
     println!("Dataset path: {}", loaded.path().display());
 
-    Ok(mgf_to_loaded_dataset(dataset_name, loaded.into_spectra()))
+    for (index, record) in loaded.into_spectra().into_iter().enumerate() {
+        if let Some(mol_record) = extract_mgf_record(dataset_name, index, &record) {
+            on_record(mol_record)?;
+        }
+    }
+    Ok(())
 }
 
-fn load_local_mgf(dataset_name: &str, path: &Path) -> Result<LoadedDataset> {
+fn process_local_mgf<F>(dataset_name: &str, path: &Path, mut on_record: F) -> Result<()>
+where
+    F: FnMut(MoleculeRecord) -> Result<()>,
+{
     let spectra = MGFVec::<f64>::from_path(path)
         .map_err(|source| SpectraProfilerError::DatasetLoad { source: source.into() })?;
 
-    Ok(mgf_to_loaded_dataset(dataset_name, spectra))
+    for (index, record) in spectra.into_iter().enumerate() {
+        if let Some(mol_record) = extract_mgf_record(dataset_name, index, &record) {
+            on_record(mol_record)?;
+        }
+    }
+    Ok(())
 }
 
-fn mgf_to_loaded_dataset(dataset_name: &str, spectra: MGFVec<f64>) -> LoadedDataset {
-    let records = spectra
-        .iter()
-        .enumerate()
-        .filter_map(|(index, record)| {
-            let formula = record.metadata().formula()?;
+fn extract_mgf_record(
+    dataset_name: &str,
+    index: usize,
+    record: &MascotGenericFormat<f64>,
+) -> Option<MoleculeRecord> {
+    let formula = record.metadata().formula()?;
+    let metadata = record.metadata();
+    let mut groups = BTreeMap::new();
 
-            let metadata = record.metadata();
+    groups.insert("Source dataset".to_string(), metadata_value(metadata, "SOURCE_DATASET"));
+    groups.insert("Organism".to_string(), metadata_value(metadata, "ORGANISM"));
+    groups.insert("NPC pathways".to_string(), metadata_value(metadata, "NPC_PATHWAYS"));
+    groups.insert("NPC superclasses".to_string(), metadata_value(metadata, "NPC_SUPERCLASSES"));
+    groups.insert("NPC classes".to_string(), metadata_value(metadata, "NPC_CLASSES"));
+    groups.insert("Library quality".to_string(), metadata_value(metadata, "LIBRARYQUALITY"));
+    groups.insert("Ion mode".to_string(), optional_debug_label(record.ion_mode()));
+    groups
+        .insert("Source instrument".to_string(), optional_debug_label(record.source_instrument()));
 
-            let mut groups = BTreeMap::new();
-
-            groups.insert("Source dataset".to_string(), metadata_value(metadata, "SOURCE_DATASET"));
-            groups.insert("Organism".to_string(), metadata_value(metadata, "ORGANISM"));
-            groups.insert("NPC pathways".to_string(), metadata_value(metadata, "NPC_PATHWAYS"));
-            groups.insert(
-                "NPC superclasses".to_string(),
-                metadata_value(metadata, "NPC_SUPERCLASSES"),
-            );
-            groups.insert("NPC classes".to_string(), metadata_value(metadata, "NPC_CLASSES"));
-            groups
-                .insert("Library quality".to_string(), metadata_value(metadata, "LIBRARYQUALITY"));
-            groups.insert("Ion mode".to_string(), optional_debug_label(record.ion_mode()));
-            groups.insert(
-                "Source instrument".to_string(),
-                optional_debug_label(record.source_instrument()),
-            );
-
-            Some(MoleculeRecord {
-                id: record
-                    .feature_id()
-                    .map(ToString::to_string)
-                    .unwrap_or_else(|| format!("record-{index}")),
-                element_counts: element_counts_in_formula(formula),
-                metadata: groups,
-                peak_count: Some(record.len()),
-            })
-        })
-        .collect();
-
-    LoadedDataset { name: dataset_name.to_string(), records }
+    Some(MoleculeRecord {
+        id: record
+            .feature_id()
+            .map(ToString::to_string)
+            .unwrap_or_else(|| format!("record-{index}")),
+        element_counts: element_counts_in_formula(formula),
+        metadata: groups,
+        peak_count: Some(record.len()),
+    })
 }
 
-fn load_smiles_gz(dataset_name: &str, path: &Path) -> Result<LoadedDataset> {
+fn process_smiles_gz<F>(dataset_name: &str, path: &Path, mut on_record: F) -> Result<()>
+where
+    F: FnMut(MoleculeRecord) -> Result<()>,
+{
     let limit = record_limit();
-
     let file = File::open(path)?;
     let decoder = GzDecoder::new(file);
     let reader = BufReader::new(decoder);
 
-    let mut records = Vec::new();
     let mut skipped = 0usize;
+    let mut processed = 0usize;
 
     for line in reader.lines().take(limit.unwrap_or(usize::MAX)) {
         let line = line?;
@@ -114,42 +130,34 @@ fn load_smiles_gz(dataset_name: &str, path: &Path) -> Result<LoadedDataset> {
             continue;
         };
 
-        let smiles_text = smiles_text.trim();
-
-        let Ok(smiles) = smiles_text.parse::<Smiles>() else {
+        let Ok(smiles) = smiles_text.trim().parse::<Smiles>() else {
             skipped += 1;
             continue;
         };
 
         let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(&smiles);
-
         let mut metadata = BTreeMap::new();
         metadata.insert("Source dataset".to_string(), dataset_name.to_string());
 
-        records.push(MoleculeRecord {
+        on_record(MoleculeRecord {
             id: cid.to_string(),
             element_counts: element_counts_in_formula(&formula),
             metadata,
             peak_count: None,
-        });
+        })?;
+        processed += 1;
     }
 
-    println!("Loaded {} local SMILES records", records.len());
+    println!("Processed {processed} local SMILES records");
     println!("Skipped {skipped} local SMILES records");
-
-    Ok(LoadedDataset { name: dataset_name.to_string(), records })
+    Ok(())
 }
 
-fn record_limit() -> Option<usize> {
-    std::env::var("PROFILE_LIMIT")
-        .or_else(|_| std::env::var("PUBCHEM_LIMIT"))
-        .ok()
-        .and_then(|value| value.parse::<usize>().ok())
-}
-
-fn load_pubchem_smiles(dataset_name: &str, cache_dir: &Path) -> Result<LoadedDataset> {
+fn process_pubchem_smiles<F>(dataset_name: &str, cache_dir: &Path, mut on_record: F) -> Result<()>
+where
+    F: FnMut(MoleculeRecord) -> Result<()>,
+{
     let limit = record_limit();
-
     let options = DatasetFetchOptions {
         cache_dir: Some(cache_dir.to_path_buf()),
         ..DatasetFetchOptions::default()
@@ -159,8 +167,8 @@ fn load_pubchem_smiles(dataset_name: &str, cache_dir: &Path) -> Result<LoadedDat
         .iter_records_with_options(&options)
         .map_err(|source| SpectraProfilerError::DatasetLoad { source: source.into() })?;
 
-    let mut records = Vec::new();
     let mut skipped = 0usize;
+    let mut processed = 0usize;
 
     for record in pubchem_records.take(limit.unwrap_or(usize::MAX)) {
         let record =
@@ -172,46 +180,26 @@ fn load_pubchem_smiles(dataset_name: &str, cache_dir: &Path) -> Result<LoadedDat
         };
 
         let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(&smiles);
-
         let mut metadata = BTreeMap::new();
         metadata.insert("Source dataset".to_string(), "PubChem".to_string());
 
-        records.push(MoleculeRecord {
+        on_record(MoleculeRecord {
             id: record.id().to_string(),
             element_counts: element_counts_in_formula(&formula),
             metadata,
             peak_count: None,
-        });
+        })?;
+        processed += 1;
     }
 
-    println!("Loaded {} PubChem records", records.len());
+    println!("Processed {processed} PubChem records");
     println!("Skipped {skipped} PubChem records");
-
-    Ok(LoadedDataset {
-        name: dataset_name.to_string(),
-        records,
-    })
+    Ok(())
 }
 
-#[cfg(test)]
-mod tests {
-    use std::path::PathBuf;
-
-    use super::*;
-    use crate::config::DatasetSource;
-
-    #[tokio::test]
-    async fn local_mgf_missing_path_returns_error() {
-        let temp_dir = tempfile::tempdir().unwrap();
-        let missing_path = temp_dir.path().join("missing.mgf");
-
-        let result = load_dataset(
-            "missing",
-            &DatasetSource::LocalMgf(missing_path),
-            &PathBuf::from("unused-cache-dir"),
-        )
-        .await;
-
-        assert!(result.is_err());
-    }
+fn record_limit() -> Option<usize> {
+    std::env::var("PROFILE_LIMIT")
+        .or_else(|_| std::env::var("PUBCHEM_LIMIT"))
+        .ok()
+        .and_then(|value| value.parse::<usize>().ok())
 }

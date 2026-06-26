@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 25 |
 | Positive count | 25 |
-| Negative count | 443880 |
-| Positive percentage | 0.0056% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -54,16 +54,7 @@ The table is sorted by **Positive %**, meaning the percentage of spectra inside 
 
 This table answers: **where is the target element unusually common?** It does not necessarily show the groups with the largest absolute number of positives.
 
-| Metadata group | Value | Total | Positive | Positive % | % of positives |
-|---|---|---:|---:|---:|---:|
-| NPC classes | Oxygenated hydrocarbons | 254 | 4 | 1.57% | 16.00% |
-| Organism | CMMC-FOOD-BIOMARKERS | 629 | 2 | 0.32% | 8.00% |
-| NPC classes | Tripeptides | 2829 | 8 | 0.28% | 32.00% |
-| NPC superclasses | Fatty acyls | 1885 | 4 | 0.21% | 16.00% |
-| Organism | GNPS-LIBRARY | 5073 | 7 | 0.14% | 28.00% |
-| Organism | REFRAME-NEGATIVE-LIBRARY | 2453 | 3 | 0.12% | 12.00% |
-| NPC classes | Cyclic peptides | 2077 | 2 | 0.10% | 8.00% |
-| NPC classes | Simple amide alkaloids | 3329 | 3 | 0.09% | 12.00% |
+No enriched groups met the minimum support threshold.
 
 ## Low-support warning summary
 
@@ -80,8 +71,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 23 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 647 |
+| `LOW_TOTAL_SUPPORT` | 28 |
 
 ## Summary
 

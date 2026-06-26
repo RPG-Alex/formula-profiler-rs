@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 67 |
 | Positive count | 67 |
-| Negative count | 443838 |
-| Positive percentage | 0.0151% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| Organism | CMMC-FOOD-BIOMARKERS | 629 | 9 | 1.43% | 13.43% |
-| Organism | GNPS-MSMLS | 442 | 2 | 0.45% | 2.99% |
-| Organism | PSU-MSMLS | 482 | 2 | 0.41% | 2.99% |
-| NPC classes | Aminoacids | 12822 | 47 | 0.37% | 70.15% |
-| Organism | MONA | 2672 | 9 | 0.34% | 13.43% |
-| NPC superclasses | Small peptides | 23205 | 47 | 0.20% | 70.15% |
-| Organism | HMDB | 1520 | 3 | 0.20% | 4.48% |
-| NPC classes | Quinazoline alkaloids | 6532 | 12 | 0.18% | 17.91% |
+| NPC pathways | TOTAL_RECORDS | 67 | 67 | 100.00% | 100.00% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 67 | 67 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 67 | 67 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 67 | 67 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 67 | 67 | 100.00% | 100.00% |
+| NPC classes | TOTAL_ASSIGNMENTS | 67 | 67 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 67 | 67 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 67 | 67 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 20 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 642 |
+| `LOW_TOTAL_SUPPORT` | 26 |
 
 ## Summary
 

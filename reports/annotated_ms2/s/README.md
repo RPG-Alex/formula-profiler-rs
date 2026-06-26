@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 55987 |
 | Positive count | 55987 |
-| Negative count | 387918 |
-| Positive percentage | 12.6124% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC classes | Cephalosporins | 1071 | 1071 | 100.00% | 1.91% |
-| NPC classes | Penicillins | 755 | 755 | 100.00% | 1.35% |
-| NPC superclasses | Serine alkaloids | 649 | 649 | 100.00% | 1.16% |
-| NPC classes | Thiazole alkaloids | 649 | 649 | 100.00% | 1.16% |
-| NPC classes | Glucosinolates | 259 | 259 | 100.00% | 0.46% |
-| NPC classes | Carbapenems | 111 | 111 | 100.00% | 0.20% |
-| NPC classes | Thia fatty acids | 73 | 73 | 100.00% | 0.13% |
-| NPC classes | Fatty acyl CoAs | 57 | 57 | 100.00% | 0.10% |
+| NPC classes | TOTAL_ASSIGNMENTS | 57074 | 57074 | 100.00% | 101.94% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 56684 | 56684 | 100.00% | 101.24% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 56523 | 56523 | 100.00% | 100.96% |
+| NPC pathways | TOTAL_RECORDS | 55987 | 55987 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 55987 | 55987 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 55987 | 55987 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 55987 | 55987 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 55987 | 55987 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 69 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 367 |
+| `LOW_TOTAL_SUPPORT` | 133 |
 
 ## Summary
 

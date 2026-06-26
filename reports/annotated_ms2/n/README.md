@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 287885 |
 | Positive count | 287885 |
-| Negative count | 156020 |
-| Positive percentage | 64.8528% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC superclasses | Nicotinic acid alkaloids | 62604 | 62604 | 100.00% | 21.75% |
-| NPC classes | Pyridine alkaloids | 62604 | 62604 | 100.00% | 21.75% |
-| NPC superclasses | Tryptophan alkaloids | 42993 | 42993 | 100.00% | 14.93% |
-| NPC classes | Carboline alkaloids | 23230 | 23230 | 100.00% | 8.07% |
-| NPC superclasses | Pseudoalkaloids | 19762 | 19762 | 100.00% | 6.86% |
-| NPC classes | Dipeptides | 8430 | 8430 | 100.00% | 2.93% |
-| NPC classes | Simple indole alkaloids | 7663 | 7663 | 100.00% | 2.66% |
-| NPC classes | Purine alkaloids | 7052 | 7052 | 100.00% | 2.45% |
+| NPC classes | TOTAL_ASSIGNMENTS | 303565 | 303565 | 100.00% | 105.45% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 298314 | 298314 | 100.00% | 103.62% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 295270 | 295270 | 100.00% | 102.57% |
+| NPC pathways | TOTAL_RECORDS | 287885 | 287885 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 287885 | 287885 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 287885 | 287885 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 287885 | 287885 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 287885 | 287885 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 81 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 217 |
+| `LOW_TOTAL_SUPPORT` | 141 |
 
 ## Summary
 

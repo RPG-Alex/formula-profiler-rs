@@ -8,37 +8,25 @@ Target-positive spectra
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-MagneticSector
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
-<text x="295" y="720" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-IonTrap
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,720 304,720 "/>
-<text x="295" y="626" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-FourierTransform
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,626 304,626 "/>
-<text x="295" y="532" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 UNKNOWN
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,532 304,532 "/>
-<text x="295" y="437" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
+<text x="295" y="664" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Quadrupole
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,437 304,437 "/>
-<text x="295" y="343" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,664 304,664 "/>
+<text x="295" y="513" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Other
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,343 304,343 "/>
-<text x="295" y="249" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,513 304,513 "/>
+<text x="295" y="362" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 TimeOfFlight
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,249 304,249 "/>
-<text x="295" y="155" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,362 304,362 "/>
+<text x="295" y="211" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Orbitrap
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,155 304,155 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,211 304,211 "/>
 <text x="295" y="60" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 
 </text>
@@ -80,36 +68,24 @@ Orbitrap
 4000.0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1291,815 1291,820 "/>
-<rect x="305" y="720" width="0" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="305" y="664" width="0" height="150" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="314" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-0 (0.00%)
+2 (100.00%)
 </text>
-<rect x="305" y="626" width="0" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="314" y="720" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-0 (0.00%)
+<rect x="305" y="513" width="0" height="151" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="664" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+2 (100.00%)
 </text>
-<rect x="305" y="532" width="0" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="314" y="626" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-0 (0.00%)
+<rect x="305" y="362" width="25" height="151" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="339" y="513" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+102 (100.00%)
 </text>
-<rect x="305" y="437" width="0" height="95" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="314" y="532" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-2 (0.35%)
+<rect x="305" y="211" width="82" height="151" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="397" y="362" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+336 (100.00%)
 </text>
-<rect x="305" y="343" width="0" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="314" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-2 (0.03%)
-</text>
-<rect x="305" y="249" width="25" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="339" y="343" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-102 (0.50%)
-</text>
-<rect x="305" y="155" width="82" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="397" y="249" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-336 (0.90%)
-</text>
-<rect x="305" y="60" width="929" height="95" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="155" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-3770 (1.00%)
+<rect x="305" y="60" width="929" height="151" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1243" y="211" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+3770 (100.00%)
 </text>
 </svg>

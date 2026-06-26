@@ -11,14 +11,13 @@ mod records;
 mod reports;
 mod visuals;
 
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 
 use config::{ProfileConfig, TargetSelection};
-use cooccurence::write_cooccurrence_reports;
-use datasets::load_dataset;
+use cooccurence::{CooccurrenceProfile, write_cooccurrence_reports};
+use datasets::process_dataset;
 use markdown::write_markdown_report;
-use profiler::profile_dataset;
-use records::LoadedDataset;
+use profiler::ElementProfilerState;
 use reports::{ReportPaths, write_reports_index};
 
 use crate::error::Result;
@@ -29,14 +28,35 @@ async fn main() -> Result<()> {
 
     println!("Dataset: {}", config.dataset_name);
 
-    let dataset =
-        load_dataset(&config.dataset_name, &config.dataset_source, &config.cache_dir).await?;
+    // 1. Setup accumulators
+    let mut cooccurrence = CooccurrenceProfile::default();
+    let mut element_profilers: BTreeMap<String, ElementProfilerState> = BTreeMap::new();
+    let mut observed_all = BTreeSet::new();
 
-    println!("Loaded {} records", dataset.len());
+    // 2. Stream the dataset
+    process_dataset(&config.dataset_name, &config.dataset_source, &config.cache_dir, |record| {
+        cooccurrence.observe(&record);
 
-    let target_elements = match &config.target_selection {
-        TargetSelection::One(target_element) => vec![target_element.clone()],
-        TargetSelection::AllObserved => observed_elements(&dataset),
+        match &config.target_selection {
+            TargetSelection::One(target) => {
+                let profiler = element_profilers.entry(target.clone()).or_default();
+                profiler.observe(&record, target);
+            }
+            TargetSelection::AllObserved => {
+                for element in record.element_counts.keys() {
+                    observed_all.insert(element.clone());
+                    let profiler = element_profilers.entry(element.clone()).or_default();
+                    profiler.observe(&record, element);
+                }
+            }
+        }
+        Ok(())
+    })
+    .await?;
+
+    let target_elements: Vec<String> = match &config.target_selection {
+        TargetSelection::One(target) => vec![target.clone()],
+        TargetSelection::AllObserved => observed_all.into_iter().collect(),
     };
 
     println!("Target elements: {}", target_elements.join(", "));
@@ -48,26 +68,28 @@ async fn main() -> Result<()> {
         cooccurrence_report_paths.root.display()
     );
 
+    // 3. Post-stream processing
     write_cooccurrence_reports(
         &config.dataset_name,
-        &dataset,
+        &cooccurrence,
         &cooccurrence_report_paths,
         &config.reports_root,
         &target_elements,
     )?;
 
     for target_element in target_elements {
-        let report_dir = config.report_dir_for(&target_element);
-        let report_paths = ReportPaths::prepare(&report_dir)?;
+        if let Some(profiler) = element_profilers.get(&target_element) {
+            let report_dir = config.report_dir_for(&target_element);
+            let report_paths = ReportPaths::prepare(&report_dir)?;
 
-        println!("Profiling target element: {target_element}");
-        println!("Report directory: {}", report_paths.root.display());
+            println!("Profiling target element: {target_element}");
+            println!("Report directory: {}", report_paths.root.display());
 
-        profile_dataset(&dataset, &target_element, &report_paths)?;
+            profiler.write_reports(&target_element, &report_paths)?;
+            write_markdown_report(&config.dataset_name, &target_element, &report_paths)?;
 
-        write_markdown_report(&config.dataset_name, &target_element, &report_paths)?;
-
-        println!("Wrote reports to {}", report_paths.root.display());
+            println!("Wrote reports to {}", report_paths.root.display());
+        }
     }
 
     write_reports_index("reports", "REPORTS.md")?;
@@ -75,16 +97,4 @@ async fn main() -> Result<()> {
     println!("Updated REPORTS.md");
 
     Ok(())
-}
-
-fn observed_elements(dataset: &LoadedDataset) -> Vec<String> {
-    let mut elements = BTreeSet::new();
-
-    for record in &dataset.records {
-        for element in record.element_counts.keys() {
-            elements.insert(element.clone());
-        }
-    }
-
-    elements.into_iter().collect()
 }

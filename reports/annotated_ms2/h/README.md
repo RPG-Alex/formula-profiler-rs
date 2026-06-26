@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 443900 |
 | Positive count | 443900 |
-| Negative count | 5 |
-| Positive percentage | 99.9989% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| Source instrument | Orbitrap | 375443 | 375443 | 100.00% | 84.58% |
-| Library quality | 1 | 342487 | 342487 | 100.00% | 77.15% |
-| Organism | BMDMS-NP | 125071 | 125071 | 100.00% | 28.18% |
-| Organism | MSNLIB-POSITIVE | 120978 | 120978 | 100.00% | 27.25% |
-| NPC pathways | Shikimates and Phenylpropanoids | 88308 | 88308 | 100.00% | 19.89% |
-| NPC pathways | Terpenoids | 70569 | 70569 | 100.00% | 15.90% |
-| NPC superclasses | Nicotinic acid alkaloids | 62604 | 62604 | 100.00% | 14.10% |
-| NPC classes | Pyridine alkaloids | 62604 | 62604 | 100.00% | 14.10% |
+| NPC classes | TOTAL_ASSIGNMENTS | 470724 | 470724 | 100.00% | 106.04% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 455303 | 455303 | 100.00% | 102.57% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 453769 | 453769 | 100.00% | 102.22% |
+| NPC pathways | TOTAL_RECORDS | 443900 | 443900 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 443900 | 443900 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 443900 | 443900 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 443900 | 443900 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 443900 | 443900 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 

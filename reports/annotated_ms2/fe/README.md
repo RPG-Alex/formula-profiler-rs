@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 6 |
 | Positive count | 6 |
-| Negative count | 443899 |
-| Positive percentage | 0.0014% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -54,16 +54,7 @@ The table is sorted by **Positive %**, meaning the percentage of spectra inside 
 
 This table answers: **where is the target element unusually common?** It does not necessarily show the groups with the largest absolute number of positives.
 
-| Metadata group | Value | Total | Positive | Positive % | % of positives |
-|---|---|---:|---:|---:|---:|
-| Organism | TUEBINGEN-NATURAL-PRODUCT-COLLECTION | 785 | 5 | 0.64% | 83.33% |
-| NPC classes | Cyclic peptides | 2077 | 5 | 0.24% | 83.33% |
-| NPC superclasses | Oligopeptides | 3227 | 5 | 0.15% | 83.33% |
-| Source instrument | FourierTransform | 1200 | 1 | 0.08% | 16.67% |
-| Organism | GNPS-LIBRARY | 5073 | 1 | 0.02% | 16.67% |
-| NPC pathways | Amino acids and Peptides | 30102 | 5 | 0.02% | 83.33% |
-| Ion mode | Negative | 54251 | 3 | 0.01% | 50.00% |
-| NPC classes | Piperidine alkaloids | 19208 | 1 | 0.01% | 16.67% |
+No enriched groups met the minimum support threshold.
 
 ## Low-support warning summary
 
@@ -80,8 +71,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 15 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 660 |
+| `LOW_TOTAL_SUPPORT` | 15 |
 
 ## Summary
 

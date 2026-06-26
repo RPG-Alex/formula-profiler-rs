@@ -8,7 +8,7 @@ Percent target-positive within group
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-Quadrupole
+UNKNOWN
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
 <text x="295" y="720" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -16,7 +16,7 @@ TimeOfFlight
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,720 304,720 "/>
 <text x="295" y="626" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-UNKNOWN
+Quadrupole
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,626 304,626 "/>
 <text x="295" y="532" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -70,15 +70,15 @@ FourierTransform
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1234,815 1234,820 "/>
 <rect x="305" y="720" width="929" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-99.97% (n=6621)
+100.00% (n=570)
 </text>
 <rect x="305" y="626" width="929" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="720" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-99.99% (n=37520)
+100.00% (n=37520)
 </text>
 <rect x="305" y="532" width="929" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="626" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=570)
+100.00% (n=6621)
 </text>
 <rect x="305" y="437" width="929" height="95" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="532" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">

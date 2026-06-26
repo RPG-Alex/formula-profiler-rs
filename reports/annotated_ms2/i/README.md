@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 1338 |
 | Positive count | 1338 |
-| Negative count | 442567 |
-| Positive percentage | 0.3014% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC classes | Phenoxazine alkaloids | 140 | 39 | 27.86% | 2.91% |
-| NPC classes | Simple amide alkaloids | 3329 | 190 | 5.71% | 14.20% |
-| NPC classes | Oligomeric stibenes | 164 | 8 | 4.88% | 0.60% |
-| NPC classes | Aporphine alkaloids | 1122 | 48 | 4.28% | 3.59% |
-| NPC superclasses | Peptide alkaloids | 4875 | 195 | 4.00% | 14.57% |
-| NPC classes | Pyrrolizidine alkaloids | 1913 | 51 | 2.67% | 3.81% |
-| Organism | GNPS-NIH-SMALLMOLECULEPHARMACOLOGICALLYACTIVE | 906 | 23 | 2.54% | 1.72% |
-| NPC classes | Chromones | 2778 | 66 | 2.38% | 4.93% |
+| NPC classes | TOTAL_ASSIGNMENTS | 1458 | 1458 | 100.00% | 108.97% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 1403 | 1403 | 100.00% | 104.86% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 1397 | 1397 | 100.00% | 104.41% |
+| NPC pathways | TOTAL_RECORDS | 1338 | 1338 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 1338 | 1338 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 1338 | 1338 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 1338 | 1338 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 1338 | 1338 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 40 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 566 |
+| `LOW_TOTAL_SUPPORT` | 61 |
 
 ## Summary
 

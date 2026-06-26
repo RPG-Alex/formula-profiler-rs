@@ -1,0 +1,4 @@
+value,total_count,target_count,non_target_count,percent_target_within_group,percent_of_all_records,percent_of_all_target,support_warning
+PubChem,7,7,0,100.0,100.0,100.0,LOW_TOTAL_SUPPORT|LOW_TARGET_SUPPORT
+TOTAL_RECORDS,7,7,0,100.0,100.0,100.0,
+TOTAL_ASSIGNMENTS,7,7,0,100.0,100.0,100.0,

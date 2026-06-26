@@ -83,7 +83,6 @@ Number of H atoms in formula
 220
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1136,710 1136,715 "/>
-<rect x="120" y="709" width="4" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="124" y="709" width="5" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="129" y="708" width="4" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="133" y="705" width="5" height="4" opacity="0.6" fill="#0000FF" stroke="none"/>

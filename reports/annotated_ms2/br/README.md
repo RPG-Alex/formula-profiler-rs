@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 4212 |
 | Positive count | 4212 |
-| Negative count | 439693 |
-| Positive percentage | 0.9489% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC classes | 2-arylbenzofurans | 81 | 12 | 14.81% | 0.28% |
-| NPC classes | Griseofulvins | 343 | 44 | 12.83% | 1.04% |
-| NPC superclasses | Diphenyl ethers (DPEs) | 141 | 18 | 12.77% | 0.43% |
-| NPC classes | Carane monoterpenoids | 162 | 13 | 8.02% | 0.31% |
-| NPC classes | Furofuranoid lignans | 1171 | 87 | 7.43% | 2.07% |
-| NPC classes | Halogenated hydrocarbons | 124 | 8 | 6.45% | 0.19% |
-| NPC classes | Neoflavonoids | 563 | 35 | 6.22% | 0.83% |
-| NPC classes | Benzophenones | 157 | 9 | 5.73% | 0.21% |
+| NPC classes | TOTAL_ASSIGNMENTS | 4326 | 4326 | 100.00% | 102.71% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 4311 | 4311 | 100.00% | 102.35% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 4295 | 4295 | 100.00% | 101.97% |
+| NPC pathways | TOTAL_RECORDS | 4212 | 4212 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 4212 | 4212 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 4212 | 4212 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 4212 | 4212 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 4212 | 4212 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 67 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 505 |
+| `LOW_TOTAL_SUPPORT` | 92 |
 
 ## Summary
 

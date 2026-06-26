@@ -82,34 +82,34 @@ Orbitrap
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1326,815 1326,820 "/>
 <rect x="305" y="720" width="0" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="314" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-156 (95.12%)
+156 (100.00%)
 </text>
 <rect x="305" y="626" width="1" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="315" y="720" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-561 (98.42%)
+561 (100.00%)
 </text>
 <rect x="305" y="532" width="2" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="316" y="626" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1058 (88.17%)
+1058 (100.00%)
 </text>
 <rect x="305" y="437" width="4" height="95" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="318" y="532" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1817 (96.49%)
+1817 (100.00%)
 </text>
 <rect x="305" y="343" width="15" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="330" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-6241 (94.23%)
+6241 (100.00%)
 </text>
 <rect x="305" y="249" width="48" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="362" y="343" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-19020 (92.79%)
+19020 (100.00%)
 </text>
 <rect x="305" y="155" width="92" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="406" y="249" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-36064 (96.11%)
+36064 (100.00%)
 </text>
 <rect x="305" y="60" width="929" height="95" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="155" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-364109 (96.98%)
+364109 (100.00%)
 </text>
 </svg>

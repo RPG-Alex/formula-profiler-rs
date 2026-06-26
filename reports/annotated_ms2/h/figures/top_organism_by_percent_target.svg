@@ -8,31 +8,31 @@ Percent target-positive within group
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-GNPS-IIMN-PROPOGATED
+GNPS-COLLECTIONS-PESTICIDES-POSITIVE
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
 <text x="295" y="764" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-GNPS-COLLECTIONS-PESTICIDES-POSITIVE
+GNPS-ALKYLAMINES-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,764 304,764 "/>
 <text x="295" y="714" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-GNPS-ALKYLAMINES-LIBRARY
+ELIXDB-LICHEN-DATABASE
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,714 304,714 "/>
 <text x="295" y="664" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-ELIXDB-LICHEN-DATABASE
+ECRFS_DB
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,664 304,664 "/>
 <text x="295" y="613" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-ECRFS_DB
+ECG-ACYL-ESTERS-C4-C24-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,613 304,613 "/>
 <text x="295" y="563" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-ECG-ACYL-ESTERS-C4-C24-LIBRARY
+ECG-ACYL-AMIDES-C4-C24-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,563 304,563 "/>
 <text x="295" y="513" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-ECG-ACYL-AMIDES-C4-C24-LIBRARY
+DMIM-DRUG-METABOLITE-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,513 304,513 "/>
 <text x="295" y="463" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -98,31 +98,31 @@ AASDB
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1234,815 1234,820 "/>
 <rect x="305" y="764" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=145)
+100.00% (n=109)
 </text>
 <rect x="305" y="714" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="764" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=109)
+100.00% (n=2428)
 </text>
 <rect x="305" y="664" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="714" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=2428)
+100.00% (n=519)
 </text>
 <rect x="305" y="613" width="929" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="664" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=519)
+100.00% (n=79)
 </text>
 <rect x="305" y="563" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="613" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=79)
+100.00% (n=137)
 </text>
 <rect x="305" y="513" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="563" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=137)
+100.00% (n=719)
 </text>
 <rect x="305" y="463" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="513" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=719)
+100.00% (n=3634)
 </text>
 <rect x="305" y="412" width="929" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="463" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">

@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 136 |
 | Positive count | 136 |
-| Negative count | 443769 |
-| Positive percentage | 0.0306% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| Organism | BIRMINGHAM-UHPLC-MS-POS | 669 | 5 | 0.75% | 3.68% |
-| Organism | GNPS-SELLECKCHEM-FDA-PART1 | 1233 | 6 | 0.49% | 4.41% |
-| NPC classes | Dipeptides | 8430 | 40 | 0.47% | 29.41% |
-| NPC classes | Phenylethylamines | 5380 | 16 | 0.30% | 11.76% |
-| NPC classes | Simple amide alkaloids | 3329 | 8 | 0.24% | 5.88% |
-| NPC superclasses | Small peptides | 23205 | 51 | 0.22% | 37.50% |
-| Organism | MCE-DRUG | 12619 | 25 | 0.20% | 18.38% |
-| NPC classes | Tripeptides | 2829 | 5 | 0.18% | 3.68% |
+| NPC pathways | TOTAL_RECORDS | 136 | 136 | 100.00% | 100.00% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 136 | 136 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 136 | 136 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 136 | 136 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 136 | 136 | 100.00% | 100.00% |
+| NPC classes | TOTAL_ASSIGNMENTS | 136 | 136 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 136 | 136 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 136 | 136 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 30 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 629 |
+| `LOW_TOTAL_SUPPORT` | 36 |
 
 ## Summary
 

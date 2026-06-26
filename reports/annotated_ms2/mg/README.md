@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 1 |
 | Positive count | 1 |
-| Negative count | 443904 |
-| Positive percentage | 0.0002% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -54,16 +54,7 @@ The table is sorted by **Positive %**, meaning the percentage of spectra inside 
 
 This table answers: **where is the target element unusually common?** It does not necessarily show the groups with the largest absolute number of positives.
 
-| Metadata group | Value | Total | Positive | Positive % | % of positives |
-|---|---|---:|---:|---:|---:|
-| Organism | GNPS-NIH-SMALLMOLECULEPHARMACOLOGICALLYACTIVE | 906 | 1 | 0.11% | 100.00% |
-| NPC classes | Carboline alkaloids | 23230 | 1 | 0.00% | 100.00% |
-| Source instrument | TimeOfFlight | 37523 | 1 | 0.00% | 100.00% |
-| NPC superclasses | Tryptophan alkaloids | 42993 | 1 | 0.00% | 100.00% |
-| NPC pathways | Alkaloids | 210679 | 1 | 0.00% | 100.00% |
-| Library quality | 1 | 342487 | 1 | 0.00% | 100.00% |
-| Ion mode | Positive | 389293 | 1 | 0.00% | 100.00% |
-| Source dataset | GNPS | 389560 | 1 | 0.00% | 100.00% |
+No enriched groups met the minimum support threshold.
 
 ## Low-support warning summary
 
@@ -80,8 +71,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 8 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 667 |
+| `LOW_TOTAL_SUPPORT` | 8 |
 
 ## Summary
 

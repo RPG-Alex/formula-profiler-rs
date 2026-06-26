@@ -62,10 +62,10 @@ GNPS
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1289,815 1289,820 "/>
 <rect x="305" y="437" width="437" height="377" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="751" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-8 (0.01%)
+8 (100.00%)
 </text>
 <rect x="305" y="60" width="929" height="377" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-17 (0.00%)
+17 (100.00%)
 </text>
 </svg>

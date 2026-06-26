@@ -8,19 +8,19 @@ Percent target-positive within group
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-3
+UNKNOWN
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
 <text x="295" y="626" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-UNKNOWN
+3
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,626 304,626 "/>
 <text x="295" y="437" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-1
+2
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,437 304,437 "/>
 <text x="295" y="249" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-2
+1
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,249 304,249 "/>
 <text x="295" y="60" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -52,20 +52,20 @@ UNKNOWN
 100.0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1234,815 1234,820 "/>
-<rect x="305" y="626" width="882" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1196" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-94.86% (n=41556)
+<rect x="305" y="626" width="929" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1243" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+100.00% (n=51720)
 </text>
-<rect x="305" y="437" width="884" height="189" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1199" y="626" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-95.17% (n=51720)
+<rect x="305" y="437" width="929" height="189" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1243" y="626" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+100.00% (n=41556)
 </text>
-<rect x="305" y="249" width="902" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1216" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-97.08% (n=332484)
+<rect x="305" y="249" width="929" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1243" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+100.00% (n=3266)
 </text>
 <rect x="305" y="60" width="929" height="189" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="249" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-99.97% (n=3266)
+100.00% (n=332484)
 </text>
 </svg>

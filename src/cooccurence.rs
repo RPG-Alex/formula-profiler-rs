@@ -10,95 +10,26 @@ use serde::Serialize;
 
 use crate::{
     error::{Result, SpectraProfilerError},
-    records::LoadedDataset,
+    records::MoleculeRecord,
     reports::ReportPaths,
 };
 
+// Make this struct public so main.rs can instantiate it
 #[derive(Debug, Default)]
-struct CooccurrenceProfile {
-    total_records: usize,
-    records_with_formula: usize,
-    element_counts: BTreeMap<String, usize>,
-    pair_counts: BTreeMap<(String, String), usize>,
-}
-
-#[derive(Debug, Serialize)]
-struct ElementCountRow {
-    element: String,
-    count: usize,
-    percent_of_records: f64,
-}
-
-#[derive(Debug, Serialize)]
-struct CooccurrenceCountRow {
-    row_element: String,
-    column_element: String,
-    cooccurrence_count: usize,
-}
-
-#[derive(Debug, Serialize)]
-struct ConditionalProbabilityRow {
-    row_element: String,
-    column_element: String,
-    cooccurrence_count: usize,
-    row_element_count: usize,
-    conditional_probability: f64,
-}
-
-/// Writes dataset-level element co-occurrence reports.
-pub fn write_cooccurrence_reports(
-    dataset_name: &str,
-    dataset: &LoadedDataset,
-    reports: &ReportPaths,
-    dataset_reports_root: impl AsRef<Path>,
-    reported_elements: &[String],
-) -> Result<()> {
-    let profile = CooccurrenceProfile::from_dataset(dataset);
-    let heatmap_elements = profile.heatmap_elements();
-
-    write_element_counts_csv(&profile, reports)?;
-    write_cooccurrence_counts_csv(&profile, reports)?;
-    write_conditional_probability_csv(&profile, reports)?;
-
-    render_raw_count_heatmap(
-        reports.figure("element_cooccurrence_raw_counts_heatmap.svg"),
-        &profile,
-        &heatmap_elements,
-    )?;
-
-    render_conditional_probability_heatmap(
-        reports.figure("element_cooccurrence_conditional_probability_heatmap.svg"),
-        &profile,
-        &heatmap_elements,
-    )?;
-
-    write_cooccurrence_readme(reports, &profile, &heatmap_elements)?;
-
-    write_dataset_index_readme(
-        dataset_name,
-        dataset_reports_root,
-        &profile,
-        &heatmap_elements,
-        reported_elements,
-    )?;
-
-    Ok(())
+pub struct CooccurrenceProfile {
+    pub total_records: usize,
+    pub records_with_formula: usize,
+    pub element_counts: BTreeMap<String, usize>,
+    pub pair_counts: BTreeMap<(String, String), usize>,
 }
 
 impl CooccurrenceProfile {
-    fn from_dataset(dataset: &LoadedDataset) -> Self {
-        let mut profile = Self::default();
+    pub fn observe(&mut self, record: &MoleculeRecord) {
+        self.total_records += 1;
+        self.records_with_formula += 1;
 
-        for record in &dataset.records {
-            profile.total_records += 1;
-            profile.records_with_formula += 1;
-
-            let elements = record.element_counts.keys().cloned().collect::<BTreeSet<_>>();
-
-            profile.observe_elements(&elements);
-        }
-
-        profile
+        let elements: BTreeSet<String> = record.element_counts.keys().cloned().collect();
+        self.observe_elements(&elements);
     }
 
     fn observe_elements(&mut self, elements: &BTreeSet<String>) {
@@ -148,6 +79,66 @@ impl CooccurrenceProfile {
 
         elements.into_iter().map(|(element, _)| element).collect()
     }
+}
+#[derive(Debug, Serialize)]
+struct ElementCountRow {
+    element: String,
+    count: usize,
+    percent_of_records: f64,
+}
+
+#[derive(Debug, Serialize)]
+struct CooccurrenceCountRow {
+    row_element: String,
+    column_element: String,
+    cooccurrence_count: usize,
+}
+
+#[derive(Debug, Serialize)]
+struct ConditionalProbabilityRow {
+    row_element: String,
+    column_element: String,
+    cooccurrence_count: usize,
+    row_element_count: usize,
+    conditional_probability: f64,
+}
+
+pub fn write_cooccurrence_reports(
+    dataset_name: &str,
+    profile: &CooccurrenceProfile, // CHANGED from dataset: &LoadedDataset
+    reports: &ReportPaths,
+    dataset_reports_root: impl AsRef<Path>,
+    reported_elements: &[String],
+) -> Result<()> {
+    let heatmap_elements = profile.heatmap_elements();
+
+    write_element_counts_csv(profile, reports)?;
+    write_cooccurrence_counts_csv(profile, reports)?;
+    write_conditional_probability_csv(profile, reports)?;
+
+    render_raw_count_heatmap(
+        reports.figure("element_cooccurrence_raw_counts_heatmap.svg"),
+        profile,
+        &heatmap_elements,
+    )?;
+
+    render_conditional_probability_heatmap(
+        reports.figure("element_cooccurrence_conditional_probability_heatmap.svg"),
+        profile,
+        &heatmap_elements,
+    )?;
+
+    write_cooccurrence_readme(reports, profile, &heatmap_elements)?;
+
+    write_dataset_index_readme(
+        dataset_name,
+        dataset_reports_root,
+        profile,
+        &heatmap_elements,
+        reported_elements,
+    )?;
+
+    Ok(())
 }
 
 fn write_element_counts_csv(profile: &CooccurrenceProfile, reports: &ReportPaths) -> Result<()> {

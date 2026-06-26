@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 15524 |
 | Positive count | 15524 |
-| Negative count | 428381 |
-| Positive percentage | 3.4971% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC classes | Glycerophosphoethanolamines | 1575 | 1575 | 100.00% | 10.15% |
-| NPC classes | Phosphosphingolipids | 1081 | 1081 | 100.00% | 6.96% |
-| NPC classes | Glycerophosphoserines | 412 | 412 | 100.00% | 2.65% |
-| NPC classes | Fatty acyl CoAs | 57 | 57 | 100.00% | 0.37% |
-| NPC classes | Glycerophosphates | 43 | 43 | 100.00% | 0.28% |
-| NPC classes | Glycerophosphocholines | 7671 | 7662 | 99.88% | 49.36% |
-| NPC superclasses | Glycerophospholipids | 9759 | 9745 | 99.86% | 62.77% |
-| NPC classes | Halogenated hydrocarbons | 124 | 118 | 95.16% | 0.76% |
+| NPC classes | TOTAL_ASSIGNMENTS | 15566 | 15566 | 100.00% | 100.27% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 15552 | 15552 | 100.00% | 100.18% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 15552 | 15552 | 100.00% | 100.18% |
+| NPC pathways | TOTAL_RECORDS | 15524 | 15524 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 15524 | 15524 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 15524 | 15524 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 15524 | 15524 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 15524 | 15524 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 54 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 496 |
+| `LOW_TOTAL_SUPPORT` | 84 |
 
 ## Summary
 

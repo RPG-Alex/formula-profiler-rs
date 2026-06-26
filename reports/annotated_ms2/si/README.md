@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 77 |
 | Positive count | 77 |
-| Negative count | 443828 |
-| Positive percentage | 0.0173% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| Organism | GNPS-COLLECTIONS-PESTICIDES-POSITIVE | 109 | 2 | 1.83% | 2.60% |
-| NPC classes | Pyrroloquinoline alkaloids | 752 | 7 | 0.93% | 9.09% |
-| NPC superclasses | Histidine alkaloids | 5249 | 48 | 0.91% | 62.34% |
-| NPC classes | Imidazole alkaloids | 5249 | 48 | 0.91% | 62.34% |
-| NPC classes | Hydrocarbons | 907 | 7 | 0.77% | 9.09% |
-| Source instrument | FourierTransform | 1200 | 6 | 0.50% | 7.79% |
-| NPC superclasses | Fatty acyls | 1885 | 7 | 0.37% | 9.09% |
-| Organism | GNPS-NIST14-MATCHES | 2631 | 7 | 0.27% | 9.09% |
+| NPC pathways | TOTAL_RECORDS | 77 | 77 | 100.00% | 100.00% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 77 | 77 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 77 | 77 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 77 | 77 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 77 | 77 | 100.00% | 100.00% |
+| NPC classes | TOTAL_ASSIGNMENTS | 77 | 77 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 77 | 77 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 77 | 77 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 22 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 640 |
+| `LOW_TOTAL_SUPPORT` | 26 |
 
 ## Summary
 

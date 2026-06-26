@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 85 |
 | Positive count | 85 |
-| Negative count | 443820 |
-| Positive percentage | 0.0191% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC classes | Glucosinolates | 259 | 51 | 19.69% | 60.00% |
-| NPC superclasses | Amino acid glycosides | 432 | 51 | 11.81% | 60.00% |
-| NPC classes | Fatty aldehydes | 48 | 4 | 8.33% | 4.71% |
-| NPC classes | Lupane triterpenoids | 819 | 28 | 3.42% | 32.94% |
-| Organism | BIRMINGHAM-UHPLC-MS-POS | 669 | 3 | 0.45% | 3.53% |
-| Organism | GNPS-NIH-SMALLMOLECULEPHARMACOLOGICALLYACTIVE | 906 | 2 | 0.22% | 2.35% |
-| NPC superclasses | Fatty acyls | 1885 | 4 | 0.21% | 4.71% |
-| Organism | PSU-MSMLS | 482 | 1 | 0.21% | 1.18% |
+| NPC classes | TOTAL_ASSIGNMENTS | 86 | 86 | 100.00% | 101.18% |
+| NPC pathways | TOTAL_RECORDS | 85 | 85 | 100.00% | 100.00% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 85 | 85 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 85 | 85 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 85 | 85 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 85 | 85 | 100.00% | 100.00% |
+| Source dataset | GNPS | 85 | 85 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 85 | 85 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 13 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 651 |
+| `LOW_TOTAL_SUPPORT` | 16 |
 
 ## Summary
 

@@ -58,18 +58,18 @@ UNKNOWN
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1287,815 1287,820 "/>
 <rect x="305" y="626" width="0" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="314" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-3 (0.09%)
+3 (100.00%)
 </text>
 <rect x="305" y="437" width="127" height="189" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="441" y="626" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1552 (3.54%)
+1552 (100.00%)
 </text>
 <rect x="305" y="249" width="214" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="528" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-2615 (0.76%)
+2615 (100.00%)
 </text>
 <rect x="305" y="60" width="929" height="189" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="249" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-11354 (20.89%)
+11354 (100.00%)
 </text>
 </svg>

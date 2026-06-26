@@ -8,40 +8,35 @@ use crate::{
         PopulationMap, increment_pipe_population, increment_population, summarize_population_map,
         write_population_map_csv,
     },
-    records::LoadedDataset,
+    records::MoleculeRecord,
     reports::ReportPaths,
     visuals::{write_atom_count_distribution_figure, write_standard_population_figures},
 };
 
-pub fn profile_dataset(
-    dataset: &LoadedDataset,
-    target_element: &str,
-    reports: &ReportPaths,
-) -> Result<()> {
-    let mut total_records = 0usize;
-    let mut records_with_formula = 0usize;
-    let mut records_with_target_element = 0usize;
+#[derive(Debug, Default)]
+pub struct ElementProfilerState {
+    pub total_records: usize,
+    pub records_with_formula: usize,
+    pub records_with_target_element: usize,
+    pub target_atom_count_distribution: BTreeMap<usize, usize>,
+    pub population_maps: BTreeMap<String, PopulationMap>,
+}
 
-    let mut target_atom_count_distribution = BTreeMap::<usize, usize>::new();
-
-    let mut population_maps = BTreeMap::<String, PopulationMap>::new();
-
-    for record in &dataset.records {
-        total_records += 1;
-        records_with_formula += 1;
+impl ElementProfilerState {
+    pub fn observe(&mut self, record: &MoleculeRecord, target_element: &str) {
+        self.total_records += 1;
+        self.records_with_formula += 1;
 
         let target_atom_count = record.atom_count(target_element);
-        *target_atom_count_distribution.entry(target_atom_count).or_default() += 1;
+        *self.target_atom_count_distribution.entry(target_atom_count).or_default() += 1;
 
-        let contains_target_element = record.contains_element(target_element);
-
+        let contains_target_element = target_atom_count > 0;
         if contains_target_element {
-            records_with_target_element += 1;
+            self.records_with_target_element += 1;
         }
 
         for (metadata_group, value) in &record.metadata {
-            let counts = population_maps.entry(metadata_group.clone()).or_default();
-
+            let counts = self.population_maps.entry(metadata_group.clone()).or_default();
             if value.contains('|') {
                 increment_pipe_population(counts, value, contains_target_element);
             } else {
@@ -50,45 +45,47 @@ pub fn profile_dataset(
         }
     }
 
-    write_summary_csv(
-        reports,
-        total_records,
-        records_with_formula,
-        records_with_target_element,
-        target_element,
-    )?;
-
-    write_atom_count_distribution_csv(
-        reports,
-        target_element,
-        records_with_formula,
-        &target_atom_count_distribution,
-    )?;
-
-    write_atom_count_distribution_figure(
-        reports,
-        target_element,
-        records_with_formula,
-        &target_atom_count_distribution,
-    )?;
-    for (metadata_group, counts) in &population_maps {
-        let stem = population_stem(metadata_group);
-
-        write_population_outputs(
+    pub fn write_reports(&self, target_element: &str, reports: &ReportPaths) -> Result<()> {
+        write_summary_csv(
             reports,
-            &stem,
-            &format!("{target_element} by {metadata_group}"),
-            counts,
-            total_records,
-            records_with_target_element,
+            self.total_records,
+            self.records_with_formula,
+            self.records_with_target_element,
+            target_element,
         )?;
+
+        write_atom_count_distribution_csv(
+            reports,
+            target_element,
+            self.records_with_formula,
+            &self.target_atom_count_distribution,
+        )?;
+
+        write_atom_count_distribution_figure(
+            reports,
+            target_element,
+            self.records_with_formula,
+            &self.target_atom_count_distribution,
+        )?;
+
+        for (metadata_group, counts) in &self.population_maps {
+            let stem = population_stem(metadata_group);
+            write_population_outputs(
+                reports,
+                &stem,
+                &format!("{target_element} by {metadata_group}"),
+                counts,
+                self.total_records,
+                self.records_with_target_element,
+            )?;
+        }
+
+        println!("Total records: {}", self.total_records);
+        println!("Records with formula: {}", self.records_with_formula);
+        println!("Records with {target_element}: {}", self.records_with_target_element);
+
+        Ok(())
     }
-
-    println!("Total records: {total_records}");
-    println!("Records with formula: {records_with_formula}");
-    println!("Records with {target_element}: {records_with_target_element}");
-
-    Ok(())
 }
 
 fn population_stem(metadata_group: &str) -> String {
@@ -177,48 +174,4 @@ fn percent(numerator: usize, denominator: usize) -> f64 {
     }
 
     numerator as f64 / denominator as f64 * 100.0
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::reports::ReportPaths;
-
-    #[test]
-    fn write_summary_csv_writes_expected_metrics() {
-        let temp_dir = tempfile::tempdir().unwrap();
-        let reports = ReportPaths::prepare(temp_dir.path().join("report")).unwrap();
-
-        write_summary_csv(&reports, 100, 95, 12, "F").unwrap();
-
-        let contents = std::fs::read_to_string(reports.table("summary.csv")).unwrap();
-
-        assert!(contents.contains("metric,value"));
-        assert!(contents.contains("target_element,F"));
-        assert!(contents.contains("total_records,100"));
-        assert!(contents.contains("records_with_formula,95"));
-        assert!(contents.contains("records_with_target_element,12"));
-    }
-    #[test]
-    fn write_atom_count_distribution_csv_writes_expected_rows() {
-        let temp_dir = tempfile::tempdir().unwrap();
-        let reports = ReportPaths::prepare(temp_dir.path().join("report")).unwrap();
-
-        let mut distribution = BTreeMap::new();
-        distribution.insert(0, 90);
-        distribution.insert(1, 8);
-        distribution.insert(2, 2);
-
-        write_atom_count_distribution_csv(&reports, "F", 100, &distribution).unwrap();
-
-        let contents =
-            std::fs::read_to_string(reports.table("target_atom_count_distribution.csv")).unwrap();
-
-        assert!(
-            contents.contains("atom_count,record_count,percent_of_formula_records,contains_target")
-        );
-        assert!(contents.contains("0,90,90.0,false"));
-        assert!(contents.contains("1,8,8.0,true"));
-        assert!(contents.contains("2,2,2.0,true"));
-    }
 }

@@ -54,44 +54,44 @@ impl ProfileConfig {
 
         let dataset_selector = args.next();
 
-let (dataset_name, dataset_source) = match dataset_selector.as_deref() {
-    Some("pubchem") | Some("pubchem-smiles") => {
-        ("pubchem".to_string(), DatasetSource::PubChemSmiles)
-    }
+        let (dataset_name, dataset_source) = match dataset_selector.as_deref() {
+            Some("pubchem") | Some("pubchem-smiles") => {
+                ("pubchem".to_string(), DatasetSource::PubChemSmiles)
+            }
 
-    Some("smiles-gz")
-    | Some("local-smiles-gz")
-    | Some("smi-gz")
-    | Some("pubchem-gz")
-    | Some("pubchem-smiles-gz") => {
-        let path = args
-            .next()
-            .map(PathBuf::from)
-            .unwrap_or_else(|| PathBuf::from("CID-SMILES.gz"));
+            Some("smiles-gz")
+            | Some("local-smiles-gz")
+            | Some("smi-gz")
+            | Some("pubchem-gz")
+            | Some("pubchem-smiles-gz") => {
+                let path = args
+                    .next()
+                    .map(PathBuf::from)
+                    .unwrap_or_else(|| PathBuf::from("CID-SMILES.gz"));
 
-        let dataset_name = path
-            .file_stem()
-            .and_then(|stem| stem.to_str())
-            .unwrap_or("local_smiles")
-            .to_string();
+                let dataset_name = path
+                    .file_stem()
+                    .and_then(|stem| stem.to_str())
+                    .unwrap_or("local_smiles")
+                    .to_string();
 
-        (dataset_name, DatasetSource::LocalSmilesGz(path))
-    }
+                (dataset_name, DatasetSource::LocalSmilesGz(path))
+            }
 
-    Some(path) => {
-        let path = PathBuf::from(path);
+            Some(path) => {
+                let path = PathBuf::from(path);
 
-        let dataset_name = path
-            .file_stem()
-            .and_then(|stem| stem.to_str())
-            .unwrap_or("local_mgf")
-            .to_string();
+                let dataset_name = path
+                    .file_stem()
+                    .and_then(|stem| stem.to_str())
+                    .unwrap_or("local_mgf")
+                    .to_string();
 
-        (dataset_name, DatasetSource::LocalMgf(path))
-    }
+                (dataset_name, DatasetSource::LocalMgf(path))
+            }
 
-    None => ("annotated_ms2".to_string(), DatasetSource::AnnotatedMs2),
-};
+            None => ("annotated_ms2".to_string(), DatasetSource::AnnotatedMs2),
+        };
 
         Ok(Self {
             dataset_name: dataset_name.clone(),
@@ -219,8 +219,7 @@ mod tests {
 
     #[test]
     fn parses_local_smiles_gz_source() {
-        let config =
-            ProfileConfig::from_iter(["all", "smiles-gz", "data/CID-SMILES.gz"]).unwrap();
+        let config = ProfileConfig::from_iter(["all", "smiles-gz", "data/CID-SMILES.gz"]).unwrap();
 
         assert_eq!(config.dataset_name, "CID-SMILES");
         assert_eq!(config.cache_dir, PathBuf::from("cache").join("CID-SMILES"));
@@ -245,8 +244,7 @@ mod tests {
 
     #[test]
     fn parses_local_smiles_gz_legacy_pubchem_alias() {
-        let config =
-            ProfileConfig::from_iter(["all", "pubchem-gz", "data/CID-SMILES.gz"]).unwrap();
+        let config = ProfileConfig::from_iter(["all", "pubchem-gz", "data/CID-SMILES.gz"]).unwrap();
 
         assert_eq!(config.dataset_name, "CID-SMILES");
 

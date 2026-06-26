@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 429026 |
 | Positive count | 429026 |
-| Negative count | 14879 |
-| Positive percentage | 96.6482% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC superclasses | Coumarins | 14023 | 14023 | 100.00% | 3.27% |
-| NPC classes | Simple coumarins | 11162 | 11162 | 100.00% | 2.60% |
-| NPC classes | Flavones | 10677 | 10677 | 100.00% | 2.49% |
-| NPC superclasses | Glycerophospholipids | 9759 | 9759 | 100.00% | 2.27% |
-| NPC classes | Flavonols | 9469 | 9469 | 100.00% | 2.21% |
-| NPC superclasses | Isoflavonoids | 8951 | 8951 | 100.00% | 2.09% |
-| NPC classes | Dipeptides | 8430 | 8430 | 100.00% | 1.96% |
-| NPC pathways | Carbohydrates | 8225 | 8225 | 100.00% | 1.92% |
+| NPC classes | TOTAL_ASSIGNMENTS | 455449 | 455449 | 100.00% | 106.16% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 440194 | 440194 | 100.00% | 102.60% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 438422 | 438422 | 100.00% | 102.19% |
+| NPC pathways | TOTAL_RECORDS | 429026 | 429026 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 429026 | 429026 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 429026 | 429026 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 429026 | 429026 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 429026 | 429026 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 136 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 7 |
+| `LOW_TOTAL_SUPPORT` | 200 |
 
 ## Summary
 

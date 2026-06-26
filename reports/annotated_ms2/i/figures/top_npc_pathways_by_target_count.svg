@@ -8,33 +8,29 @@ Target-positive spectra
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-Fatty acids
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
-<text x="295" y="707" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Terpenoids
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,707 304,707 "/>
-<text x="295" y="599" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
+<text x="295" y="689" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Polyketides
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,599 304,599 "/>
-<text x="295" y="491" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,689 304,689 "/>
+<text x="295" y="563" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Carbohydrates
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,491 304,491 "/>
-<text x="295" y="384" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,563 304,563 "/>
+<text x="295" y="437" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Shikimates and Phenylpropanoids
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,384 304,384 "/>
-<text x="295" y="276" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,437 304,437 "/>
+<text x="295" y="312" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Amino acids and Peptides
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,276 304,276 "/>
-<text x="295" y="168" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,312 304,312 "/>
+<text x="295" y="186" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Alkaloids
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,168 304,168 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,186 304,186 "/>
 <text x="295" y="60" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 
 </text>
@@ -80,32 +76,28 @@ Alkaloids
 900.0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1297,815 1297,820 "/>
-<rect x="305" y="707" width="0" height="107" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="314" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-0 (0.00%)
+<rect x="305" y="689" width="22" height="125" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="336" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+20 (100.00%)
 </text>
-<rect x="305" y="599" width="22" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="336" y="707" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-20 (0.03%)
+<rect x="305" y="563" width="88" height="126" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="402" y="689" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+80 (100.00%)
 </text>
-<rect x="305" y="491" width="88" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="402" y="599" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-80 (0.41%)
+<rect x="305" y="437" width="99" height="126" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="413" y="563" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+90 (100.00%)
 </text>
-<rect x="305" y="384" width="99" height="107" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="413" y="491" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-90 (1.09%)
+<rect x="305" y="312" width="134" height="125" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="448" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+122 (100.00%)
 </text>
-<rect x="305" y="276" width="134" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="448" y="384" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-122 (0.14%)
+<rect x="305" y="186" width="266" height="126" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="581" y="312" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+242 (100.00%)
 </text>
-<rect x="305" y="168" width="266" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="581" y="276" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-242 (0.80%)
-</text>
-<rect x="305" y="60" width="929" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="168" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-843 (0.40%)
+<rect x="305" y="60" width="929" height="126" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1243" y="186" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+843 (100.00%)
 </text>
 </svg>

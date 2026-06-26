@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 16 |
 | Positive count | 16 |
-| Negative count | 443889 |
-| Positive percentage | 0.0036% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,8 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC superclasses | Terphenyls | 232 | 16 | 6.90% | 100.00% |
-| NPC classes | p-Terphenyls | 232 | 16 | 6.90% | 100.00% |
-| NPC pathways | Shikimates and Phenylpropanoids | 88308 | 16 | 0.02% | 100.00% |
-| Organism | BMDMS-NP | 125071 | 16 | 0.01% | 100.00% |
-| NPC superclasses | TOTAL_ASSIGNMENTS | 453774 | 32 | 0.01% | 200.00% |
-| NPC classes | TOTAL_ASSIGNMENTS | 470729 | 32 | 0.01% | 200.00% |
-| Library quality | 1 | 342487 | 16 | 0.00% | 100.00% |
-| Source instrument | Orbitrap | 375443 | 16 | 0.00% | 100.00% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 32 | 32 | 100.00% | 200.00% |
+| NPC classes | TOTAL_ASSIGNMENTS | 32 | 32 | 100.00% | 200.00% |
 
 ## Low-support warning summary
 
@@ -79,8 +73,7 @@ Warning meanings:
 
 | Warning | Count |
 |---|---:|
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 665 |
+| `LOW_TOTAL_SUPPORT` | 10 |
 
 ## Summary
 

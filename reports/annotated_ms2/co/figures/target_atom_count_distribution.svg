@@ -14,44 +14,40 @@ Number of Co atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="647" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-50k
+<text x="110" y="640" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+2
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,647 119,647 "/>
-<text x="110" y="584" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-100k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,640 119,640 "/>
+<text x="110" y="570" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+4
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,584 119,584 "/>
-<text x="110" y="521" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-150k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,570 119,570 "/>
+<text x="110" y="500" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+6
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,521 119,521 "/>
-<text x="110" y="458" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-200k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,500 119,500 "/>
+<text x="110" y="430" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+8
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,458 119,458 "/>
-<text x="110" y="395" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-250k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,430 119,430 "/>
+<text x="110" y="360" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+10
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,395 119,395 "/>
-<text x="110" y="332" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-300k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,360 119,360 "/>
+<text x="110" y="290" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+12
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,332 119,332 "/>
-<text x="110" y="269" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-350k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,290 119,290 "/>
+<text x="110" y="220" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+14
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,269 119,269 "/>
-<text x="110" y="206" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-400k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,220 119,220 "/>
+<text x="110" y="150" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+16
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,206 119,206 "/>
-<text x="110" y="143" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-450k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,143 119,143 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,150 119,150 "/>
 <text x="110" y="80" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-500k
+18
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,80 119,80 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
@@ -67,12 +63,8 @@ Number of Co atoms in formula
 2
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1169,710 1169,715 "/>
-<rect x="120" y="150" width="524" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="644" y="709" width="525" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-443k (100.0%)
-</text>
-<text x="644" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-16 (0.0%)
+<rect x="644" y="150" width="525" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="644" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+16 (100.0%)
 </text>
 </svg>

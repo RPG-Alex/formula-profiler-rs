@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 514 |
 | Positive count | 514 |
-| Negative count | 443391 |
-| Positive percentage | 0.1158% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC classes | Polyether ionophores | 391 | 134 | 34.27% | 26.07% |
-| NPC classes | Fusidane triterpenoids | 284 | 83 | 29.23% | 16.15% |
-| NPC superclasses | Polyethers | 595 | 134 | 22.52% | 26.07% |
-| NPC classes | Oxygenated hydrocarbons | 254 | 20 | 7.87% | 3.89% |
-| NPC classes | Naphthoquinones | 572 | 23 | 4.02% | 4.47% |
-| Organism | BIRMINGHAM-UHPLC-MS-POS | 669 | 24 | 3.59% | 4.67% |
-| NPC classes | Polyamines | 3393 | 88 | 2.59% | 17.12% |
-| Organism | GNPS-NIH-SMALLMOLECULEPHARMACOLOGICALLYACTIVE | 906 | 23 | 2.54% | 4.47% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 519 | 519 | 100.00% | 100.97% |
+| NPC classes | TOTAL_ASSIGNMENTS | 519 | 519 | 100.00% | 100.97% |
+| NPC pathways | TOTAL_RECORDS | 514 | 514 | 100.00% | 100.00% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 514 | 514 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 514 | 514 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 514 | 514 | 100.00% | 100.00% |
+| Source dataset | GNPS | 514 | 514 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 514 | 514 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 28 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 610 |
+| `LOW_TOTAL_SUPPORT` | 45 |
 
 ## Summary
 

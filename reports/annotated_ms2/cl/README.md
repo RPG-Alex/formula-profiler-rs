@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 27230 |
 | Positive count | 27230 |
-| Negative count | 416675 |
-| Positive percentage | 6.1342% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC classes | Vancomycins and Teicoplanins | 52 | 52 | 100.00% | 0.19% |
-| NPC classes | Halogenated hydrocarbons | 124 | 119 | 95.97% | 0.44% |
-| NPC classes | Griseofulvins | 343 | 310 | 90.38% | 1.14% |
-| NPC classes | Azaphilones | 197 | 104 | 52.79% | 0.38% |
-| NPC classes | Pyrrole alkaloids | 241 | 123 | 51.04% | 0.45% |
-| NPC superclasses | Proline alkaloids | 254 | 123 | 48.43% | 0.45% |
-| NPC classes | Benzodiazepine alkaloids | 1332 | 452 | 33.93% | 1.66% |
-| Organism | GNPS-NIH-SMALLMOLECULEPHARMACOLOGICALLYACTIVE | 906 | 296 | 32.67% | 1.09% |
+| NPC classes | TOTAL_ASSIGNMENTS | 27866 | 27866 | 100.00% | 102.34% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 27576 | 27576 | 100.00% | 101.27% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 27550 | 27550 | 100.00% | 101.18% |
+| NPC pathways | TOTAL_RECORDS | 27230 | 27230 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 27230 | 27230 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 27230 | 27230 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 27230 | 27230 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 27230 | 27230 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 77 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 411 |
+| `LOW_TOTAL_SUPPORT` | 115 |
 
 ## Summary
 

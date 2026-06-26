@@ -32,10 +32,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
+| Total spectra | 40395 |
 | Positive count | 40395 |
-| Negative count | 403510 |
-| Positive percentage | 9.0999% |
+| Negative count | 0 |
+| Positive percentage | 100.0000% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC classes | Oxazole alkaloids | 94 | 42 | 44.68% | 0.10% |
-| NPC classes | Carboline alkaloids | 23230 | 7878 | 33.91% | 19.50% |
-| NPC classes | Acridone alkaloids | 2151 | 721 | 33.52% | 1.78% |
-| Organism | MCE-DRUG | 12619 | 3142 | 24.90% | 7.78% |
-| Organism | MSNLIB-NEGATIVE | 46725 | 11458 | 24.52% | 28.36% |
-| Organism | REFRAME-NEGATIVE-LIBRARY | 2453 | 598 | 24.38% | 1.48% |
-| NPC classes | Pregnane steroids | 5003 | 1181 | 23.61% | 2.92% |
-| NPC superclasses | Nicotinic acid alkaloids | 62604 | 13995 | 22.35% | 34.65% |
+| NPC superclasses | TOTAL_ASSIGNMENTS | 40651 | 40651 | 100.00% | 100.63% |
+| NPC classes | TOTAL_ASSIGNMENTS | 40647 | 40647 | 100.00% | 100.62% |
+| NPC pathways | TOTAL_ASSIGNMENTS | 40522 | 40522 | 100.00% | 100.31% |
+| NPC pathways | TOTAL_RECORDS | 40395 | 40395 | 100.00% | 100.00% |
+| NPC superclasses | TOTAL_RECORDS | 40395 | 40395 | 100.00% | 100.00% |
+| NPC classes | TOTAL_RECORDS | 40395 | 40395 | 100.00% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 40395 | 40395 | 100.00% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 40395 | 40395 | 100.00% | 100.00% |
 
 ## Low-support warning summary
 
@@ -80,8 +80,7 @@ Warning meanings:
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 44 |
-| `LOW_TOTAL_SUPPORT` | 204 |
-| `NO_TARGET_POSITIVES` | 481 |
+| `LOW_TOTAL_SUPPORT` | 79 |
 
 ## Summary
 
