@@ -24,32 +24,40 @@ GNPS
 0.0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="305,815 305,820 "/>
-<text x="490" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-20.0
+<text x="454" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+1.0
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="490,815 490,820 "/>
-<text x="676" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-40.0
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="454,815 454,820 "/>
+<text x="603" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+2.0
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="676,815 676,820 "/>
-<text x="862" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-60.0
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="603,815 603,820 "/>
+<text x="752" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+3.0
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="862,815 862,820 "/>
-<text x="1048" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-80.0
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="752,815 752,820 "/>
+<text x="902" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+4.0
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1048,815 1048,820 "/>
-<text x="1234" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-100.0
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="902,815 902,820 "/>
+<text x="1051" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+5.0
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1234,815 1234,820 "/>
-<rect x="305" y="437" width="929" height="377" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=2979)
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1051,815 1051,820 "/>
+<text x="1200" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+6.0
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1200,815 1200,820 "/>
+<text x="1350" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+7.0
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1350,815 1350,820 "/>
+<rect x="305" y="437" width="818" height="377" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1132" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+5.48% (n=2979)
 </text>
 <rect x="305" y="60" width="929" height="377" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=24251)
+6.23% (n=24251)
 </text>
 </svg>

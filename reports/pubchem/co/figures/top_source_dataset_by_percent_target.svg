@@ -21,27 +21,27 @@ PubChem
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="305,815 305,820 "/>
 <text x="490" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-20.0
+0.2
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="490,815 490,820 "/>
 <text x="676" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-40.0
+0.4
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="676,815 676,820 "/>
 <text x="862" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-60.0
+0.6
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="862,815 862,820 "/>
 <text x="1048" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-80.0
+0.8
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1048,815 1048,820 "/>
 <text x="1234" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-100.0
+1.0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1234,815 1234,820 "/>
-<rect x="305" y="60" width="929" height="754" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=45664)
+<rect x="305" y="60" width="34" height="754" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="348" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0.04% (n=45664)
 </text>
 </svg>

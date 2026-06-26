@@ -30,20 +30,14 @@ where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
     match source {
-        DatasetSource::AnnotatedMs2 => {
-            process_annotated_ms2(dataset_name, cache_dir, on_record).await
-        }
-        DatasetSource::LocalMgf(path) => process_local_mgf(dataset_name, path, on_record),
-        DatasetSource::PubChemSmiles => process_pubchem_smiles(dataset_name, cache_dir, on_record),
+        DatasetSource::AnnotatedMs2 => process_annotated_ms2(cache_dir, on_record).await,
+        DatasetSource::LocalMgf(path) => process_local_mgf(path, on_record),
+        DatasetSource::PubChemSmiles => process_pubchem_smiles(cache_dir, on_record),
         DatasetSource::LocalSmilesGz(path) => process_smiles_gz(dataset_name, path, on_record),
     }
 }
 
-async fn process_annotated_ms2<F>(
-    dataset_name: &str,
-    cache_dir: &Path,
-    mut on_record: F,
-) -> Result<()>
+async fn process_annotated_ms2<F>(cache_dir: &Path, mut on_record: F) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
@@ -58,14 +52,14 @@ where
     println!("Dataset path: {}", loaded.path().display());
 
     for (index, record) in loaded.into_spectra().into_iter().enumerate() {
-        if let Some(mol_record) = extract_mgf_record(dataset_name, index, &record) {
+        if let Some(mol_record) = extract_mgf_record(index, &record) {
             on_record(mol_record)?;
         }
     }
     Ok(())
 }
 
-fn process_local_mgf<F>(dataset_name: &str, path: &Path, mut on_record: F) -> Result<()>
+fn process_local_mgf<F>(path: &Path, mut on_record: F) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
@@ -73,18 +67,14 @@ where
         .map_err(|source| SpectraProfilerError::DatasetLoad { source: source.into() })?;
 
     for (index, record) in spectra.into_iter().enumerate() {
-        if let Some(mol_record) = extract_mgf_record(dataset_name, index, &record) {
+        if let Some(mol_record) = extract_mgf_record(index, &record) {
             on_record(mol_record)?;
         }
     }
     Ok(())
 }
 
-fn extract_mgf_record(
-    dataset_name: &str,
-    index: usize,
-    record: &MascotGenericFormat<f64>,
-) -> Option<MoleculeRecord> {
+fn extract_mgf_record(index: usize, record: &MascotGenericFormat<f64>) -> Option<MoleculeRecord> {
     let formula = record.metadata().formula()?;
     let metadata = record.metadata();
     let mut groups = BTreeMap::new();
@@ -153,7 +143,7 @@ where
     Ok(())
 }
 
-fn process_pubchem_smiles<F>(dataset_name: &str, cache_dir: &Path, mut on_record: F) -> Result<()>
+fn process_pubchem_smiles<F>(cache_dir: &Path, mut on_record: F) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {

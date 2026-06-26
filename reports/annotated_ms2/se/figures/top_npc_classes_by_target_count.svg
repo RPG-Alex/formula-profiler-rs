@@ -4,25 +4,69 @@
 Se by NPC classes: Top groups by target count
 </text>
 <text x="840" y="875" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-Target-positive spectra
+Target-positive records
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-Pyridine alkaloids
+Abietane diterpenoids
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
-<text x="295" y="626" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<text x="295" y="764" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Abeotaxane diterpenoids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,764 304,764 "/>
+<text x="295" y="714" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Abeolupane triterpenoids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,714 304,714 "/>
+<text x="295" y="664" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Abeoabietane diterpenoids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,664 304,664 "/>
+<text x="295" y="613" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+4-pyrone derivatives
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,613 304,613 "/>
+<text x="295" y="563" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+3-oligoenoyltetramic acids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,563 304,563 "/>
+<text x="295" y="513" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+3-Spirotetramic acids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,513 304,513 "/>
+<text x="295" y="463" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+3-Decalinoyltetramic acids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,463 304,463 "/>
+<text x="295" y="412" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+2-pyrone derivatives
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,412 304,412 "/>
+<text x="295" y="362" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+2-arylbenzofurans
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,362 304,362 "/>
+<text x="295" y="312" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+12-oxophytodienoic acid metabolites
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,312 304,312 "/>
+<text x="295" y="262" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Pyridine alkaloids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,262 304,262 "/>
+<text x="295" y="211" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Polyamines
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,626 304,626 "/>
-<text x="295" y="437" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,211 304,211 "/>
+<text x="295" y="161" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Quinazoline alkaloids
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,437 304,437 "/>
-<text x="295" y="249" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,161 304,161 "/>
+<text x="295" y="111" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 Aminoacids
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,249 304,249 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,111 304,111 "/>
 <text x="295" y="60" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 
 </text>
@@ -72,20 +116,64 @@ Aminoacids
 50.0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1293,815 1293,820 "/>
-<rect x="305" y="626" width="39" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="353" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-2 (100.00%)
+<rect x="305" y="764" width="0" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
 </text>
-<rect x="305" y="437" width="118" height="189" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="432" y="626" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-6 (100.00%)
+<rect x="305" y="714" width="0" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="764" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
 </text>
-<rect x="305" y="249" width="237" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="551" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-12 (100.00%)
+<rect x="305" y="664" width="0" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="714" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
 </text>
-<rect x="305" y="60" width="929" height="189" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="249" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-47 (100.00%)
+<rect x="305" y="613" width="0" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="664" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="563" width="0" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="613" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="513" width="0" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="563" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="463" width="0" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="513" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="412" width="0" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="463" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="362" width="0" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="412" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="312" width="0" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="362" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="262" width="0" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="312" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="211" width="39" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="353" y="262" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+2 (0.00%)
+</text>
+<rect x="305" y="161" width="118" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="432" y="211" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+6 (0.18%)
+</text>
+<rect x="305" y="111" width="237" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="551" y="161" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+12 (0.18%)
+</text>
+<rect x="305" y="60" width="929" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1243" y="111" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+47 (0.37%)
 </text>
 </svg>

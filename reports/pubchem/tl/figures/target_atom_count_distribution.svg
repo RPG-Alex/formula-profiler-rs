@@ -4,7 +4,7 @@
 Tl atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of Tl atoms in formula
@@ -14,30 +14,34 @@ Number of Tl atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="609" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-1.0k
+<text x="110" y="619" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+20.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,609 119,609 "/>
-<text x="110" y="508" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-2.0k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,619 119,619 "/>
+<text x="110" y="529" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,508 119,508 "/>
-<text x="110" y="407" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-3.0k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,529 119,529 "/>
+<text x="110" y="439" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,407 119,407 "/>
-<text x="110" y="306" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-4.0k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,439 119,439 "/>
+<text x="110" y="349" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,306 119,306 "/>
-<text x="110" y="206" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-5.0k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,349 119,349 "/>
+<text x="110" y="258" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,206 119,206 "/>
-<text x="110" y="105" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-6.0k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,258 119,258 "/>
+<text x="110" y="168" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,105 119,105 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,168 119,168 "/>
+<text x="110" y="78" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+140.0M
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,78 119,78 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -119,11 +123,12 @@ Number of Tl atoms in formula
 19
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1169,710 1169,715 "/>
-<rect x="175" y="150" width="55" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="230" y="673" width="55" height="36" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="285" y="699" width="55" height="10" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="340" y="705" width="56" height="4" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="396" y="707" width="55" height="2" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="55" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="175" y="709" width="55" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="230" y="709" width="55" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="285" y="709" width="55" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="340" y="709" width="56" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="396" y="709" width="55" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="451" y="709" width="55" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="506" y="709" width="55" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="561" y="709" width="55" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -131,29 +136,32 @@ Number of Tl atoms in formula
 <rect x="672" y="709" width="55" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="782" y="709" width="55" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1113" y="709" width="56" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="175" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-5.5k (91.0%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+123.9M (100.0%)
 </text>
-<text x="230" y="665" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-359 (5.9%)
+<text x="175" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+5.5k (0.0%)
 </text>
-<text x="285" y="691" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-101 (1.7%)
+<text x="230" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+359 (0.0%)
 </text>
-<text x="340" y="697" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-45 (0.7%)
+<text x="285" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+101 (0.0%)
 </text>
-<text x="396" y="699" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-22 (0.4%)
+<text x="340" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+45 (0.0%)
 </text>
-<text x="451" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-9 (0.1%)
+<text x="396" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+22 (0.0%)
+</text>
+<text x="451" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+9 (0.0%)
 </text>
 <text x="506" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 1 (0.0%)
 </text>
 <text x="561" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-5 (0.1%)
+5 (0.0%)
 </text>
 <text x="616" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 3 (0.0%)

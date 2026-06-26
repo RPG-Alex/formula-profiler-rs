@@ -8,34 +8,34 @@ This report treats each spectrum as **positive** when its molecular formula cont
 
 A **metadata group** means one metadata field and one value inside that field. For example, in the `NPC classes` table, `Carboline alkaloids` is one group. In the `Ion mode` table, `Positive` is one group.
 
-The profiler compares the target-positive spectra against these groups to show where the target element is common, rare, concentrated, or poorly supported.
+The profiler compares the target-positive records against these groups to show where the target element is common, rare, concentrated, or poorly supported.
 
 Important caveats:
 - These reports are based on formula metadata, not direct spectral proof of the element.
-- Some metadata fields can contain multiple pipe-separated values, so assignment counts can be larger than the number of spectra.
+- Some metadata fields can contain multiple pipe-separated values, so assignment counts can be larger than the number of records.
 - Highly enriched small groups can be interesting, but they should not be overinterpreted without checking support counts.
 
 ## Glossary and external references
 
 | Term | Meaning in this report | Reference |
 |---|---|---|
-| Molecular formula | Formula metadata used to decide whether a spectrum is target-positive. | [PubChem glossary - Molecular Formula](https://pubchem.ncbi.nlm.nih.gov/docs/glossary#section=Molecular-Formula) |
-| Target-positive spectrum | A spectrum whose molecular formula contains the selected target element. | Local report definition |
+| Molecular formula | Formula metadata used to decide whether a record is target-positive. | [PubChem glossary - Molecular Formula](https://pubchem.ncbi.nlm.nih.gov/docs/glossary#section=Molecular-Formula) |
 | Metadata group | A group formed from one metadata field and one value, such as `NPC classes = Carboline alkaloids`. | Local report definition |
+| Source dataset | The dataset or library source from which the metadata originated. | [GNPS libraries](https://ccms-ucsd.github.io/GNPSDocumentation/gnpslibraries/) / [MassSpecGym](https://github.com/pluskal-lab/MassSpecGym) |
+| Enrichment | A group has high enrichment when a large percentage of records in that group are target-positive. | Local report definition |
+| Low support | A warning that a group has too few total records, too few target-positive records, or no target-positive records. | Local report definition |
+| Target-positive spectrum | A spectrum whose molecular formula contains the selected target element. | Local report definition |
 | NPC pathways / superclasses / classes | Natural-product classification fields from NPClassifier-style annotations. | [NPClassifier](https://npclassifier.ucsd.edu/) |
 | ClassyFire taxonomy | Chemical taxonomy fields such as kingdom, superclass, class, subclass, and direct parent. | [ClassyFire paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC5096306/) |
-| Source dataset | The dataset or library source from which the spectrum metadata originated. | [GNPS libraries](https://ccms-ucsd.github.io/GNPSDocumentation/gnpslibraries/) / [MassSpecGym](https://github.com/pluskal-lab/MassSpecGym) |
-| Enrichment | A group has high enrichment when a large percentage of spectra in that group are target-positive. | Local report definition |
-| Low support | A warning that a group has too few total spectra, too few target-positive spectra, or no target-positive spectra. | Local report definition |
 
 ## Numeric summary
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 514 |
+| Total spectra | 443905 |
 | Positive count | 514 |
-| Negative count | 0 |
-| Positive percentage | 100.0000% |
+| Negative count | 443391 |
+| Positive percentage | 0.1158% |
 
 ## Atom-count distribution
 
@@ -56,14 +56,14 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| NPC superclasses | TOTAL_ASSIGNMENTS | 519 | 519 | 100.00% | 100.97% |
-| NPC classes | TOTAL_ASSIGNMENTS | 519 | 519 | 100.00% | 100.97% |
-| NPC pathways | TOTAL_RECORDS | 514 | 514 | 100.00% | 100.00% |
-| NPC pathways | TOTAL_ASSIGNMENTS | 514 | 514 | 100.00% | 100.00% |
-| NPC superclasses | TOTAL_RECORDS | 514 | 514 | 100.00% | 100.00% |
-| NPC classes | TOTAL_RECORDS | 514 | 514 | 100.00% | 100.00% |
-| Source dataset | GNPS | 514 | 514 | 100.00% | 100.00% |
-| Source dataset | TOTAL_RECORDS | 514 | 514 | 100.00% | 100.00% |
+| NPC classes | Polyether ionophores | 391 | 134 | 34.27% | 26.07% |
+| NPC classes | Fusidane triterpenoids | 284 | 83 | 29.23% | 16.15% |
+| NPC superclasses | Polyethers | 595 | 134 | 22.52% | 26.07% |
+| NPC classes | Oxygenated hydrocarbons | 254 | 20 | 7.87% | 3.89% |
+| NPC classes | Naphthoquinones | 572 | 23 | 4.02% | 4.47% |
+| Organism | BIRMINGHAM-UHPLC-MS-POS | 669 | 24 | 3.59% | 4.67% |
+| NPC classes | Polyamines | 3393 | 88 | 2.59% | 17.12% |
+| Organism | GNPS-NIH-SMALLMOLECULEPHARMACOLOGICALLYACTIVE | 906 | 23 | 2.54% | 4.47% |
 
 ## Low-support warning summary
 
@@ -73,14 +73,15 @@ Warning meanings:
 
 | Warning | Meaning |
 |---|---|
-| `LOW_TOTAL_SUPPORT` | The group has fewer than the minimum number of total spectra. |
-| `LOW_TARGET_SUPPORT` | The group has some target-positive spectra, but too few for confident interpretation. |
-| `NO_TARGET_POSITIVES` | The group has no spectra whose formulas contain the target element. |
+| `LOW_TOTAL_SUPPORT` | The group has fewer than the minimum number of records. |
+| `LOW_TARGET_SUPPORT` | The group has some target-positive records, but too few for confident interpretation. |
+| `NO_TARGET_POSITIVES` | The group has no records whose formulas contain the target element. |
 
 | Warning | Count |
 |---|---:|
 | `LOW_TARGET_SUPPORT` | 28 |
-| `LOW_TOTAL_SUPPORT` | 45 |
+| `LOW_TOTAL_SUPPORT` | 204 |
+| `NO_TARGET_POSITIVES` | 610 |
 
 ## Summary
 
@@ -91,7 +92,7 @@ Warning meanings:
 ## How to read the figures
 
 - **Target count** shows which groups contribute the most target-positive spectra.
-- **Percent target** shows which groups are most enriched for the target element.
+- **Percent target** shows which groups are most enriched for the target element across spectra.
 - Small groups can look highly enriched, so check the linked CSV tables for support counts.
 
 ## NPC pathways

@@ -2,15 +2,15 @@
 
 This directory contains generated exploratory profiling reports for `pubchem`.
 
-The reports summarize element presence from molecular formula metadata and should be interpreted as dataset profiling, not direct spectral evidence.
+The reports summarize element presence from molecular formula metadata and should be interpreted as dataset profiling, not direct molecular evidence.
 
 ## Dataset facts
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 123927373 |
-| Spectra with formula metadata | 123927373 |
-| Spectra without formula metadata | 0 |
+| Total molecules | 123927373 |
+| Molecules with formula metadata | 123927373 |
+| Molecules without formula metadata | 0 |
 | Observed elements | 118 |
 
 ## Dataset-level reports
@@ -25,7 +25,7 @@ The following valid chemical elements were observed in molecular formula metadat
 
 ## Top observed elements
 
-| Element | Formula count | % of formula-bearing spectra |
+| Element | Formula count | % of formula-bearing molecules |
 |---|---:|---:|
 | `H` | 123800307 | 99.90% |
 | `C` | 123716130 | 99.83% |
@@ -50,9 +50,9 @@ The following valid chemical elements were observed in molecular formula metadat
 
 ## Element reports generated in this run
 
-Each element report summarizes metadata groups for spectra whose formulas contain that element.
+Each element report summarizes metadata groups for molecules whose formulas contain that element.
 
-| Element | Formula count | % of formula-bearing spectra | Report |
+| Element | Formula count | % of formula-bearing molecules | Report |
 |---|---:|---:|---|
 | `H` | 123800307 | 99.90% | [Open](./h/README.md) |
 | `C` | 123716130 | 99.83% | [Open](./c/README.md) |

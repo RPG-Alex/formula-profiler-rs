@@ -4,7 +4,7 @@
 H atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of H atoms in formula
@@ -119,6 +119,7 @@ Number of H atoms in formula
 900
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1135,710 1135,715 "/>
+<rect x="120" y="698" width="1" height="11" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="121" y="705" width="1" height="4" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="122" y="700" width="1" height="9" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="123" y="695" width="1" height="14" opacity="0.6" fill="#0000FF" stroke="none"/>

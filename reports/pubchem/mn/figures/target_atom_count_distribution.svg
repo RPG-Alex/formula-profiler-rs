@@ -4,7 +4,7 @@
 Mn atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of Mn atoms in formula
@@ -14,30 +14,34 @@ Number of Mn atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="605" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-5.0k
+<text x="110" y="619" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+20.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,605 119,605 "/>
-<text x="110" y="500" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-10k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,619 119,619 "/>
+<text x="110" y="529" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,500 119,500 "/>
-<text x="110" y="396" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-15k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,529 119,529 "/>
+<text x="110" y="439" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,396 119,396 "/>
-<text x="110" y="291" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-20k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,439 119,439 "/>
+<text x="110" y="348" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,291 119,291 "/>
-<text x="110" y="187" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-25k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,348 119,348 "/>
+<text x="110" y="258" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,187 119,187 "/>
-<text x="110" y="82" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-30k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,258 119,258 "/>
+<text x="110" y="168" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,82 119,82 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,168 119,168 "/>
+<text x="110" y="78" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+140.0M
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,78 119,78 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -83,14 +87,15 @@ Number of Mn atoms in formula
 100
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1158,710 1158,715 "/>
-<rect x="130" y="150" width="10" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="140" y="659" width="11" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="151" y="695" width="10" height="14" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="161" y="699" width="10" height="10" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="171" y="706" width="11" height="3" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="182" y="707" width="10" height="2" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="10" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="130" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="140" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="151" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="161" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="171" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="182" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="192" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="203" y="708" width="10" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="203" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="213" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="223" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="234" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -113,29 +118,32 @@ Number of Mn atoms in formula
 <rect x="857" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="950" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1158" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="130" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-26k (86.8%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+123.9M (100.0%)
 </text>
-<text x="140" y="651" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-2.4k (7.8%)
+<text x="130" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+26k (0.0%)
 </text>
-<text x="151" y="687" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-681 (2.2%)
+<text x="140" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+2.4k (0.0%)
 </text>
-<text x="161" y="691" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-497 (1.6%)
+<text x="151" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+681 (0.0%)
 </text>
-<text x="171" y="698" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-160 (0.5%)
+<text x="161" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+497 (0.0%)
 </text>
-<text x="182" y="698" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-135 (0.4%)
+<text x="171" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+160 (0.0%)
 </text>
-<text x="192" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-35 (0.1%)
+<text x="182" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+135 (0.0%)
 </text>
-<text x="203" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-60 (0.2%)
+<text x="192" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+35 (0.0%)
+</text>
+<text x="203" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+60 (0.0%)
 </text>
 <text x="213" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 15 (0.0%)
@@ -153,9 +161,6 @@ Number of Mn atoms in formula
 4 (0.0%)
 </text>
 <text x="286" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-3 (0.0%)
-</text>
-<text x="327" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 3 (0.0%)
 </text>
 </svg>

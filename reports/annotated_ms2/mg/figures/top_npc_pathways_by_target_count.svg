@@ -4,13 +4,37 @@
 Mg by NPC pathways: Top groups by target count
 </text>
 <text x="840" y="875" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-Target-positive spectra
+Target-positive records
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-Alkaloids
+Terpenoids
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
+<text x="295" y="707" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Shikimates and Phenylpropanoids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,707 304,707 "/>
+<text x="295" y="599" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Polyketides
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,599 304,599 "/>
+<text x="295" y="491" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Fatty acids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,491 304,491 "/>
+<text x="295" y="384" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Carbohydrates
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,384 304,384 "/>
+<text x="295" y="276" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Amino acids and Peptides
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,276 304,276 "/>
+<text x="295" y="168" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Alkaloids
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,168 304,168 "/>
 <text x="295" y="60" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
 
 </text>
@@ -40,8 +64,32 @@ Alkaloids
 1.0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1234,815 1234,820 "/>
-<rect x="305" y="60" width="929" height="754" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1 (100.00%)
+<rect x="305" y="707" width="0" height="107" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="599" width="0" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="707" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="491" width="0" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="599" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="384" width="0" height="107" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="491" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="276" width="0" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="384" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="168" width="0" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="314" y="276" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0 (0.00%)
+</text>
+<rect x="305" y="60" width="929" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1243" y="168" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+1 (0.00%)
 </text>
 </svg>

@@ -4,7 +4,7 @@
 Th by Source dataset: Top groups by target count
 </text>
 <text x="840" y="875" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-Target-positive spectra
+Target-positive records
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -58,6 +58,6 @@ PubChem
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1274,815 1274,820 "/>
 <rect x="305" y="60" width="929" height="754" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1726 (100.00%)
+1726 (0.00%)
 </text>
 </svg>

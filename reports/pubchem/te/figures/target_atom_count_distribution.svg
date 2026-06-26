@@ -4,7 +4,7 @@
 Te atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of Te atoms in formula
@@ -14,42 +14,34 @@ Number of Te atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="644" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-2.0k
+<text x="110" y="619" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+20.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,644 119,644 "/>
-<text x="110" y="579" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-4.0k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,619 119,619 "/>
+<text x="110" y="529" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,579 119,579 "/>
-<text x="110" y="514" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-6.0k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,529 119,529 "/>
+<text x="110" y="439" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,514 119,514 "/>
-<text x="110" y="449" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-8.0k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,439 119,439 "/>
+<text x="110" y="348" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,449 119,449 "/>
-<text x="110" y="383" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-10k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,348 119,348 "/>
+<text x="110" y="258" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,383 119,383 "/>
-<text x="110" y="318" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-12k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,258 119,258 "/>
+<text x="110" y="168" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,318 119,318 "/>
-<text x="110" y="253" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-14k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,168 119,168 "/>
+<text x="110" y="78" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+140.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,253 119,253 "/>
-<text x="110" y="188" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-16k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,188 119,188 "/>
-<text x="110" y="123" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-18k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,123 119,123 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,78 119,78 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -107,14 +99,15 @@ Number of Te atoms in formula
 130
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1153,710 1153,715 "/>
-<rect x="127" y="150" width="8" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="135" y="632" width="8" height="77" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="143" y="699" width="8" height="10" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="151" y="701" width="8" height="8" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="159" y="707" width="8" height="2" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="167" y="706" width="8" height="3" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="7" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="127" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="135" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="143" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="151" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="159" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="167" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="175" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="183" y="708" width="8" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="183" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="191" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="199" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="207" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -127,41 +120,41 @@ Number of Te atoms in formula
 <rect x="278" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="318" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1161" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="127" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-17k (84.0%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+123.9M (100.0%)
 </text>
-<text x="135" y="624" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-2.4k (11.6%)
+<text x="127" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+17k (0.0%)
 </text>
-<text x="143" y="690" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-331 (1.6%)
+<text x="135" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+2.4k (0.0%)
 </text>
-<text x="151" y="693" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-246 (1.2%)
+<text x="143" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+331 (0.0%)
 </text>
-<text x="159" y="699" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-74 (0.4%)
+<text x="151" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+246 (0.0%)
 </text>
-<text x="167" y="698" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-109 (0.5%)
+<text x="159" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+74 (0.0%)
+</text>
+<text x="167" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+109 (0.0%)
 </text>
 <text x="175" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-13 (0.1%)
+13 (0.0%)
 </text>
-<text x="183" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-46 (0.2%)
+<text x="183" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+46 (0.0%)
 </text>
 <text x="191" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-17 (0.1%)
+17 (0.0%)
 </text>
 <text x="199" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-13 (0.1%)
+13 (0.0%)
 </text>
 <text x="215" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-16 (0.1%)
-</text>
-<text x="223" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-4 (0.0%)
+16 (0.0%)
 </text>
 <text x="231" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 10 (0.0%)

@@ -4,7 +4,7 @@
 Zn atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of Zn atoms in formula
@@ -14,34 +14,34 @@ Number of Zn atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="626" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-10k
+<text x="110" y="619" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+20.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,626 119,626 "/>
-<text x="110" y="543" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-20k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,619 119,619 "/>
+<text x="110" y="529" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,543 119,543 "/>
-<text x="110" y="459" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-30k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,529 119,529 "/>
+<text x="110" y="439" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,459 119,459 "/>
-<text x="110" y="376" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-40k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,439 119,439 "/>
+<text x="110" y="348" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,376 119,376 "/>
-<text x="110" y="292" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-50k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,348 119,348 "/>
+<text x="110" y="258" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,292 119,292 "/>
-<text x="110" y="209" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-60k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,258 119,258 "/>
+<text x="110" y="168" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,209 119,209 "/>
-<text x="110" y="126" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-70k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,168 119,168 "/>
+<text x="110" y="77" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+140.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,126 119,126 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,77 119,77 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -87,12 +87,13 @@ Number of Zn atoms in formula
 100
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1158,710 1158,715 "/>
-<rect x="130" y="150" width="10" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="140" y="665" width="11" height="44" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="151" y="694" width="10" height="15" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="161" y="702" width="10" height="7" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="171" y="707" width="11" height="2" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="182" y="708" width="10" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="10" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="130" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="140" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="151" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="161" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="171" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="182" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="192" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="203" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="213" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -143,29 +144,32 @@ Number of Zn atoms in formula
 <rect x="1096" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1148" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1158" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="130" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-67k (88.3%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+123.9M (99.9%)
 </text>
-<text x="140" y="657" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-5.3k (7.0%)
+<text x="130" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+67k (0.1%)
 </text>
-<text x="151" y="686" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1.9k (2.5%)
+<text x="140" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+5.3k (0.0%)
 </text>
-<text x="161" y="694" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-868 (1.1%)
+<text x="151" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+1.9k (0.0%)
 </text>
-<text x="171" y="698" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-314 (0.4%)
+<text x="161" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+868 (0.0%)
 </text>
-<text x="182" y="699" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-214 (0.3%)
+<text x="171" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+314 (0.0%)
+</text>
+<text x="182" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+214 (0.0%)
 </text>
 <text x="192" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-54 (0.1%)
+54 (0.0%)
 </text>
-<text x="203" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-82 (0.1%)
+<text x="203" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+82 (0.0%)
 </text>
 <text x="213" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 32 (0.0%)
@@ -183,9 +187,6 @@ Number of Zn atoms in formula
 9 (0.0%)
 </text>
 <text x="327" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-7 (0.0%)
-</text>
-<text x="1158" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 7 (0.0%)
 </text>
 </svg>

@@ -4,7 +4,7 @@
 Hf atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of Hf atoms in formula
@@ -14,22 +14,34 @@ Number of Hf atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="569" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-5.0k
+<text x="110" y="619" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+20.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,569 119,569 "/>
-<text x="110" y="429" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-10k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,619 119,619 "/>
+<text x="110" y="529" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,429 119,429 "/>
-<text x="110" y="289" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-15k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,529 119,529 "/>
+<text x="110" y="439" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,289 119,289 "/>
-<text x="110" y="149" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-20k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,439 119,439 "/>
+<text x="110" y="348" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,149 119,149 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,348 119,348 "/>
+<text x="110" y="258" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,258 119,258 "/>
+<text x="110" y="168" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,168 119,168 "/>
+<text x="110" y="78" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+140.0M
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,78 119,78 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -111,11 +123,12 @@ Number of Hf atoms in formula
 95
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1169,710 1169,715 "/>
-<rect x="131" y="150" width="11" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="142" y="671" width="11" height="38" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="153" y="700" width="11" height="9" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="164" y="704" width="11" height="5" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="175" y="707" width="11" height="2" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="11" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="131" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="142" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="153" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="164" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="175" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="186" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="197" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="208" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -126,23 +139,26 @@ Number of Hf atoms in formula
 <rect x="385" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="451" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1157" y="709" width="12" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="131" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-19k (90.7%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+123.9M (100.0%)
 </text>
-<text x="142" y="663" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1.4k (6.2%)
+<text x="131" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+19k (0.0%)
 </text>
-<text x="153" y="692" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-321 (1.5%)
+<text x="142" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+1.4k (0.0%)
 </text>
-<text x="164" y="695" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-202 (0.9%)
+<text x="153" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+321 (0.0%)
 </text>
-<text x="175" y="699" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-81 (0.4%)
+<text x="164" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+202 (0.0%)
 </text>
-<text x="186" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-33 (0.2%)
+<text x="175" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+81 (0.0%)
+</text>
+<text x="186" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+33 (0.0%)
 </text>
 <text x="197" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 7 (0.0%)
@@ -166,9 +182,6 @@ Number of Hf atoms in formula
 2 (0.0%)
 </text>
 <text x="451" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1 (0.0%)
-</text>
-<text x="1157" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 1 (0.0%)
 </text>
 </svg>

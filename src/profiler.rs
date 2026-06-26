@@ -5,7 +5,7 @@ use serde::Serialize;
 use crate::{
     error::Result,
     population::{
-        PopulationMap, increment_pipe_population, increment_population, summarize_population_map,
+        PopulationMap, PopulationStats, clean_group_value, split_pipe, summarize_population_map,
         write_population_map_csv,
     },
     records::MoleculeRecord,
@@ -14,74 +14,116 @@ use crate::{
 };
 
 #[derive(Debug, Default)]
-pub struct ElementProfilerState {
+pub struct GlobalDatasetStats {
     pub total_records: usize,
     pub records_with_formula: usize,
-    pub records_with_target_element: usize,
-    pub target_atom_count_distribution: BTreeMap<usize, usize>,
-    pub population_maps: BTreeMap<String, PopulationMap>,
+    pub group_value_totals: BTreeMap<String, BTreeMap<String, usize>>,
 }
 
-impl ElementProfilerState {
-    pub fn observe(&mut self, record: &MoleculeRecord, target_element: &str) {
+impl GlobalDatasetStats {
+    pub fn observe(&mut self, record: &MoleculeRecord) {
         self.total_records += 1;
         self.records_with_formula += 1;
 
-        let target_atom_count = record.atom_count(target_element);
-        *self.target_atom_count_distribution.entry(target_atom_count).or_default() += 1;
-
-        let contains_target_element = target_atom_count > 0;
-        if contains_target_element {
-            self.records_with_target_element += 1;
+        for (metadata_group, value) in &record.metadata {
+            let totals = self.group_value_totals.entry(metadata_group.clone()).or_default();
+            if value.contains('|') {
+                for part in split_pipe(value) {
+                    *totals.entry(clean_group_value(part)).or_default() += 1;
+                }
+            } else {
+                *totals.entry(clean_group_value(value)).or_default() += 1;
+            }
         }
+    }
+}
+
+#[derive(Debug, Default)]
+pub struct ElementProfilerState {
+    pub records_with_target_element: usize,
+    pub target_atom_count_distribution: BTreeMap<usize, usize>,
+    pub group_value_target_counts: BTreeMap<String, BTreeMap<String, usize>>,
+}
+
+impl ElementProfilerState {
+    pub fn observe_present(&mut self, record: &MoleculeRecord, target_element: &str) {
+        self.records_with_target_element += 1;
+
+        let count = record.atom_count(target_element);
+        *self.target_atom_count_distribution.entry(count).or_default() += 1;
 
         for (metadata_group, value) in &record.metadata {
-            let counts = self.population_maps.entry(metadata_group.clone()).or_default();
+            let targets = self.group_value_target_counts.entry(metadata_group.clone()).or_default();
             if value.contains('|') {
-                increment_pipe_population(counts, value, contains_target_element);
+                for part in split_pipe(value) {
+                    *targets.entry(clean_group_value(part)).or_default() += 1;
+                }
             } else {
-                increment_population(counts, value, contains_target_element);
+                *targets.entry(clean_group_value(value)).or_default() += 1;
             }
         }
     }
 
-    pub fn write_reports(&self, target_element: &str, reports: &ReportPaths) -> Result<()> {
+    pub fn write_reports(
+        &self,
+        target_element: &str,
+        global: &GlobalDatasetStats,
+        reports: &ReportPaths,
+    ) -> Result<()> {
         write_summary_csv(
             reports,
-            self.total_records,
-            self.records_with_formula,
+            global.total_records,
+            global.records_with_formula,
             self.records_with_target_element,
             target_element,
         )?;
 
+        // Reconstruct the full distribution by dynamically calculating the '0' count
+        let mut full_distribution = self.target_atom_count_distribution.clone();
+        let zero_count =
+            global.records_with_formula.saturating_sub(self.records_with_target_element);
+        full_distribution.insert(0, zero_count);
+
         write_atom_count_distribution_csv(
             reports,
             target_element,
-            self.records_with_formula,
-            &self.target_atom_count_distribution,
+            global.records_with_formula,
+            &full_distribution,
         )?;
 
         write_atom_count_distribution_figure(
             reports,
             target_element,
-            self.records_with_formula,
-            &self.target_atom_count_distribution,
+            global.records_with_formula,
+            &full_distribution,
         )?;
 
-        for (metadata_group, counts) in &self.population_maps {
+        // Combine the global totals and target counts to build the complete
+        // PopulationMaps
+        for (metadata_group, value_totals) in &global.group_value_totals {
             let stem = population_stem(metadata_group);
+
+            let mut population_map: PopulationMap = BTreeMap::new();
+            let target_counts = self.group_value_target_counts.get(metadata_group);
+
+            for (value, &total_count) in value_totals {
+                let target_count = target_counts.and_then(|m| m.get(value)).copied().unwrap_or(0);
+
+                population_map.insert(value.clone(), PopulationStats { total_count, target_count });
+            }
+
             write_population_outputs(
                 reports,
                 &stem,
                 &format!("{target_element} by {metadata_group}"),
-                counts,
-                self.total_records,
+                &population_map,
+                global.total_records,
                 self.records_with_target_element,
             )?;
         }
 
-        println!("Total records: {}", self.total_records);
-        println!("Records with formula: {}", self.records_with_formula);
+        println!("Total records: {}", global.total_records);
+        println!("Records with formula: {}", global.records_with_formula);
         println!("Records with {target_element}: {}", self.records_with_target_element);
 
         Ok(())

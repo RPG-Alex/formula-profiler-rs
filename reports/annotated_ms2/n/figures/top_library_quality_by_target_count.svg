@@ -4,7 +4,7 @@
 N by Library quality: Top groups by target count
 </text>
 <text x="840" y="875" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-Target-positive spectra
+Target-positive records
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -54,18 +54,18 @@ UNKNOWN
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1367,815 1367,820 "/>
 <rect x="305" y="626" width="10" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="325" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-2585 (100.00%)
+2585 (79.12%)
 </text>
 <rect x="305" y="437" width="124" height="189" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="439" y="626" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-29385 (100.00%)
+29385 (67.08%)
 </text>
 <rect x="305" y="249" width="158" height="188" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="472" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-37247 (100.00%)
+37247 (68.54%)
 </text>
 <rect x="305" y="60" width="929" height="189" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="249" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-218668 (100.00%)
+218668 (63.85%)
 </text>
 </svg>

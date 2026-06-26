@@ -4,7 +4,7 @@
 Sn atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of Sn atoms in formula
@@ -14,46 +14,34 @@ Number of Sn atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="651" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-10k
+<text x="110" y="619" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+20.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,651 119,651 "/>
-<text x="110" y="592" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-20k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,619 119,619 "/>
+<text x="110" y="529" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,592 119,592 "/>
-<text x="110" y="533" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-30k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,529 119,529 "/>
+<text x="110" y="439" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,533 119,533 "/>
-<text x="110" y="474" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-40k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,439 119,439 "/>
+<text x="110" y="348" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,474 119,474 "/>
-<text x="110" y="415" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-50k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,348 119,348 "/>
+<text x="110" y="258" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,415 119,415 "/>
-<text x="110" y="356" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-60k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,258 119,258 "/>
+<text x="110" y="168" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,356 119,356 "/>
-<text x="110" y="297" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-70k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,168 119,168 "/>
+<text x="110" y="77" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+140.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,297 119,297 "/>
-<text x="110" y="238" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-80k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,238 119,238 "/>
-<text x="110" y="180" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-90k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,180 119,180 "/>
-<text x="110" y="121" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-100k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,121 119,121 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,77 119,77 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -91,10 +79,11 @@ Number of Sn atoms in formula
 40
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1169,710 1169,715 "/>
-<rect x="146" y="150" width="26" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="172" y="643" width="26" height="66" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="198" y="702" width="26" height="7" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="224" y="705" width="27" height="4" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="26" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="146" y="709" width="26" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="172" y="709" width="26" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="198" y="709" width="26" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="224" y="709" width="27" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="251" y="709" width="26" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="277" y="709" width="26" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="303" y="709" width="26" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -115,23 +104,26 @@ Number of Sn atoms in formula
 <rect x="801" y="709" width="27" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="854" y="709" width="26" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1142" y="709" width="27" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="146" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-94k (87.3%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+123.8M (99.9%)
 </text>
-<text x="172" y="635" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-11k (10.4%)
+<text x="146" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+94k (0.1%)
 </text>
-<text x="198" y="693" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1.3k (1.2%)
+<text x="172" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+11k (0.0%)
 </text>
-<text x="224" y="697" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-680 (0.6%)
+<text x="198" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+1.3k (0.0%)
 </text>
-<text x="251" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-157 (0.1%)
+<text x="224" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+680 (0.0%)
 </text>
-<text x="277" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-143 (0.1%)
+<text x="251" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+157 (0.0%)
+</text>
+<text x="277" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+143 (0.0%)
 </text>
 <text x="303" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 45 (0.0%)
@@ -150,9 +142,6 @@ Number of Sn atoms in formula
 </text>
 <text x="434" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 17 (0.0%)
-</text>
-<text x="513" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-4 (0.0%)
 </text>
 <text x="565" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 7 (0.0%)

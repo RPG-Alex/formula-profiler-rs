@@ -4,7 +4,7 @@
 Co atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of Co atoms in formula
@@ -14,42 +14,34 @@ Number of Co atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="639" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-5.0k
+<text x="110" y="619" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+20.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,639 119,639 "/>
-<text x="110" y="568" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-10k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,619 119,619 "/>
+<text x="110" y="529" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,568 119,568 "/>
-<text x="110" y="497" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-15k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,529 119,529 "/>
+<text x="110" y="439" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,497 119,497 "/>
-<text x="110" y="427" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-20k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,439 119,439 "/>
+<text x="110" y="348" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,427 119,427 "/>
-<text x="110" y="356" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-25k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,348 119,348 "/>
+<text x="110" y="258" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,356 119,356 "/>
-<text x="110" y="285" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-30k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,258 119,258 "/>
+<text x="110" y="168" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,285 119,285 "/>
-<text x="110" y="215" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-35k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,168 119,168 "/>
+<text x="110" y="78" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+140.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,215 119,215 "/>
-<text x="110" y="144" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-40k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,144 119,144 "/>
-<text x="110" y="73" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-45k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,73 119,73 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,78 119,78 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -123,15 +115,16 @@ Number of Co atoms in formula
 340
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1136,710 1136,715 "/>
-<rect x="122" y="150" width="3" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="125" y="654" width="3" height="55" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="128" y="698" width="3" height="11" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="131" y="702" width="3" height="7" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="134" y="707" width="3" height="2" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="137" y="707" width="3" height="2" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="140" y="708" width="3" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="2" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="122" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="125" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="128" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="131" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="134" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="137" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="140" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="143" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="146" y="708" width="3" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="146" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="149" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="152" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="155" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -188,35 +181,38 @@ Number of Co atoms in formula
 <rect x="451" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="469" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1166" y="709" width="3" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="122" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-39k (86.6%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+123.9M (100.0%)
 </text>
-<text x="125" y="646" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-3.9k (8.6%)
+<text x="122" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+39k (0.0%)
 </text>
-<text x="128" y="689" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-831 (1.8%)
+<text x="125" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+3.9k (0.0%)
 </text>
-<text x="131" y="693" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-560 (1.2%)
+<text x="128" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+831 (0.0%)
 </text>
-<text x="134" y="699" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-156 (0.3%)
+<text x="131" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+560 (0.0%)
 </text>
-<text x="137" y="699" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-182 (0.4%)
+<text x="134" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+156 (0.0%)
 </text>
-<text x="140" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-105 (0.2%)
+<text x="137" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+182 (0.0%)
 </text>
-<text x="143" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-70 (0.2%)
+<text x="140" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+105 (0.0%)
 </text>
-<text x="146" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-75 (0.2%)
+<text x="143" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+70 (0.0%)
+</text>
+<text x="146" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+75 (0.0%)
 </text>
 <text x="149" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-38 (0.1%)
+38 (0.0%)
 </text>
 <text x="152" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 6 (0.0%)
@@ -226,9 +222,6 @@ Number of Co atoms in formula
 </text>
 <text x="158" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 8 (0.0%)
-</text>
-<text x="185" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-6 (0.0%)
 </text>
 <text x="257" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 8 (0.0%)

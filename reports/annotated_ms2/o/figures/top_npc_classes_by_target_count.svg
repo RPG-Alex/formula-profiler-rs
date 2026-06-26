@@ -4,7 +4,7 @@
 O by NPC classes: Top groups by target count
 </text>
 <text x="840" y="875" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-Target-positive spectra
+Target-positive records
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -102,7 +102,7 @@ Pyridine alkaloids
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1241,815 1241,820 "/>
 <rect x="305" y="764" width="103" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="417" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-6615 (100.00%)
+6615 (99.91%)
 </text>
 <rect x="305" y="714" width="103" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="417" y="764" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
@@ -118,7 +118,7 @@ Pyridine alkaloids
 </text>
 <rect x="305" y="563" width="107" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="421" y="613" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-6865 (100.00%)
+6865 (89.59%)
 </text>
 <rect x="305" y="513" width="119" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="434" y="563" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
@@ -142,22 +142,22 @@ Pyridine alkaloids
 </text>
 <rect x="305" y="262" width="188" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="503" y="312" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-12093 (100.00%)
+12093 (94.78%)
 </text>
 <rect x="305" y="211" width="195" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="509" y="262" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-12499 (100.00%)
+12499 (97.48%)
 </text>
 <rect x="305" y="161" width="292" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="606" y="211" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-18715 (100.00%)
+18715 (97.43%)
 </text>
 <rect x="305" y="111" width="346" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="660" y="161" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-22192 (100.00%)
+22192 (95.53%)
 </text>
 <rect x="305" y="60" width="929" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="111" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-59549 (100.00%)
+59549 (95.12%)
 </text>
 </svg>

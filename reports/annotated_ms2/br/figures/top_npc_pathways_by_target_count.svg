@@ -4,7 +4,7 @@
 Br by NPC pathways: Top groups by target count
 </text>
 <text x="840" y="875" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-Target-positive spectra
+Target-positive records
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -74,30 +74,30 @@ Alkaloids
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1277,815 1277,820 "/>
 <rect x="305" y="707" width="5" height="107" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="319" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-18 (100.00%)
+18 (0.06%)
 </text>
 <rect x="305" y="599" width="8" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="322" y="707" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-31 (100.00%)
+31 (0.38%)
 </text>
 <rect x="305" y="491" width="33" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="348" y="599" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-122 (100.00%)
+122 (0.17%)
 </text>
 <rect x="305" y="384" width="38" height="107" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="352" y="491" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-139 (100.00%)
+139 (0.71%)
 </text>
 <rect x="305" y="276" width="56" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="370" y="384" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-202 (100.00%)
+202 (0.67%)
 </text>
 <rect x="305" y="168" width="121" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="435" y="276" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-437 (100.00%)
+437 (0.49%)
 </text>
 <rect x="305" y="60" width="929" height="108" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="168" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-3346 (100.00%)
+3346 (1.59%)
 </text>
 </svg>

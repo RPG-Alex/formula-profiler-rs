@@ -4,7 +4,7 @@
 I atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of I atoms in formula
@@ -14,26 +14,30 @@ Number of I atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="590" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-500k
+<text x="110" y="617" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+20.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,590 119,590 "/>
-<text x="110" y="470" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-1.0M
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,617 119,617 "/>
+<text x="110" y="525" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,470 119,470 "/>
-<text x="110" y="350" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-1.5M
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,525 119,525 "/>
+<text x="110" y="433" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,350 119,350 "/>
-<text x="110" y="230" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-2.0M
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,433 119,433 "/>
+<text x="110" y="341" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,230 119,230 "/>
-<text x="110" y="110" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-2.5M
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,341 119,341 "/>
+<text x="110" y="249" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,110 119,110 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,249 119,249 "/>
+<text x="110" y="157" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,157 119,157 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -103,12 +107,13 @@ Number of I atoms in formula
 800
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1149,710 1149,715 "/>
-<rect x="121" y="150" width="1" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="122" y="677" width="1" height="32" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="123" y="701" width="2" height="8" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="125" y="706" width="1" height="3" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="126" y="708" width="1" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="127" y="708" width="2" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="1" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="121" y="699" width="1" height="10" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="122" y="709" width="1" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="123" y="709" width="2" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="125" y="709" width="1" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="126" y="709" width="1" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="127" y="709" width="2" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="129" y="709" width="1" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="130" y="709" width="1" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="131" y="709" width="1" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -469,29 +474,32 @@ Number of I atoms in formula
 <rect x="1075" y="709" width="1" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1085" y="709" width="1" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1167" y="709" width="2" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="121" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-2.3M (92.0%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+121.4M (98.0%)
 </text>
-<text x="122" y="669" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-133k (5.3%)
+<text x="121" y="690" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+2.3M (1.9%)
 </text>
-<text x="123" y="692" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-35k (1.4%)
+<text x="122" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+133k (0.1%)
 </text>
-<text x="125" y="698" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-13k (0.5%)
+<text x="123" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+35k (0.0%)
 </text>
-<text x="126" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-4.3k (0.2%)
+<text x="125" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+13k (0.0%)
 </text>
-<text x="127" y="699" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-6.8k (0.3%)
+<text x="126" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+4.3k (0.0%)
+</text>
+<text x="127" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+6.8k (0.0%)
 </text>
 <text x="129" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1.3k (0.1%)
+1.3k (0.0%)
 </text>
 <text x="130" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-1.4k (0.1%)
+1.4k (0.0%)
 </text>
 <text x="131" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 1.3k (0.0%)
@@ -504,9 +512,6 @@ Number of I atoms in formula
 </text>
 <text x="135" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 632 (0.0%)
-</text>
-<text x="136" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-249 (0.0%)
 </text>
 <text x="143" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 294 (0.0%)

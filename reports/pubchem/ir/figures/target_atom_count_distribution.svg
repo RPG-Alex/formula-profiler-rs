@@ -4,7 +4,7 @@
 Ir atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of Ir atoms in formula
@@ -15,33 +15,33 @@ Number of Ir atoms in formula
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
 <text x="110" y="619" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-20k
+20.0M
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,619 119,619 "/>
-<text x="110" y="528" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-40k
+<text x="110" y="529" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,528 119,528 "/>
-<text x="110" y="437" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-60k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,529 119,529 "/>
+<text x="110" y="438" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,437 119,437 "/>
-<text x="110" y="347" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-80k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,438 119,438 "/>
+<text x="110" y="348" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,347 119,347 "/>
-<text x="110" y="256" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-100k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,348 119,348 "/>
+<text x="110" y="258" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,256 119,256 "/>
-<text x="110" y="165" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-120k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,258 119,258 "/>
+<text x="110" y="167" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,165 119,165 "/>
-<text x="110" y="75" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-140k
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,167 119,167 "/>
+<text x="110" y="77" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+140.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,75 119,75 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,77 119,77 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -103,16 +103,17 @@ Number of Ir atoms in formula
 140
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1119,710 1119,715 "/>
-<rect x="127" y="150" width="7" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="134" y="678" width="7" height="31" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="141" y="676" width="7" height="33" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="148" y="653" width="7" height="56" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="155" y="678" width="7" height="31" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="162" y="699" width="7" height="10" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="169" y="706" width="8" height="3" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="177" y="706" width="7" height="3" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="7" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="127" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="134" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="141" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="148" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="155" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="162" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="169" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="177" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="184" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="191" y="708" width="7" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="191" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="198" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="205" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="212" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -128,49 +129,49 @@ Number of Ir atoms in formula
 <rect x="548" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1154" y="709" width="7" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1161" y="709" width="8" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="127" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-123k (76.3%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+123.8M (99.9%)
 </text>
-<text x="134" y="670" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-6.9k (4.3%)
+<text x="127" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+123k (0.1%)
 </text>
-<text x="141" y="667" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-7.5k (4.6%)
+<text x="134" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+6.9k (0.0%)
 </text>
-<text x="148" y="645" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-12k (7.7%)
+<text x="141" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+7.5k (0.0%)
 </text>
-<text x="155" y="669" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-7.0k (4.3%)
+<text x="148" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+12k (0.0%)
 </text>
-<text x="162" y="691" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-2.3k (1.4%)
+<text x="155" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+7.0k (0.0%)
 </text>
-<text x="169" y="698" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-680 (0.4%)
+<text x="162" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+2.3k (0.0%)
 </text>
-<text x="177" y="698" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-726 (0.4%)
+<text x="169" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+680 (0.0%)
 </text>
-<text x="184" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-193 (0.1%)
+<text x="177" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+726 (0.0%)
 </text>
-<text x="191" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-342 (0.2%)
+<text x="184" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+193 (0.0%)
+</text>
+<text x="191" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+342 (0.0%)
 </text>
 <text x="198" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 51 (0.0%)
 </text>
 <text x="205" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-96 (0.1%)
+96 (0.0%)
 </text>
 <text x="212" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 21 (0.0%)
 </text>
 <text x="219" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 23 (0.0%)
-</text>
-<text x="227" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-20 (0.0%)
 </text>
 </svg>

@@ -4,7 +4,7 @@
 S atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of S atoms in formula
@@ -14,26 +14,38 @@ Number of S atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="593" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-10k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,593 119,593 "/>
-<text x="110" y="477" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-20k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,477 119,477 "/>
-<text x="110" y="361" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-30k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,361 119,361 "/>
-<text x="110" y="245" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-40k
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,245 119,245 "/>
-<text x="110" y="129" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+<text x="110" y="637" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 50k
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,129 119,129 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,637 119,637 "/>
+<text x="110" y="565" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100k
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,565 119,565 "/>
+<text x="110" y="493" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+150k
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,493 119,493 "/>
+<text x="110" y="421" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+200k
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,421 119,421 "/>
+<text x="110" y="349" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+250k
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,349 119,349 "/>
+<text x="110" y="277" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+300k
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,277 119,277 "/>
+<text x="110" y="205" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+350k
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,205 119,205 "/>
+<text x="110" y="133" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+400k
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,133 119,133 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -59,20 +71,24 @@ Number of S atoms in formula
 5
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1169,710 1169,715 "/>
-<rect x="329" y="150" width="210" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="539" y="629" width="210" height="80" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="749" y="702" width="210" height="7" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="959" y="708" width="210" height="1" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="329" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-48k (86.1%)
+<rect x="120" y="150" width="209" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="329" y="640" width="210" height="69" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="539" y="699" width="210" height="10" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="749" y="709" width="210" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="959" y="709" width="210" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+387k (87.4%)
 </text>
-<text x="539" y="620" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-7.0k (12.4%)
+<text x="329" y="632" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+48k (10.9%)
 </text>
-<text x="749" y="693" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-678 (1.2%)
+<text x="539" y="691" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+7.0k (1.6%)
 </text>
-<text x="959" y="699" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-156 (0.3%)
+<text x="749" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+678 (0.2%)
+</text>
+<text x="959" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+156 (0.0%)
 </text>
 </svg>

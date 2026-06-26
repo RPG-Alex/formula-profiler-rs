@@ -8,63 +8,63 @@ Percent target-positive within group
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-GNPS-ION-MOBILITY-LIBRARY
+MSNLIB-POSITIVE
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
 <text x="295" y="764" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-GNPS-IOBA-NHC
+3-HYDROXY-ACYL-AMIDES-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,764 304,764 "/>
 <text x="295" y="714" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-GNPS-IIMN-PROPOGATED
+MCE-DRUG
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,714 304,714 "/>
 <text x="295" y="664" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-GNPS-COLLECTIONS-PESTICIDES-POSITIVE
+MULTIPLEX-SYNTHESIS-LIBRARY-ALL-PARTITION-3
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,664 304,664 "/>
 <text x="295" y="613" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-GNPS-ALKYLAMINES-LIBRARY
+REFRAME-POSITIVE-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,613 304,613 "/>
 <text x="295" y="563" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-ECRFS_DB
+MSNLIB-NEGATIVE
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,563 304,563 "/>
 <text x="295" y="513" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-ECG-ACYL-AMIDES-C4-C24-LIBRARY
+GNPS-REFRAME-DRUG-CCS-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,513 304,513 "/>
 <text x="295" y="463" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-DMIM-DRUG-METABOLITE-LIBRARY
+MULTIPLEX-SYNTHESIS-LIBRARY-FILTERED-PARTITION-4
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,463 304,463 "/>
 <text x="295" y="412" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-DEREPLICATOR_IDENTIFIED_LIBRARY
+MULTIPLEX-SYNTHESIS-LIBRARY-ALL-PARTITION-4
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,412 304,412 "/>
 <text x="295" y="362" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-CMMC-FOOD-BIOMARKERS
+MULTIPLEX-SYNTHESIS-LIBRARY-ALL-PARTITION-5
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,362 304,362 "/>
 <text x="295" y="312" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-BMDMS-NP
+DEREPLICATOR_IDENTIFIED_LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,312 304,312 "/>
 <text x="295" y="262" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-BIRMINGHAM-UHPLC-MS-POS
+PYRROLIZIDINE-ALKALOID-SPECTRAL-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,262 304,262 "/>
 <text x="295" y="211" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-BILELIB19
+MIADB
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,211 304,211 "/>
 <text x="295" y="161" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-BERKELEY-LAB
+GNPS-ALKYLAMINES-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,161 304,161 "/>
 <text x="295" y="111" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
-3-HYDROXY-ACYL-AMIDES-LIBRARY
+ECG-ACYL-AMIDES-C4-C24-LIBRARY
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,111 304,111 "/>
 <text x="295" y="60" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -96,64 +96,64 @@ BERKELEY-LAB
 100.0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1234,815 1234,820 "/>
-<rect x="305" y="764" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=7729)
+<rect x="305" y="764" width="821" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1135" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+88.35% (n=106886)
 </text>
-<rect x="305" y="714" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="764" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=52)
+<rect x="305" y="714" width="841" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1155" y="764" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+90.48% (n=95)
 </text>
-<rect x="305" y="664" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="714" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=49)
+<rect x="305" y="664" width="852" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1166" y="714" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+91.68% (n=11569)
 </text>
-<rect x="305" y="613" width="929" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="664" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=91)
+<rect x="305" y="613" width="859" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1173" y="664" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+92.48% (n=615)
 </text>
-<rect x="305" y="563" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="613" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=2428)
+<rect x="305" y="563" width="867" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1181" y="613" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+93.28% (n=6187)
 </text>
-<rect x="305" y="513" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="563" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=46)
+<rect x="305" y="513" width="875" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1190" y="563" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+94.22% (n=44024)
 </text>
-<rect x="305" y="463" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="513" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=719)
+<rect x="305" y="463" width="877" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1191" y="513" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+94.41% (n=1470)
 </text>
-<rect x="305" y="412" width="929" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="463" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=2045)
+<rect x="305" y="412" width="909" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1223" y="463" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+97.79% (n=133)
 </text>
-<rect x="305" y="362" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="412" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=361)
+<rect x="305" y="362" width="915" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1229" y="412" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+98.45% (n=445)
 </text>
-<rect x="305" y="312" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="362" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=292)
+<rect x="305" y="312" width="920" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1234" y="362" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+98.99% (n=489)
 </text>
-<rect x="305" y="262" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="1243" y="312" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=31160)
+<rect x="305" y="262" width="924" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1238" y="312" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+99.45% (n=361)
 </text>
 <rect x="305" y="211" width="929" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="262" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=426)
+100.00% (n=161)
 </text>
 <rect x="305" y="161" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="211" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=3028)
+100.00% (n=365)
 </text>
 <rect x="305" y="111" width="929" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="161" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=2026)
+100.00% (n=2428)
 </text>
 <rect x="305" y="60" width="929" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="111" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-100.00% (n=95)
+100.00% (n=719)
 </text>
 </svg>

@@ -4,7 +4,7 @@
 Br atom-count distribution
 </text>
 <text x="30" y="388" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000" transform="rotate(270, 30, 388)">
-Formula-bearing spectra
+Formula-bearing records
 </text>
 <text x="645" y="770" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 Number of Br atoms in formula
@@ -14,38 +14,30 @@ Number of Br atoms in formula
 0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,709 119,709 "/>
-<text x="110" y="636" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-1.0M
+<text x="110" y="613" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+20.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,636 119,636 "/>
-<text x="110" y="562" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-2.0M
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,613 119,613 "/>
+<text x="110" y="516" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+40.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,562 119,562 "/>
-<text x="110" y="488" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-3.0M
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,516 119,516 "/>
+<text x="110" y="419" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+60.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,488 119,488 "/>
-<text x="110" y="415" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-4.0M
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,419 119,419 "/>
+<text x="110" y="322" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+80.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,415 119,415 "/>
-<text x="110" y="341" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-5.0M
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,322 119,322 "/>
+<text x="110" y="225" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,341 119,341 "/>
-<text x="110" y="267" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-6.0M
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,225 119,225 "/>
+<text x="110" y="128" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+120.0M
 </text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,267 119,267 "/>
-<text x="110" y="193" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-7.0M
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,193 119,193 "/>
-<text x="110" y="120" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-8.0M
-</text>
-<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,120 119,120 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="114,128 119,128 "/>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="120,710 1169,710 "/>
 <text x="120" y="720" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
 0
@@ -87,10 +79,11 @@ Number of Br atoms in formula
 90
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1083,710 1083,715 "/>
-<rect x="130" y="150" width="11" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="141" y="650" width="11" height="59" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="152" y="702" width="10" height="7" opacity="0.6" fill="#0000FF" stroke="none"/>
-<rect x="162" y="706" width="11" height="3" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="120" y="150" width="10" height="559" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="130" y="673" width="11" height="36" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="141" y="706" width="11" height="3" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="152" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
+<rect x="162" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="173" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="184" y="709" width="10" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="194" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
@@ -165,29 +158,32 @@ Number of Br atoms in formula
 <rect x="1083" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1147" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
 <rect x="1158" y="709" width="11" height="0" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="130" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-7.6M (88.4%)
+<text x="120" y="142" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+115.4M (93.1%)
 </text>
-<text x="141" y="642" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-801k (9.3%)
+<text x="130" y="664" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+7.6M (6.1%)
 </text>
-<text x="152" y="694" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-99k (1.2%)
+<text x="141" y="697" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+801k (0.6%)
 </text>
-<text x="162" y="697" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-50k (0.6%)
+<text x="152" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+99k (0.1%)
 </text>
-<text x="173" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-12k (0.1%)
+<text x="162" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+50k (0.0%)
 </text>
-<text x="184" y="700" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-11k (0.1%)
+<text x="173" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+12k (0.0%)
+</text>
+<text x="184" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+11k (0.0%)
 </text>
 <text x="194" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 3.7k (0.0%)
 </text>
 <text x="205" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-4.8k (0.1%)
+4.8k (0.0%)
 </text>
 <text x="216" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 1.7k (0.0%)
@@ -200,9 +196,6 @@ Number of Br atoms in formula
 </text>
 <text x="248" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 1.1k (0.0%)
-</text>
-<text x="259" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-257 (0.0%)
 </text>
 <text x="269" y="701" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 354 (0.0%)

@@ -4,7 +4,7 @@
 H by Source instrument: Top groups by target count
 </text>
 <text x="840" y="875" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
-Target-positive spectra
+Target-positive records
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
 <text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
@@ -98,7 +98,7 @@ Orbitrap
 </text>
 <rect x="305" y="343" width="16" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="330" y="437" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-6621 (100.00%)
+6621 (99.97%)
 </text>
 <rect x="305" y="249" width="50" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="365" y="343" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
@@ -106,7 +106,7 @@ Orbitrap
 </text>
 <rect x="305" y="155" width="92" height="94" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="407" y="249" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-37520 (100.00%)
+37520 (99.99%)
 </text>
 <rect x="305" y="60" width="929" height="95" opacity="0.6" fill="#0000FF" stroke="none"/>
 <text x="1243" y="155" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
