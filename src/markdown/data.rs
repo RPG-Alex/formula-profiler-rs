@@ -4,7 +4,7 @@ use serde::Deserialize;
 
 use super::sections::POPULATION_TABLES;
 use crate::{
-    error::{Result, SpectraProfilerError},
+    error::{FormulaProfilerError, Result},
     reports::ReportPaths,
 };
 
@@ -86,11 +86,11 @@ pub(super) fn read_markdown_report_summary(reports: &ReportPaths) -> Result<Mark
 }
 
 fn read_usize_metric(metrics: &BTreeMap<String, String>, metric: &'static str) -> Result<usize> {
-    let value = metrics.get(metric).ok_or(SpectraProfilerError::MissingSummaryMetric { metric })?;
+    let value = metrics.get(metric).ok_or(FormulaProfilerError::MissingSummaryMetric { metric })?;
 
     value
         .parse()
-        .map_err(|_| SpectraProfilerError::InvalidSummaryMetric { metric, value: value.clone() })
+        .map_err(|_| FormulaProfilerError::InvalidSummaryMetric { metric, value: value.clone() })
 }
 
 fn read_top_enriched_groups(reports: &ReportPaths) -> Result<Vec<EnrichedGroupSummary>> {

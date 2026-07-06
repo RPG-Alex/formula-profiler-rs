@@ -131,7 +131,7 @@ impl ElementProfilerState {
 }
 
 fn population_stem(metadata_group: &str) -> String {
-    metadata_group.to_ascii_lowercase().replace(' ', "_").replace('/', "_")
+    metadata_group.to_ascii_lowercase().replace([' ', '/'], "_")
 }
 
 fn write_population_outputs(

@@ -13,7 +13,6 @@ mod visuals;
 
 use std::collections::{BTreeMap, BTreeSet};
 
-
 use config::{ProfileConfig, TargetSelection};
 use cooccurrence::{CooccurrenceProfile, write_cooccurrence_reports};
 use datasets::process_dataset;
@@ -71,7 +70,6 @@ async fn main() -> Result<()> {
     )?;
 
     for target_element in target_elements {
-
         let profiler = element_profilers.entry(target_element.clone()).or_default();
 
         let report_dir = config.report_dir_for(&target_element);

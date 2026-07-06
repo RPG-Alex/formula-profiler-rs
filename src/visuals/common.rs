@@ -1,6 +1,6 @@
 use std::fmt::Debug;
 
-use crate::error::SpectraProfilerError;
+use crate::error::FormulaProfilerError;
 
 pub(crate) fn compact_count(count: usize) -> String {
     match count {
@@ -19,6 +19,6 @@ pub(crate) fn percent(numerator: usize, denominator: usize) -> f64 {
     numerator as f64 / denominator as f64 * 100.0
 }
 
-pub(crate) fn figure_error(error: impl Debug) -> SpectraProfilerError {
-    SpectraProfilerError::FigureGeneration { message: format!("{error:?}") }
+pub(crate) fn figure_error(error: impl Debug) -> FormulaProfilerError {
+    FormulaProfilerError::FigureGeneration { message: format!("{error:?}") }
 }

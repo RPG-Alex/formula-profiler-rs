@@ -6,21 +6,21 @@ use std::{
 };
 
 use flate2::read::GzDecoder;
+use indicatif::ProgressBar;
 use mascot_rs::prelude::*;
 use molecular_formulas::prelude::ChemicalFormula;
 use smiles_parser::{
-    DatasetFetchOptions, PUBCHEM_SMILES, SmilesDatasetRecordSource, SmilesDatasetSource, smiles::Smiles,
+    DatasetFetchOptions, PUBCHEM_SMILES, SmilesDatasetRecordSource, SmilesDatasetSource,
+    smiles::Smiles,
 };
-use indicatif::{ProgressBar, ProgressStyle};
 
 use crate::{
     chemistry::element_counts_in_formula,
     config::DatasetSource,
-    error::{Result, SpectraProfilerError},
+    error::{FormulaProfilerError, Result},
     metadata::{metadata_value, optional_debug_label},
     records::MoleculeRecord,
 };
-
 
 pub async fn process_dataset<F>(
     dataset_name: &str,
@@ -48,7 +48,7 @@ where
         .verbose()
         .load()
         .await
-        .map_err(|source| SpectraProfilerError::DatasetLoad { source: source.into() })?;
+        .map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
 
     println!("Skipped {} malformed records", loaded.skipped_records());
     println!("Dataset path: {}", loaded.path().display());
@@ -66,7 +66,7 @@ where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
     let spectra = MGFVec::<f64>::from_path(path)
-        .map_err(|source| SpectraProfilerError::DatasetLoad { source: source.into() })?;
+        .map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
 
     for (index, record) in spectra.into_iter().enumerate() {
         if let Some(mol_record) = extract_mgf_record(index, &record) {
@@ -157,7 +157,7 @@ where
 
     let pubchem_records = PUBCHEM_SMILES
         .iter_records_with_options(&options)
-        .map_err(|source| SpectraProfilerError::DatasetLoad { source: source.into() })?;
+        .map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
 
     let mut skipped = 0usize;
     let mut processed = 0usize;
@@ -168,7 +168,7 @@ where
         bar.inc(1);
 
         let record =
-            record.map_err(|source| SpectraProfilerError::DatasetLoad { source: source.into() })?;
+            record.map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
 
         let Ok(smiles) = record.smiles().parse::<Smiles>() else {
             skipped += 1;

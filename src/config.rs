@@ -2,7 +2,7 @@ use std::path::PathBuf;
 
 use crate::{
     chemistry::normalize_element_symbol,
-    error::{Result, SpectraProfilerError},
+    error::{FormulaProfilerError, Result},
 };
 
 #[derive(Debug, Clone)]
@@ -46,7 +46,7 @@ impl ProfileConfig {
             TargetSelection::AllObserved
         } else {
             let target_element = normalize_element_symbol(&raw_target).ok_or_else(|| {
-                SpectraProfilerError::InvalidElementSymbol { symbol: raw_target.clone() }
+                FormulaProfilerError::InvalidElementSymbol { symbol: raw_target.clone() }
             })?;
 
             TargetSelection::One(target_element)
