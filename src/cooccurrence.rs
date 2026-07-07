@@ -229,7 +229,48 @@ pub(crate) fn percent(numerator: usize, denominator: usize) -> f64 {
 
 #[cfg(test)]
 mod tests {
+    use std::collections::BTreeMap;
+
     use super::*;
+    use crate::records::MoleculeRecord;
+
+    fn record(id: &str, elements: &[&str]) -> MoleculeRecord {
+        let element_counts = elements
+            .iter()
+            .map(|element| ((*element).to_string(), 1usize))
+            .collect::<BTreeMap<_, _>>();
+
+        MoleculeRecord {
+            id: id.to_string(),
+            element_counts,
+            metadata: BTreeMap::new(),
+            peak_count: None,
+        }
+    }
+
+    #[test]
+    fn cooccurrence_counts_are_symmetric_and_diagonal_matches_element_count() {
+        let mut profile = CooccurrenceProfile::default();
+
+        profile.observe(&record("ns", &["N", "S"]));
+        profile.observe(&record("n", &["N"]));
+
+        assert_eq!(profile.pair_count("N", "S"), 1);
+        assert_eq!(profile.pair_count("S", "N"), 1);
+        assert_eq!(profile.pair_count("N", "N"), profile.element_count("N"));
+        assert_eq!(profile.pair_count("S", "S"), profile.element_count("S"));
+    }
+
+    #[test]
+    fn conditional_probability_is_column_given_row() {
+        let mut profile = CooccurrenceProfile::default();
+
+        profile.observe(&record("ns", &["N", "S"]));
+        profile.observe(&record("n", &["N"]));
+
+        assert_eq!(profile.conditional_probability("N", "S"), 0.5);
+        assert_eq!(profile.conditional_probability("S", "N"), 1.0);
+    }
 
     #[test]
     fn conditional_probability_handles_zero_denominator() {

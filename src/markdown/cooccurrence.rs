@@ -237,6 +237,13 @@ pub(crate) fn write_cooccurrence_readme(
         "- [Conditional probabilities](tables/element_cooccurrence_conditional_probability.csv)"
     )?;
     writeln!(file)?;
+    writeln!(
+        file,
+        "**Interpretation:** Conditional probabilities are row-normalized. A cell at row `A` \
+         and column `B` is `P(B | A) = cooccurrence(A, B) / count(A)`. Raw counts are \
+         symmetric, but conditional probabilities do not need to be symmetric."
+    )?;
+    writeln!(file)?;
     writeln!(file, "## Heatmaps")?;
     writeln!(file)?;
     writeln!(file, "### Raw co-occurrence counts")?;

@@ -34,7 +34,7 @@ pub fn write_conditional_probability_heatmap(
     profile: &CooccurrenceProfile,
     elements: &[String],
 ) -> Result<()> {
-    render_heatmap(path, "Element co-occurrence probability", elements, |row, column| {
+    render_heatmap(path, "P(column element | row element)", elements, |row, column| {
         let probability = profile.conditional_probability(row, column);
 
         (probability.clamp(0.0, 1.0), format!("{:.0}%", probability * 100.0))

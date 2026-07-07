@@ -1,7 +1,7 @@
 <svg width="1054" height="1052" viewBox="0 0 1054 1052" xmlns="http://www.w3.org/2000/svg">
 <rect x="0" y="0" width="1054" height="1052" opacity="1" fill="#FFFFFF" stroke="none"/>
-<text x="277" y="42" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="27.419354838709676" opacity="1" fill="#000000">
-Element co-occurrence probability
+<text x="294" y="42" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="27.419354838709676" opacity="1" fill="#000000">
+P(column element | row element)
 </text>
 <text x="139" y="110" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
 C
