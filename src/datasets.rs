@@ -1,8 +1,5 @@
 use std::{
-    collections::BTreeMap,
-    fs::File,
-    io::{BufRead, BufReader},
-    path::Path,
+    collections::BTreeMap, fs::File, io::{BufRead, BufReader}, path::Path,
 };
 
 use flate2::read::GzDecoder;
@@ -15,11 +12,7 @@ use smiles_parser::{
 };
 
 use crate::{
-    chemistry::element_counts_in_formula,
-    config::DatasetSource,
-    error::{FormulaProfilerError, Result},
-    metadata::{metadata_value, optional_debug_label},
-    records::MoleculeRecord,
+    chemistry::element_counts_in_formula, config::{DataField, DatasetSource}, error::{FormulaProfilerError, Result}, metadata::{metadata_value, optional_debug_label}, records::MoleculeRecord,
 };
 
 pub async fn process_dataset<F>(
@@ -31,12 +24,23 @@ pub async fn process_dataset<F>(
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
+    
     match source {
         DatasetSource::AnnotatedMs2 => process_annotated_ms2(cache_dir, on_record).await,
         DatasetSource::LocalMgf(path) => process_local_mgf(path, on_record),
         DatasetSource::PubChemSmiles => process_pubchem_smiles(cache_dir, on_record),
         DatasetSource::LocalSmilesGz(path) => process_smiles_gz(dataset_name, path, on_record),
+        DatasetSource::LocalSmilesCsv(path, data_fields) => process_smiles_csv(dataset_name, path, data_fields, cache_dir)
     }
+}
+
+fn process_smiles_csv(
+    dataset_name: &str,
+    path: &Path,
+    data_fields: &Vec<DataField>,
+    cache_dir: &Path
+) -> Result<()>{
+    todo!()
 }
 
 async fn process_annotated_ms2<F>(cache_dir: &Path, mut on_record: F) -> Result<()>

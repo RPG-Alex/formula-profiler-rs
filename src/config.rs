@@ -6,11 +6,19 @@ use crate::{
 };
 
 #[derive(Debug, Clone)]
+pub enum DataField {
+    Id,
+    Smiles,
+    Custom(String),
+}
+
+#[derive(Debug, Clone)]
 pub enum DatasetSource {
     AnnotatedMs2,
     LocalMgf(PathBuf),
     PubChemSmiles,
     LocalSmilesGz(PathBuf),
+    LocalSmilesCsv(PathBuf, Vec<DataField>),
 }
 
 #[derive(Debug, Clone)]
@@ -127,7 +135,8 @@ mod tests {
             DatasetSource::AnnotatedMs2 => {}
             DatasetSource::LocalMgf(_)
             | DatasetSource::PubChemSmiles
-            | DatasetSource::LocalSmilesGz(_) => {
+            | DatasetSource::LocalSmilesGz(_)
+            | DatasetSource::LocalSmilesCsv(_, _) => {
                 panic!("expected annotated_ms2 source")
             }
         }
@@ -167,7 +176,8 @@ mod tests {
             }
             DatasetSource::AnnotatedMs2
             | DatasetSource::PubChemSmiles
-            | DatasetSource::LocalSmilesGz(_) => {
+            | DatasetSource::LocalSmilesGz(_)
+            | DatasetSource::LocalSmilesCsv(_, _) => {
                 panic!("expected local MGF source")
             }
         }
@@ -190,7 +200,8 @@ mod tests {
             DatasetSource::PubChemSmiles => {}
             DatasetSource::AnnotatedMs2
             | DatasetSource::LocalMgf(_)
-            | DatasetSource::LocalSmilesGz(_) => {
+            | DatasetSource::LocalSmilesGz(_)
+            | DatasetSource::LocalSmilesCsv(_, _) => {
                 panic!("expected downloaded PubChem SMILES source")
             }
         }
@@ -211,7 +222,8 @@ mod tests {
             DatasetSource::PubChemSmiles => {}
             DatasetSource::AnnotatedMs2
             | DatasetSource::LocalMgf(_)
-            | DatasetSource::LocalSmilesGz(_) => {
+            | DatasetSource::LocalSmilesGz(_)
+            | DatasetSource::LocalSmilesCsv(_, _) => {
                 panic!("expected downloaded PubChem SMILES source")
             }
         }
@@ -236,7 +248,8 @@ mod tests {
             }
             DatasetSource::AnnotatedMs2
             | DatasetSource::LocalMgf(_)
-            | DatasetSource::PubChemSmiles => {
+            | DatasetSource::PubChemSmiles
+            | DatasetSource::LocalSmilesCsv(_, _) => {
                 panic!("expected local SMILES gzip source")
             }
         }
@@ -254,7 +267,8 @@ mod tests {
             }
             DatasetSource::AnnotatedMs2
             | DatasetSource::LocalMgf(_)
-            | DatasetSource::PubChemSmiles => {
+            | DatasetSource::PubChemSmiles
+            | DatasetSource::LocalSmilesCsv(_, _) => {
                 panic!("expected local SMILES gzip source")
             }
         }
@@ -272,7 +286,8 @@ mod tests {
             }
             DatasetSource::AnnotatedMs2
             | DatasetSource::LocalMgf(_)
-            | DatasetSource::PubChemSmiles => {
+            | DatasetSource::PubChemSmiles
+            | DatasetSource::LocalSmilesCsv(_, _) => {
                 panic!("expected local SMILES gzip source")
             }
         }
