@@ -13,6 +13,7 @@ pub(super) fn write_numeric_summary(
     let unit = match source {
         DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => "spectra",
         DatasetSource::PubChemSmiles | DatasetSource::LocalSmilesGz(_) => "molecules",
+        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
     };
 
     writeln!(file)?;
@@ -59,6 +60,7 @@ pub(super) fn write_atom_count_distribution_section(
                 "The `0` row represents formulas that do not contain `{target_element}`."
             )?;
         }
+        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
     }
 
     writeln!(file)?;
@@ -108,6 +110,7 @@ pub(super) fn write_top_enriched_groups(
                  `{TOP_ENRICHED_MIN_TOTAL_SUPPORT}` total molecules are included."
             )?;
         }
+        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
     }
 
     writeln!(file)?;
@@ -169,6 +172,7 @@ pub(super) fn write_warning_summary(
                  not the number of molecules."
             )?;
         }
+        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
     }
 
     writeln!(file)?;
@@ -236,6 +240,7 @@ pub(super) fn write_interpretation_guide(
                  not contain `{target_element}`."
             )?;
         }
+        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
     }
 
     writeln!(file)?;
@@ -332,6 +337,7 @@ pub(super) fn write_glossary_and_references(file: &mut File, source: &DatasetSou
                 "| Target-positive molecule | A molecule whose molecular formula contains the selected target element. | Local report definition |"
             )?;
         }
+        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
     }
 
     Ok(())
@@ -384,6 +390,7 @@ pub(super) fn write_report_links(file: &mut File, source: &DatasetSource) -> Res
                 "- Small groups can look highly enriched, so check the linked CSV tables for support counts (molecule-level support)."
             )?;
         }
+        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
     }
 
     Ok(())

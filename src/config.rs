@@ -47,7 +47,7 @@ impl ProfileConfig {
         S: Into<String>,
     {
         let mut args = args.into_iter().map(Into::into);
-
+        // default to fluorine if no target selected
         let raw_target = args.next().unwrap_or_else(|| "F".to_string());
 
         let target_selection = if raw_target.eq_ignore_ascii_case("all") {
@@ -84,6 +84,28 @@ impl ProfileConfig {
                     .to_string();
 
                 (dataset_name, DatasetSource::LocalSmilesGz(path))
+            }
+            Some("smiles-csv") => {
+                let path = args
+                    .next()
+                    .map(PathBuf::from)
+                    .unwrap_or_else(|| PathBuf::from("CID-SMILES.gz"));
+
+                let dataset_name = path
+                    .file_stem()
+                    .and_then(|stem| stem.to_str())
+                    .unwrap_or("local_smiles")
+                    .to_string();
+                let data_fields = args
+                    .map(|field| {
+                        match field.to_ascii_lowercase().as_str() {
+                            "id" => DataField::Id,
+                            "smiles" => DataField::Smiles,
+                            _ => DataField::Custom(field),
+                        }
+                    })
+                    .collect();
+                (dataset_name, DatasetSource::LocalSmilesCsv(path, data_fields))
             }
 
             Some(path) => {

@@ -161,6 +161,7 @@ pub(crate) fn write_dataset_index_readme(
                 "| Element | Formula count | % of formula-bearing molecules | Report |"
             )?;
         }
+        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
     }
     writeln!(file, "|---|---:|---:|---|")?;
 
@@ -222,6 +223,7 @@ pub(crate) fn write_cooccurrence_readme(
             writeln!(file, "| Total molecules | {} |", profile.total_records)?;
             writeln!(file, "| Molecules with formula | {} |", profile.records_with_formula)?;
         }
+        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
     }
 
     writeln!(file, "| Observed elements | {} |", profile.element_counts.len())?;
