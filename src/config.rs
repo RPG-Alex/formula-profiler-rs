@@ -5,7 +5,7 @@ use crate::{
     error::{FormulaProfilerError, Result},
 };
 
-#[derive(Debug, Clone)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum DataField {
     Id,
     Smiles,
@@ -22,7 +22,7 @@ impl Display for DataField {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum DatasetSource {
     AnnotatedMs2,
     LocalMgf(PathBuf),
@@ -32,6 +32,25 @@ pub enum DatasetSource {
 }
 
 #[derive(Debug, Clone)]
+enum RecordKind {
+    Spectrum,
+    Molecule,
+}
+
+impl DatasetSource {
+    pub fn record_kind(&self) -> RecordKind {
+        match self {
+            Self::AnnotatedMs2 | Self::LocalMgf(_) => RecordKind::Spectrum,
+            Self::PubChemSmiles
+            | Self::LocalSmilesGz(_)
+            | Self::LocalSmilesCsv { path: _, data_fields: _, has_headers: _ } => {
+                RecordKind::Molecule
+            }
+        }
+    }
+}
+
+#[derive(Debug, PartialEq, Clone)]
 pub enum TargetSelection {
     One(String),
     AllObserved,
@@ -44,6 +63,7 @@ pub struct ProfileConfig {
     pub target_selection: TargetSelection,
     pub cache_dir: PathBuf,
     pub reports_root: PathBuf,
+    pub record_limit: Option<usize>,
 }
 
 impl ProfileConfig {
@@ -141,6 +161,7 @@ impl ProfileConfig {
             target_selection,
             cache_dir: PathBuf::from("cache").join(&dataset_name),
             reports_root: PathBuf::from("reports").join(&dataset_name),
+            record_limit: None,
         })
     }
 

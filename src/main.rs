@@ -1,4 +1,5 @@
 mod chemistry;
+mod cli;
 mod config;
 mod cooccurrence;
 mod datasets;
@@ -13,6 +14,8 @@ mod visuals;
 
 use std::collections::{BTreeMap, BTreeSet};
 
+use clap::Parser;
+use cli::Cli;
 use config::{ProfileConfig, TargetSelection};
 use cooccurrence::{CooccurrenceProfile, write_cooccurrence_reports};
 use datasets::process_dataset;
@@ -24,7 +27,8 @@ use crate::error::Result;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let config = ProfileConfig::from_args()?;
+    let cli = Cli::parse();
+    let config = ProfileConfig::try_from(cli)?;
 
     println!("Dataset: {}", config.dataset_name);
 
