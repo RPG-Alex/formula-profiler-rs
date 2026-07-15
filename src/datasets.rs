@@ -28,7 +28,6 @@ pub async fn process_dataset<F>(
     source: &DatasetSource,
     cache_dir: &Path,
     on_record: F,
-    has_headers: bool
 ) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
@@ -38,8 +37,8 @@ where
         DatasetSource::LocalMgf(path) => process_local_mgf(path, on_record),
         DatasetSource::PubChemSmiles => process_pubchem_smiles(cache_dir, on_record),
         DatasetSource::LocalSmilesGz(path) => process_smiles_gz(dataset_name, path, on_record),
-        DatasetSource::LocalSmilesCsv(path, data_fields) => {
-            process_smiles_csv(dataset_name, path, data_fields, on_record, has_headers)
+        DatasetSource::LocalSmilesCsv { path, data_fields, has_headers } => {
+            process_smiles_csv(dataset_name, path, data_fields, on_record, *has_headers)
         }
     }
 }
@@ -49,7 +48,7 @@ fn process_smiles_csv<F>(
     path: &Path,
     data_fields: &[DataField],
     mut on_record: F,
-    has_headers: bool
+    has_headers: bool,
 ) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
