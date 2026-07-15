@@ -57,7 +57,7 @@ where
     let file = File::open(path)?;
     let reader = BufReader::new(file);
     let mut csv_reader =
-        csv::ReaderBuilder::new().has_headers(false).trim(csv::Trim::All).from_reader(reader);
+        csv::ReaderBuilder::new().has_headers(true).trim(csv::Trim::All).from_reader(reader);
 
     let mut skipped = 0usize;
     let mut processed = 0usize;
