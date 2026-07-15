@@ -47,8 +47,11 @@ impl ProfileConfig {
         S: Into<String>,
     {
         let mut args = args.into_iter().map(Into::into);
-        // default to fluorine if no target selected
-        let raw_target = args.next().unwrap_or_else(|| "F".to_string());
+        
+        let raw_target = match args.next() {
+            Some(arg) => Ok(arg),
+            None => Err(FormulaProfilerError::MissingArguments),
+        }?;
 
         let target_selection = if raw_target.eq_ignore_ascii_case("all") {
             TargetSelection::AllObserved
