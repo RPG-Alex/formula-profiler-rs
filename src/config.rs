@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::{fmt::Display, path::PathBuf};
 
 use crate::{
     chemistry::normalize_element_symbol,
@@ -10,6 +10,16 @@ pub enum DataField {
     Id,
     Smiles,
     Custom(String),
+}
+
+impl Display for DataField {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            DataField::Id => write!(f, "id"),
+            DataField::Smiles => write!(f, "smiles"),
+            DataField::Custom(val) => write!(f, "{val}"),
+        }
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -47,7 +57,7 @@ impl ProfileConfig {
         S: Into<String>,
     {
         let mut args = args.into_iter().map(Into::into);
-        
+
         let raw_target = match args.next() {
             Some(arg) => Ok(arg),
             None => Err(FormulaProfilerError::MissingArguments),
@@ -89,10 +99,8 @@ impl ProfileConfig {
                 (dataset_name, DatasetSource::LocalSmilesGz(path))
             }
             Some("smiles-csv") => {
-                let path = args
-                    .next()
-                    .map(PathBuf::from)
-                    .unwrap_or_else(|| PathBuf::from("CID-SMILES.gz"));
+                let path =
+                    args.next().map(PathBuf::from).unwrap_or_else(|| PathBuf::from("smiles-csv"));
 
                 let dataset_name = path
                     .file_stem()

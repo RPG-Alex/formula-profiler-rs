@@ -9,6 +9,7 @@ use flate2::read::GzDecoder;
 use indicatif::ProgressBar;
 use mascot_rs::prelude::*;
 use molecular_formulas::prelude::ChemicalFormula;
+use serde::de::value;
 use smiles_parser::{
     DatasetFetchOptions, PUBCHEM_SMILES, SmilesDatasetRecordSource, SmilesDatasetSource,
     smiles::Smiles,
@@ -18,7 +19,7 @@ use crate::{
     chemistry::element_counts_in_formula,
     config::{DataField, DatasetSource},
     error::{FormulaProfilerError, Result},
-    metadata::{metadata_value, optional_debug_label},
+    metadata::{self, metadata_value, optional_debug_label},
     records::MoleculeRecord,
 };
 
@@ -45,16 +46,71 @@ where
 fn process_smiles_csv<F>(
     dataset_name: &str,
     path: &Path,
-    data_fields: &Vec<DataField>,
+    data_fields: &[DataField],
     cache_dir: &Path,
-    mut on_record: F
-) -> Result<()>where F: FnMut(MoleculeRecord) -> Result<()> {
+    mut on_record: F,
+) -> Result<()>
+where
+    F: FnMut(MoleculeRecord) -> Result<()>,
+{
     let limit = record_limit();
-    let options = DatasetFetchOptions{
-        cache_dir: Some(cache_dir.to_path_buf()),
-        ..DatasetFetchOptions::default()
-    };
-    let record = 2;
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+    let mut csv_reader =
+        csv::ReaderBuilder::new().has_headers(false).trim(csv::Trim::All).from_reader(reader);
+
+    let mut skipped = 0usize;
+    let mut processed = 0usize;
+
+    for line in csv_reader.records().take(limit.unwrap_or(usize::MAX)) {
+        let record = line?;
+        // first check that the record is the same length as the data fields
+        if record.len() != data_fields.len() {
+            skipped += 1;
+            continue;
+        }
+        let mut id = None;
+        let mut smiles = None;
+        let mut metadata = BTreeMap::new();
+        metadata.insert("Source dataset".to_string(), dataset_name.to_string());
+        for (data_field, value) in data_fields.iter().zip(record.iter()) {
+            match data_field {
+                DataField::Id => {
+                    id = Some(value);
+                }
+                DataField::Smiles => {
+                    smiles = Some(value);
+                }
+                DataField::Custom(name) => {
+                    metadata.insert(name.clone(), value.to_string());
+                }
+            }
+        }
+
+        let Some(id) = id.filter(|id| !id.is_empty()) else {
+            skipped += 1;
+            continue;
+        };
+        let Some(smiles) = smiles.filter(|smiles_text| !smiles_text.is_empty()) else {
+            skipped += 1;
+            continue;
+        };
+        let Ok(smiles_record) = smiles.parse::<Smiles>() else {
+            skipped += 1;
+            continue;
+        };
+        let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(&smiles_record);
+        on_record(MoleculeRecord {
+            id: id.to_string(),
+            element_counts: element_counts_in_formula(&formula),
+            metadata,
+            peak_count: None,
+        })?;
+        processed += 1;
+    }
+
+    println!("Processed {processed} SMILES records");
+    println!("Skipped {skipped} SMILES records");
 
     Ok(())
 }
