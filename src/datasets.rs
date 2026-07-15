@@ -28,6 +28,7 @@ pub async fn process_dataset<F>(
     source: &DatasetSource,
     cache_dir: &Path,
     on_record: F,
+    has_headers: bool
 ) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
@@ -38,7 +39,7 @@ where
         DatasetSource::PubChemSmiles => process_pubchem_smiles(cache_dir, on_record),
         DatasetSource::LocalSmilesGz(path) => process_smiles_gz(dataset_name, path, on_record),
         DatasetSource::LocalSmilesCsv(path, data_fields) => {
-            process_smiles_csv(dataset_name, path, data_fields, cache_dir, on_record)
+            process_smiles_csv(dataset_name, path, data_fields, on_record, has_headers)
         }
     }
 }
@@ -47,8 +48,8 @@ fn process_smiles_csv<F>(
     dataset_name: &str,
     path: &Path,
     data_fields: &[DataField],
-    cache_dir: &Path,
     mut on_record: F,
+    has_headers: bool
 ) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
@@ -57,7 +58,7 @@ where
     let file = File::open(path)?;
     let reader = BufReader::new(file);
     let mut csv_reader =
-        csv::ReaderBuilder::new().has_headers(true).trim(csv::Trim::All).from_reader(reader);
+        csv::ReaderBuilder::new().has_headers(has_headers).trim(csv::Trim::All).from_reader(reader);
 
     let mut skipped = 0usize;
     let mut processed = 0usize;
