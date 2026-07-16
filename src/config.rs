@@ -24,6 +24,13 @@ pub enum DatasetSource {
     PubChemSmiles,
     LocalSmilesGz(PathBuf),
     LocalSmilesCsv { path: PathBuf, data_fields: Vec<DataField>, has_headers: bool },
+    Smiles{
+        path: PathBuf,
+        data_fields: Vec<DataField>,
+        has_headers: bool,
+        delimiter: u8,
+        dataset_name: String,
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -36,7 +43,7 @@ impl DatasetSource {
     pub(crate) fn record_kind(&self) -> RecordKind {
         match self {
             Self::AnnotatedMs2 | Self::LocalMgf(_) => RecordKind::Spectrum,
-            Self::PubChemSmiles | Self::LocalSmilesGz(_) | Self::LocalSmilesCsv { .. } => {
+            Self::PubChemSmiles | Self::LocalSmilesGz(_) | Self::LocalSmilesCsv { .. } | Self::Smiles{ .. } => {
                 RecordKind::Molecule
             }
         }

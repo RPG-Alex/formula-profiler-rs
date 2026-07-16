@@ -1,8 +1,5 @@
 use std::{
-    collections::BTreeMap,
-    fs::File,
-    io::{BufRead, BufReader},
-    path::Path,
+    collections::BTreeMap, fs::File, io::{BufRead, BufReader}, path::{Path, PathBuf},
 };
 
 use flate2::read::GzDecoder;
@@ -54,10 +51,33 @@ where
                 record_limit,
                 *has_headers,
             )
+        },
+        DatasetSource::Smiles { path, data_fields, has_headers, delimiter, dataset_name } => {
+            process_smiles(
+                path,
+                data_fields,
+                has_headers,
+                delimiter,
+                dataset_name,
+                on_record
+            )
         }
     }
 }
 
+fn process_smiles<F>(
+    path: &PathBuf,
+    data_fields: &[DataField],
+    has_headers: &bool,
+    delimiter: &u8,
+    dataset_name: &str,
+    on_record: F
+) -> Result<()>
+ where F: FnMut(MoleculeRecord) -> Result<()> {
+
+
+    Ok(())
+ }
 fn process_smiles_csv<F>(
     dataset_name: &str,
     path: &Path,
