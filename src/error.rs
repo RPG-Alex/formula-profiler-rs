@@ -43,7 +43,8 @@ pub enum FormulaProfilerError {
     #[error("failed to render figure: {message}")]
     FigureGeneration { message: String },
 
-    /// The positional CSV field declaration is missing required fields or contains duplicate required fields.
+    /// The positional CSV field declaration is missing required fields or
+    /// contains duplicate required fields.
     #[error(
         "CSV fields must contain exactly one `id` field and exactly one `smiles` field; found {id_count} `id` fields and {smiles_count} `smiles` fields"
     )]

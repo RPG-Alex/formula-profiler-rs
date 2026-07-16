@@ -2,7 +2,11 @@ use std::path::{Path, PathBuf};
 
 use clap::{Parser, Subcommand};
 
-use crate::{chemistry::normalize_element_symbol, config::{DataField, DatasetSource, ProfileConfig, TargetSelection}, error::FormulaProfilerError};
+use crate::{
+    chemistry::normalize_element_symbol,
+    config::{DataField, DatasetSource, ProfileConfig, TargetSelection},
+    error::FormulaProfilerError,
+};
 
 #[derive(Debug, Parser)]
 #[command(version, about)]
@@ -12,8 +16,8 @@ pub struct Cli {
     pub target: String,
 
     /// Optional maximum number of input records to process
-    #[arg(long)]
-    pub limit: Option<usize>,
+    #[arg(long = "limit")]
+    pub record_limit: Option<usize>,
 
     /// Root directory used for downloaded datasets (default is "cache")
     #[arg(long, default_value = "cache")]
@@ -61,62 +65,34 @@ impl TryFrom<Cli> for ProfileConfig {
     type Error = FormulaProfilerError;
 
     fn try_from(cli: Cli) -> Result<Self, Self::Error> {
-        let Cli { target, limit, cache_root, reports_root, dataset } = cli;
-
+        let Cli { target, record_limit, cache_root, reports_root, dataset } = cli;
+        let record_limit: usize = record_limit.unwrap_or(usize::MAX);
         let target_selection = parse_target_selection(&target)?;
         let (dataset_name, dataset_source) = match dataset {
             DatasetCommand::AnnotatedMs2 => {
-                (
-                    "annotated_ms2".to_string(),
-                    DatasetSource::AnnotatedMs2,
-                )
+                ("annotated_ms2".to_string(), DatasetSource::AnnotatedMs2)
             }
 
-            DatasetCommand::PubChem => {
-                (
-                    "pubchem".to_string(),
-                    DatasetSource::PubChemSmiles,
-                )
-            }
+            DatasetCommand::PubChem => ("pubchem".to_string(), DatasetSource::PubChemSmiles),
 
             DatasetCommand::LocalMgf { path } => {
-                let dataset_name =
-                    dataset_name_from_path(&path, "local_mgf");
+                let dataset_name = dataset_name_from_path(&path, "local_mgf");
 
-                (
-                    dataset_name,
-                    DatasetSource::LocalMgf(path),
-                )
+                (dataset_name, DatasetSource::LocalMgf(path))
             }
 
             DatasetCommand::SmilesGz { path } => {
-                let dataset_name =
-                    dataset_name_from_path(&path, "local_smiles");
+                let dataset_name = dataset_name_from_path(&path, "local_smiles");
 
-                (
-                    dataset_name,
-                    DatasetSource::LocalSmilesGz(path),
-                )
+                (dataset_name, DatasetSource::LocalSmilesGz(path))
             }
 
-            DatasetCommand::SmilesCsv {
-                path,
-                fields,
-                has_headers,
-            } => {
-                let dataset_name =
-                    dataset_name_from_path(&path, "local_smiles");
+            DatasetCommand::SmilesCsv { path, fields, has_headers } => {
+                let dataset_name = dataset_name_from_path(&path, "local_smiles");
 
                 let data_fields = parse_data_fields(fields)?;
 
-                (
-                    dataset_name,
-                    DatasetSource::LocalSmilesCsv {
-                        path,
-                        data_fields,
-                        has_headers,
-                    },
-                )
+                (dataset_name, DatasetSource::LocalSmilesCsv { path, data_fields, has_headers })
             }
         };
         let cache_dir = cache_root.join(&dataset_name);
@@ -126,16 +102,14 @@ impl TryFrom<Cli> for ProfileConfig {
             dataset_name,
             dataset_source,
             target_selection,
-            record_limit: limit,
+            record_limit,
             cache_dir,
-            reports_root
+            reports_root,
         })
     }
 }
 
-fn parse_target_selection(
-    raw_target: &str,
-) -> Result<TargetSelection, FormulaProfilerError> {
+fn parse_target_selection(raw_target: &str) -> Result<TargetSelection, FormulaProfilerError> {
     if raw_target.eq_ignore_ascii_case("all") {
         return Ok(TargetSelection::AllObserved);
     }
@@ -146,19 +120,23 @@ fn parse_target_selection(
 }
 
 fn parse_data_fields(fields: Vec<String>) -> Result<Vec<DataField>, FormulaProfilerError> {
-    let data_fields: Vec<DataField> = fields.into_iter().map(|field| {
-        if field.eq_ignore_ascii_case("id") {
-            DataField::Id
-        } else if field.eq_ignore_ascii_case("smiles") {
-            DataField::Smiles
-        } else {
-            DataField::Custom(field)
-        }
-    }).collect();
+    let data_fields: Vec<DataField> = fields
+        .into_iter()
+        .map(|field| {
+            if field.eq_ignore_ascii_case("id") {
+                DataField::Id
+            } else if field.eq_ignore_ascii_case("smiles") {
+                DataField::Smiles
+            } else {
+                DataField::Custom(field)
+            }
+        })
+        .collect();
 
     let id_count = data_fields.iter().filter(|field| matches!(field, DataField::Id)).count();
 
-    let smiles_count = data_fields.iter().filter(|field| matches!(field, DataField::Smiles)).count();
+    let smiles_count =
+        data_fields.iter().filter(|field| matches!(field, DataField::Smiles)).count();
 
     if id_count != 1 || smiles_count != 1 {
         return Err(FormulaProfilerError::InvalidCsvFields { id_count, smiles_count });
@@ -172,7 +150,7 @@ fn dataset_name_from_path(path: &Path, fallback: &str) -> String {
 
 #[cfg(test)]
 mod tests {
-use super::*;
+    use super::*;
 
     #[test]
     fn parses_smiles_csv_command() {
@@ -187,17 +165,25 @@ use super::*;
             "smiles",
             "class",
             "--has-headers",
-        ]).unwrap();
+        ])
+        .unwrap();
         assert_eq!(cli.target, "all");
-        assert_eq!(cli.limit, None);
+        assert_eq!(cli.record_limit, None);
         assert_eq!(cli.cache_root, PathBuf::from("cache"));
         assert_eq!(cli.reports_root, PathBuf::from("reports"));
 
-        assert_eq!(cli.dataset, DatasetCommand::SmilesCsv { path: PathBuf::from("data/molecules.csv"), fields: vec!["id".to_owned(),"smiles".to_owned(),"class".to_owned()], has_headers: true })
+        assert_eq!(
+            cli.dataset,
+            DatasetCommand::SmilesCsv {
+                path: PathBuf::from("data/molecules.csv"),
+                fields: vec!["id".to_owned(), "smiles".to_owned(), "class".to_owned()],
+                has_headers: true
+            }
+        )
     }
 
     #[test]
-    fn converts_smiles_csv_command_into_profile_config(){
+    fn converts_smiles_csv_command_into_profile_config() {
         let cli = Cli::try_parse_from([
             "spectra-profiler-rs",
             "--target",
@@ -211,25 +197,31 @@ use super::*;
             "smiles",
             "class",
             "--has-headers",
-        ]).unwrap();
+        ])
+        .unwrap();
         let config = ProfileConfig::try_from(cli).unwrap();
         assert_eq!(config.dataset_name, "molecules");
-        assert_eq!(config.record_limit, Some(1000));
-        assert_eq!(
-            config.cache_dir,
-            PathBuf::from("cache").join("molecules")
-        );
-        assert_eq!(
-            config.reports_root,
-            PathBuf::from("reports").join("molecules")
-        );
+        assert_eq!(config.record_limit, 1000);
+        assert_eq!(config.cache_dir, PathBuf::from("cache").join("molecules"));
+        assert_eq!(config.reports_root, PathBuf::from("reports").join("molecules"));
 
         assert_eq!(config.target_selection, TargetSelection::One("Cl".to_owned()));
-        assert_eq!(config.dataset_source, DatasetSource::LocalSmilesCsv { path: PathBuf::from("data/molecules.csv"), data_fields: vec![DataField::Id,DataField::Smiles, DataField::Custom("class".to_owned())], has_headers: true });
+        assert_eq!(
+            config.dataset_source,
+            DatasetSource::LocalSmilesCsv {
+                path: PathBuf::from("data/molecules.csv"),
+                data_fields: vec![
+                    DataField::Id,
+                    DataField::Smiles,
+                    DataField::Custom("class".to_owned())
+                ],
+                has_headers: true
+            }
+        );
     }
 
     #[test]
-    fn reject_csv_without_smiles_field(){
+    fn reject_csv_without_smiles_field() {
         let cli = Cli::try_parse_from([
             "spectra-profiler-rs",
             "--target",
@@ -239,8 +231,28 @@ use super::*;
             "--fields",
             "id",
             "class",
-        ]).unwrap();
+        ])
+        .unwrap();
         let error = ProfileConfig::try_from(cli).unwrap_err();
-        assert!(matches!(error, FormulaProfilerError::InvalidCsvFields { id_count: 1, smiles_count: 0 }));
+        assert!(matches!(
+            error,
+            FormulaProfilerError::InvalidCsvFields { id_count: 1, smiles_count: 0 }
+        ));
     }
+
+    #[test]
+fn defaults_record_limit_to_usize_max() {
+    let cli = Cli::try_parse_from([
+        "spectra-profiler-rs",
+        "--target",
+        "F",
+        "pubchem",
+    ])
+    .unwrap();
+
+    let config = ProfileConfig::try_from(cli).unwrap();
+
+    assert_eq!(config.record_limit, usize::MAX);
+}
+
 }

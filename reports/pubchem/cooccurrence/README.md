@@ -18,6 +18,8 @@ Heatmap elements shown: `H`, `C`, `N`, `O`, `S`, `F`, `Cl`, `Br`, `I`, `P`, `Si`
 - [Raw co-occurrence counts](tables/element_cooccurrence_counts.csv)
 - [Conditional probabilities](tables/element_cooccurrence_conditional_probability.csv)
 
+**Interpretation:** Conditional probabilities are row-normalized. A cell at row `A` and column `B` is `P(B | A) = cooccurrence(A, B) / count(A)`. Raw counts are symmetric, but conditional probabilities do not need to be symmetric.
+
 ## Heatmaps
 
 ### Raw co-occurrence counts

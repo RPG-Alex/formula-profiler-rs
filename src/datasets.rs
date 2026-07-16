@@ -9,7 +9,6 @@ use flate2::read::GzDecoder;
 use indicatif::ProgressBar;
 use mascot_rs::prelude::*;
 use molecular_formulas::prelude::ChemicalFormula;
-use serde::de::value;
 use smiles_parser::{
     DatasetFetchOptions, PUBCHEM_SMILES, SmilesDatasetRecordSource, SmilesDatasetSource,
     smiles::Smiles,
@@ -19,7 +18,7 @@ use crate::{
     chemistry::element_counts_in_formula,
     config::{DataField, DatasetSource},
     error::{FormulaProfilerError, Result},
-    metadata::{self, metadata_value, optional_debug_label},
+    metadata::{metadata_value, optional_debug_label},
     records::MoleculeRecord,
 };
 
@@ -27,18 +26,34 @@ pub async fn process_dataset<F>(
     dataset_name: &str,
     source: &DatasetSource,
     cache_dir: &Path,
+    record_limit: usize,
     on_record: F,
 ) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
     match source {
-        DatasetSource::AnnotatedMs2 => process_annotated_ms2(cache_dir, on_record).await,
-        DatasetSource::LocalMgf(path) => process_local_mgf(path, on_record),
-        DatasetSource::PubChemSmiles => process_pubchem_smiles(cache_dir, on_record),
-        DatasetSource::LocalSmilesGz(path) => process_smiles_gz(dataset_name, path, on_record),
+        DatasetSource::AnnotatedMs2 => {
+            process_annotated_ms2(cache_dir, record_limit, on_record).await
+        }
+
+        DatasetSource::LocalMgf(path) => process_local_mgf(path, record_limit, on_record),
+
+        DatasetSource::PubChemSmiles => process_pubchem_smiles(cache_dir, record_limit, on_record),
+
+        DatasetSource::LocalSmilesGz(path) => {
+            process_smiles_gz(dataset_name, record_limit, path, on_record)
+        }
+
         DatasetSource::LocalSmilesCsv { path, data_fields, has_headers } => {
-            process_smiles_csv(dataset_name, path, data_fields, on_record, *has_headers)
+            process_smiles_csv(
+                dataset_name,
+                path,
+                data_fields,
+                on_record,
+                record_limit,
+                *has_headers,
+            )
         }
     }
 }
@@ -48,12 +63,12 @@ fn process_smiles_csv<F>(
     path: &Path,
     data_fields: &[DataField],
     mut on_record: F,
+    record_limit: usize,
     has_headers: bool,
 ) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
-    let limit = record_limit();
     let file = File::open(path)?;
     let reader = BufReader::new(file);
     let mut csv_reader =
@@ -62,7 +77,7 @@ where
     let mut skipped = 0usize;
     let mut processed = 0usize;
 
-    for line in csv_reader.records().take(limit.unwrap_or(usize::MAX)) {
+    for line in csv_reader.records().take(record_limit) {
         let record = line?;
         // first check that the record is the same length as the data fields
         if record.len() != data_fields.len() {
@@ -115,7 +130,11 @@ where
     Ok(())
 }
 
-async fn process_annotated_ms2<F>(cache_dir: &Path, mut on_record: F) -> Result<()>
+async fn process_annotated_ms2<F>(
+    cache_dir: &Path,
+    record_limit: usize,
+    mut on_record: F,
+) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
@@ -129,7 +148,7 @@ where
     println!("Skipped {} malformed records", loaded.skipped_records());
     println!("Dataset path: {}", loaded.path().display());
 
-    for (index, record) in loaded.into_spectra().into_iter().enumerate() {
+    for (index, record) in loaded.into_spectra().into_iter().enumerate().take(record_limit) {
         if let Some(mol_record) = extract_mgf_record(index, &record) {
             on_record(mol_record)?;
         }
@@ -137,14 +156,14 @@ where
     Ok(())
 }
 
-fn process_local_mgf<F>(path: &Path, mut on_record: F) -> Result<()>
+fn process_local_mgf<F>(path: &Path, record_limit: usize, mut on_record: F) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
     let spectra = MGFVec::<f64>::from_path(path)
         .map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
 
-    for (index, record) in spectra.into_iter().enumerate() {
+    for (index, record) in spectra.into_iter().enumerate().take(record_limit) {
         if let Some(mol_record) = extract_mgf_record(index, &record) {
             on_record(mol_record)?;
         }
@@ -178,11 +197,15 @@ fn extract_mgf_record(index: usize, record: &MascotGenericFormat<f64>) -> Option
     })
 }
 
-fn process_smiles_gz<F>(dataset_name: &str, path: &Path, mut on_record: F) -> Result<()>
+fn process_smiles_gz<F>(
+    dataset_name: &str,
+    record_limit: usize,
+    path: &Path,
+    mut on_record: F,
+) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
-    let limit = record_limit();
     let file = File::open(path)?;
     let decoder = GzDecoder::new(file);
     let reader = BufReader::new(decoder);
@@ -190,7 +213,7 @@ where
     let mut skipped = 0usize;
     let mut processed = 0usize;
 
-    for line in reader.lines().take(limit.unwrap_or(usize::MAX)) {
+    for line in reader.lines().take(record_limit) {
         let line = line?;
 
         let Some((cid, smiles_text)) = line.split_once(char::is_whitespace) else {
@@ -221,11 +244,14 @@ where
     Ok(())
 }
 
-fn process_pubchem_smiles<F>(cache_dir: &Path, mut on_record: F) -> Result<()>
+fn process_pubchem_smiles<F>(
+    cache_dir: &Path,
+    record_limit: usize,
+    mut on_record: F,
+) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
-    let limit = record_limit();
     let options = DatasetFetchOptions {
         cache_dir: Some(cache_dir.to_path_buf()),
         ..DatasetFetchOptions::default()
@@ -240,7 +266,7 @@ where
 
     let bar = ProgressBar::new(PUBCHEM_SMILES.iter_smiles().iter().len() as u64);
 
-    for record in pubchem_records.take(limit.unwrap_or(usize::MAX)) {
+    for record in pubchem_records.take(record_limit) {
         bar.inc(1);
 
         let record =
@@ -267,11 +293,4 @@ where
     println!("Processed {processed} PubChem records");
     println!("Skipped {skipped} PubChem records");
     Ok(())
-}
-
-fn record_limit() -> Option<usize> {
-    std::env::var("PROFILE_LIMIT")
-        .or_else(|_| std::env::var("PUBCHEM_LIMIT"))
-        .ok()
-        .and_then(|value| value.parse::<usize>().ok())
 }
