@@ -264,7 +264,11 @@ where
     let mut skipped = 0usize;
     let mut processed = 0usize;
 
-    let bar = ProgressBar::new(PUBCHEM_SMILES.iter_smiles().iter().len() as u64);
+    let bar = if record_limit == usize::MAX {
+        ProgressBar::new_spinner()
+    } else {
+        ProgressBar::new(record_limit as u64)
+    };
 
     for record in pubchem_records.take(record_limit) {
         bar.inc(1);
@@ -289,6 +293,8 @@ where
         })?;
         processed += 1;
     }
+
+    bar.finish_and_clear();
 
     println!("Processed {processed} PubChem records");
     println!("Skipped {skipped} PubChem records");
