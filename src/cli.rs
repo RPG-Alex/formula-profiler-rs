@@ -241,18 +241,11 @@ mod tests {
     }
 
     #[test]
-fn defaults_record_limit_to_usize_max() {
-    let cli = Cli::try_parse_from([
-        "spectra-profiler-rs",
-        "--target",
-        "F",
-        "pubchem",
-    ])
-    .unwrap();
+    fn defaults_record_limit_to_usize_max() {
+        let cli = Cli::try_parse_from(["spectra-profiler-rs", "--target", "F", "pubchem"]).unwrap();
 
-    let config = ProfileConfig::try_from(cli).unwrap();
+        let config = ProfileConfig::try_from(cli).unwrap();
 
-    assert_eq!(config.record_limit, usize::MAX);
-}
-
+        assert_eq!(config.record_limit, usize::MAX);
+    }
 }

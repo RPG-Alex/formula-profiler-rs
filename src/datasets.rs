@@ -1,5 +1,9 @@
 use std::{
-    collections::BTreeMap, fs::File, io::{BufRead, BufReader}, path::{Path, PathBuf},
+    collections::BTreeMap,
+    ffi::OsStr,
+    fs::File,
+    io::{BufRead, BufReader, Read},
+    path::{Path, PathBuf},
 };
 
 use flate2::read::GzDecoder;
@@ -7,16 +11,11 @@ use indicatif::ProgressBar;
 use mascot_rs::prelude::*;
 use molecular_formulas::prelude::ChemicalFormula;
 use smiles_parser::{
-    DatasetFetchOptions, PUBCHEM_SMILES, SmilesDatasetRecordSource, SmilesDatasetSource,
-    smiles::Smiles,
+    DatasetFetchOptions, PUBCHEM_SMILES, SmilesDatasetRecordSource, smiles::Smiles,
 };
 
 use crate::{
-    chemistry::element_counts_in_formula,
-    config::{DataField, DatasetSource},
-    error::{FormulaProfilerError, Result},
-    metadata::{metadata_value, optional_debug_label},
-    records::MoleculeRecord,
+    chemistry::element_counts_in_formula, config::{DataField, DatasetSource}, error::{FormulaProfilerError, Result}, metadata::{self, metadata_value, optional_debug_label}, records::MoleculeRecord,
 };
 
 pub async fn process_dataset<F>(
@@ -51,33 +50,117 @@ where
                 record_limit,
                 *has_headers,
             )
-        },
+        }
         DatasetSource::Smiles { path, data_fields, has_headers, delimiter, dataset_name } => {
-            process_smiles(
+            process_smiles_file(
                 path,
                 data_fields,
-                has_headers,
-                delimiter,
+                has_headers.to_owned(),
+                record_limit,
+                delimiter.to_owned(),
                 dataset_name,
-                on_record
+                on_record,
             )
         }
     }
 }
 
-fn process_smiles<F>(
-    path: &PathBuf,
+fn process_smiles_file<F>(
+    path: &Path,
     data_fields: &[DataField],
-    has_headers: &bool,
-    delimiter: &u8,
+    has_headers: bool,
+    record_limit: usize,
+    delimiter: u8,
     dataset_name: &str,
-    on_record: F
+    mut on_record: F,
 ) -> Result<()>
- where F: FnMut(MoleculeRecord) -> Result<()> {
+where
+    F: FnMut(MoleculeRecord) -> Result<()>,
+{
+    let reader = open_smiles_reader(path)?;
 
+    let mut csv_reader = csv::ReaderBuilder::new()
+        .has_headers(has_headers)
+        .delimiter(delimiter)
+        .trim(csv::Trim::All)
+        .flexible(true)
+        .from_reader(reader);
+
+    let mut skipped = 0usize;
+    let mut processed = 0usize;
+
+    for result in csv_reader.records().take(record_limit) {
+        let record = result?;
+        if record.len() != data_fields.len() {
+            skipped += 1;
+            continue;
+        }
+
+        let mut id = None;
+        let mut smiles_text = None;
+        let mut metadata = BTreeMap::new();
+        metadata.insert("Source dataset".to_string(), dataset_name.to_string());
+
+        for (data_field, value) in data_fields.iter().zip(record.iter()) {
+            match data_field {
+                DataField::Id => {
+                    id = Some(value);
+                },
+                DataField::Smiles => {
+                    smiles_text = Some(value);
+                },
+                DataField::Custom(name) => {
+                    metadata.insert(name.clone(), value.to_string());
+                }
+            }
+        }
+
+        let Some(id) = id.filter(|value| !value.is_empty()) else {
+            skipped += 1;
+            continue;
+        };
+        let Some(smiles_text) = smiles_text.filter(|value| !value.is_empty()) else {
+            skipped += 1;
+            continue;
+        };
+
+        let Some(molecule_record) = molecule_record_from_smiles(id.to_string(), smiles_text, metadata) else {
+            skipped += 1;
+            continue;
+        };
+        on_record(molecule_record)?;
+        processed += 1;
+    }
+
+    println!("Processed {processed} SMILES records");
+    println!("Skipped {skipped} SMILES records");
 
     Ok(())
- }
+}
+
+fn molecule_record_from_smiles(
+    id: String,
+    smiles_text: &str,
+    metadata: BTreeMap<String, String>,
+) -> Option<MoleculeRecord> {
+    let smiles = smiles_text.parse::<Smiles>().ok()?;
+    let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(& smiles);
+
+    Some(
+        MoleculeRecord { id, element_counts: element_counts_in_formula(&formula), metadata, peak_count: None }
+    )
+}
+
+fn open_smiles_reader(path: &Path) -> Result<Box<dyn Read>> {
+    let file = File::open(path)?;
+
+    if path.extension() == Some(OsStr::new("gz")) {
+        Ok(Box::new(GzDecoder::new(file)))
+    } else {
+        Ok(Box::new(file))
+    }
+}
+
 fn process_smiles_csv<F>(
     dataset_name: &str,
     path: &Path,
@@ -264,11 +347,7 @@ where
     Ok(())
 }
 
-fn process_pubchem_smiles<F>(
-    cache_dir: &Path,
-    record_limit: usize,
-    mut on_record: F,
-) -> Result<()>
+fn process_pubchem_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record: F) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {

@@ -49,4 +49,8 @@ pub enum FormulaProfilerError {
         "CSV fields must contain exactly one `id` field and exactly one `smiles` field; found {id_count} `id` fields and {smiles_count} `smiles` fields"
     )]
     InvalidCsvFields { id_count: usize, smiles_count: usize },
+
+    /// Throws error for an invalid file extension for the dataset to use
+    #[error("invalid data file extension")]
+    InvalidFileExtension,
 }
