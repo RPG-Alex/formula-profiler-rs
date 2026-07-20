@@ -91,7 +91,10 @@ pub(crate) fn write_dataset_index_readme(
             writeln!(file, "| Element | Formula count | % of formula-bearing spectra | Report |")?;
         }
 
-        DatasetSource::PubChemSmiles | DatasetSource::LocalSmilesGz(_) => {
+        DatasetSource::PubChemSmiles
+        | DatasetSource::LocalSmilesGz(_)
+        | DatasetSource::LocalSmilesCsv { .. }
+        | DatasetSource::Smiles { .. } => {
             writeln!(
                 file,
                 "The reports summarize element presence from molecular formula metadata and should be \
@@ -161,7 +164,6 @@ pub(crate) fn write_dataset_index_readme(
                 "| Element | Formula count | % of formula-bearing molecules | Report |"
             )?;
         }
-        DatasetSource::LocalSmilesCsv { path, data_fields, has_headers } => todo!(),
     }
     writeln!(file, "|---|---:|---:|---|")?;
 
@@ -214,7 +216,10 @@ pub(crate) fn write_cooccurrence_readme(
             writeln!(file, "| Spectra with formula | {} |", profile.records_with_formula)?;
         }
 
-        DatasetSource::PubChemSmiles | DatasetSource::LocalSmilesGz(_) => {
+        DatasetSource::PubChemSmiles
+        | DatasetSource::LocalSmilesGz(_)
+        | DatasetSource::Smiles { .. }
+        | DatasetSource::LocalSmilesCsv { .. } => {
             writeln!(file)?;
             writeln!(file, "## Summary")?;
             writeln!(file)?;
@@ -223,7 +228,6 @@ pub(crate) fn write_cooccurrence_readme(
             writeln!(file, "| Total molecules | {} |", profile.total_records)?;
             writeln!(file, "| Molecules with formula | {} |", profile.records_with_formula)?;
         }
-        DatasetSource::LocalSmilesCsv { path, data_fields, has_headers } => todo!(),
     }
 
     writeln!(file, "| Observed elements | {} |", profile.element_counts.len())?;

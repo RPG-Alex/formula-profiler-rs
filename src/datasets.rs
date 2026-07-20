@@ -3,7 +3,7 @@ use std::{
     ffi::OsStr,
     fs::File,
     io::{BufRead, BufReader, Read},
-    path::{Path, PathBuf},
+    path::Path,
 };
 
 use flate2::read::GzDecoder;
@@ -15,7 +15,11 @@ use smiles_parser::{
 };
 
 use crate::{
-    chemistry::element_counts_in_formula, config::{DataField, DatasetSource}, error::{FormulaProfilerError, Result}, metadata::{self, metadata_value, optional_debug_label}, records::MoleculeRecord,
+    chemistry::element_counts_in_formula,
+    config::{DataField, DatasetSource},
+    error::{FormulaProfilerError, Result},
+    metadata::{metadata_value, optional_debug_label},
+    records::MoleculeRecord,
 };
 
 pub async fn process_dataset<F>(
@@ -105,10 +109,10 @@ where
             match data_field {
                 DataField::Id => {
                     id = Some(value);
-                },
+                }
                 DataField::Smiles => {
                     smiles_text = Some(value);
-                },
+                }
                 DataField::Custom(name) => {
                     metadata.insert(name.clone(), value.to_string());
                 }
@@ -124,7 +128,9 @@ where
             continue;
         };
 
-        let Some(molecule_record) = molecule_record_from_smiles(id.to_string(), smiles_text, metadata) else {
+        let Some(molecule_record) =
+            molecule_record_from_smiles(id.to_string(), smiles_text, metadata)
+        else {
             skipped += 1;
             continue;
         };
@@ -144,11 +150,14 @@ fn molecule_record_from_smiles(
     metadata: BTreeMap<String, String>,
 ) -> Option<MoleculeRecord> {
     let smiles = smiles_text.parse::<Smiles>().ok()?;
-    let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(& smiles);
+    let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(&smiles);
 
-    Some(
-        MoleculeRecord { id, element_counts: element_counts_in_formula(&formula), metadata, peak_count: None }
-    )
+    Some(MoleculeRecord {
+        id,
+        element_counts: element_counts_in_formula(&formula),
+        metadata,
+        peak_count: None,
+    })
 }
 
 fn open_smiles_reader(path: &Path) -> Result<Box<dyn Read>> {
