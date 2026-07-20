@@ -12,15 +12,13 @@ mod records;
 mod reports;
 mod visuals;
 
-use std::collections::{BTreeMap, BTreeSet};
-
 use clap::Parser;
 use cli::Cli;
 use config::{ProfileConfig, TargetSelection};
-use cooccurrence::{CooccurrenceProfile, write_cooccurrence_reports};
+use cooccurrence::write_cooccurrence_reports;
 use datasets::process_dataset;
 use markdown::write_markdown_report;
-use profiler::{ElementProfilerState, GlobalDatasetStats};
+use profiler::DatasetProfile;
 use reports::{ReportPaths, write_reports_index};
 
 use crate::error::Result;
@@ -32,27 +30,17 @@ async fn main() -> Result<()> {
 
     println!("Dataset: {}", config.dataset_name);
 
-    let mut cooccurrence = CooccurrenceProfile::default();
-    let mut global_stats = GlobalDatasetStats::default();
-    let mut element_profilers: BTreeMap<String, ElementProfilerState> = BTreeMap::new();
-    let mut observed_all = BTreeSet::new();
+    let mut profile = DatasetProfile::default();
 
     process_dataset(&config.dataset_source, &config.cache_dir, config.record_limit, |record| {
-        cooccurrence.observe(&record);
-        global_stats.observe(&record);
-
-        for element in record.element_counts.keys() {
-            observed_all.insert(element.clone());
-            let profiler = element_profilers.entry(element.clone()).or_default();
-            profiler.observe_present(&record, element);
-        }
+        profile.observe(&record);
         Ok(())
     })
     .await?;
 
     let target_elements: Vec<String> = match &config.target_selection {
         TargetSelection::One(target) => vec![target.clone()],
-        TargetSelection::AllObserved => observed_all.into_iter().collect(),
+        TargetSelection::AllObserved => profile.observed_elements(),
     };
 
     println!("Target elements: {}", target_elements.join(", "));
@@ -66,7 +54,7 @@ async fn main() -> Result<()> {
 
     write_cooccurrence_reports(
         &config.dataset_name,
-        &cooccurrence,
+        &profile,
         &cooccurrence_report_paths,
         &config.reports_root,
         &target_elements,
@@ -74,15 +62,13 @@ async fn main() -> Result<()> {
     )?;
 
     for target_element in target_elements {
-        let profiler = element_profilers.entry(target_element.clone()).or_default();
-
         let report_dir = config.report_dir_for(&target_element);
         let report_paths = ReportPaths::prepare(&report_dir)?;
 
         println!("Profiling target element: {target_element}");
         println!("Report directory: {}", report_paths.root.display());
 
-        profiler.write_reports(&target_element, &global_stats, &report_paths)?;
+        profile.write_element_reports(&target_element, &report_paths)?;
         write_markdown_report(
             &config.dataset_name,
             &target_element,

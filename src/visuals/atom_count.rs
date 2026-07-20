@@ -14,13 +14,13 @@ use crate::{
 pub fn write_atom_count_distribution_figure(
     reports: &ReportPaths,
     target_element: &str,
-    records_with_formula: usize,
+    total_records: usize,
     distribution: &BTreeMap<usize, usize>,
 ) -> Result<()> {
     render_atom_count_distribution_chart(
         reports.figure("target_atom_count_distribution.svg"),
         target_element,
-        records_with_formula,
+        total_records,
         distribution,
     )
 }
@@ -28,7 +28,7 @@ pub fn write_atom_count_distribution_figure(
 fn render_atom_count_distribution_chart(
     path: impl AsRef<Path>,
     target_element: &str,
-    records_with_formula: usize,
+    total_records: usize,
     distribution: &BTreeMap<usize, usize>,
 ) -> Result<()> {
     if distribution.is_empty() {
@@ -53,7 +53,7 @@ fn render_atom_count_distribution_chart(
         .configure_mesh()
         .disable_mesh()
         .x_desc(format!("Number of {target_element} atoms in formula"))
-        .y_desc("Formula-bearing records")
+        .y_desc("Profiled records")
         .x_labels((max_atom_count as usize + 1).min(20))
         .y_label_formatter(&|value| compact_count(*value as usize))
         .draw()
@@ -88,7 +88,7 @@ fn render_atom_count_distribution_chart(
             continue;
         }
 
-        let percent = percent(*record_count, records_with_formula);
+        let percent = percent(*record_count, total_records);
 
         chart
             .draw_series(std::iter::once(Text::new(

@@ -2,108 +2,119 @@ use std::collections::BTreeMap;
 
 use serde::Serialize;
 
-use crate::{ error::Result, population::{
-        PopulationMap, PopulationStats, clean_group_value, split_pipe, summarize_population_map,
-        write_population_map_csv,
-    }, records::MoleculeRecord, reports::ReportPaths, visuals::{write_atom_count_distribution_figure, write_standard_population_figures},
+use crate::{
+    error::Result,
+    population::{
+        PopulationMap, PopulationStats, clean_group_value, percent, split_pipe,
+        summarize_population_map, write_population_map_csv,
+    },
+    records::MoleculeRecord,
+    reports::ReportPaths,
+    visuals::{write_atom_count_distribution_figure, write_standard_population_figures},
 };
 
-
+/// Aggregated statistics collected across all successfully profiled records.
 #[derive(Debug, Default)]
-pub(crate) struct GlobalDatasetStats {
-    pub total_records: usize,
-    pub records_with_formula: usize,
-    pub group_value_totals: BTreeMap<String, BTreeMap<String, usize>>,
+pub(crate) struct DatasetProfile {
+    /// Number of records successfully added to the profile.
+    record_count: usize,
+    /// Metadata value counts, key: metadata group, value: counts for each value.
+    group_value_counts: BTreeMap<String, BTreeMap<String, usize>>,
+    /// Profiles for observed elements, key: element symbol, value: element profile.
+    elements: BTreeMap<String, ElementProfile>,
+    /// Counts for co-occurring elements, key: element-symbol pair, value: record count.
+    pair_counts: BTreeMap<(String, String), usize>,
 }
 
-impl GlobalDatasetStats {
+impl DatasetProfile {
+    /// Records one accepted molecule once and updates every derived profile from it.
     pub(crate) fn observe(&mut self, record: &MoleculeRecord) {
-        self.total_records += 1;
-        self.records_with_formula += 1;
+        self.record_count += 1;
 
-        for (metadata_group, value) in &record.metadata {
-            let totals = self.group_value_totals.entry(metadata_group.clone()).or_default();
-            if value.contains('|') {
-                for part in split_pipe(value) {
-                    *totals.entry(clean_group_value(part)).or_default() += 1;
-                }
-            } else {
-                *totals.entry(clean_group_value(value)).or_default() += 1;
-            }
-        }
-    }
-}
-
-#[derive(Debug, Default)]
-pub(crate) struct ElementProfilerState {
-    pub records_with_target_element: usize,
-    pub target_atom_count_distribution: BTreeMap<usize, usize>,
-    pub group_value_target_counts: BTreeMap<String, BTreeMap<String, usize>>,
-}
-
-impl ElementProfilerState {
-    pub(crate) fn observe_present(&mut self, record: &MoleculeRecord, target_element: &str) {
-        self.records_with_target_element += 1;
-
-        let count = record.atom_count(target_element);
-        *self.target_atom_count_distribution.entry(count).or_default() += 1;
-
-        for (metadata_group, value) in &record.metadata {
-            let targets = self.group_value_target_counts.entry(metadata_group.clone()).or_default();
-            if value.contains('|') {
-                for part in split_pipe(value) {
-                    *targets.entry(clean_group_value(part)).or_default() += 1;
-                }
-            } else {
-                *targets.entry(clean_group_value(value)).or_default() += 1;
-            }
-        }
+        let metadata = normalized_metadata(record);
+        self.observe_group_values(&metadata);
+        self.observe_elements(record, &metadata);
+        self.observe_element_pairs(record);
     }
 
-    pub(crate) fn write_reports(
-        &self,
-        target_element: &str,
-        global: &GlobalDatasetStats,
-        reports: &ReportPaths,
-    ) -> Result<()> {
-        write_summary_csv(
-            reports,
-            global.total_records,
-            global.records_with_formula,
-            self.records_with_target_element,
-            target_element,
-        )?;
+    pub(crate) fn record_count(&self) -> usize {
+        self.record_count
+    }
 
-        // Reconstruct the full distribution by dynamically calculating the '0' count
-        let mut full_distribution = self.target_atom_count_distribution.clone();
-        let zero_count =
-            global.records_with_formula.saturating_sub(self.records_with_target_element);
+    pub(crate) fn observed_elements(&self) -> Vec<String> {
+        self.elements.keys().cloned().collect()
+    }
+
+    pub(crate) fn observed_element_count(&self) -> usize {
+        self.elements.len()
+    }
+
+    pub(crate) fn element_count(&self, element: &str) -> usize {
+        self.elements.get(element).map_or(0, |profile| profile.record_count)
+    }
+
+    pub(crate) fn pair_count(&self, left: &str, right: &str) -> usize {
+        if left == right {
+            return self.element_count(left);
+        }
+
+        self.pair_counts.get(&ordered_pair(left, right)).copied().unwrap_or_default()
+    }
+
+    pub(crate) fn conditional_probability(&self, row_element: &str, column_element: &str) -> f64 {
+        let row_count = self.element_count(row_element);
+
+        if row_count == 0 {
+            return 0.0;
+        }
+
+        self.pair_count(row_element, column_element) as f64 / row_count as f64
+    }
+
+    pub(crate) fn heatmap_elements(&self) -> Vec<String> {
+        let mut elements = self
+            .elements
+            .iter()
+            .map(|(element, profile)| (element.clone(), profile.record_count))
+            .collect::<Vec<_>>();
+
+        elements.sort_by(|left, right| right.1.cmp(&left.1).then_with(|| left.0.cmp(&right.0)));
+
+        elements.into_iter().map(|(element, _)| element).collect()
+    }
+
+    pub(crate) fn write_element_reports(&self, target_element: &str, reports: &ReportPaths) -> Result<()> {
+        let empty_profile = ElementProfile::default();
+        let element = self.elements.get(target_element).unwrap_or(&empty_profile);
+
+        write_summary_csv(reports, self.record_count, element.record_count, target_element)?;
+
+        let mut full_distribution = element.atom_count_distribution.clone();
+        let zero_count = self.record_count.saturating_sub(element.record_count);
         full_distribution.insert(0, zero_count);
 
         write_atom_count_distribution_csv(
             reports,
             target_element,
-            global.records_with_formula,
+            self.record_count,
             &full_distribution,
         )?;
 
         write_atom_count_distribution_figure(
             reports,
             target_element,
-            global.records_with_formula,
+            self.record_count,
             &full_distribution,
         )?;
 
-        // Combine the global totals and target counts to build the complete
-        // PopulationMaps
-        for (metadata_group, value_totals) in &global.group_value_totals {
+        for (metadata_group, value_totals) in &self.group_value_counts {
             let stem = population_stem(metadata_group);
-
-            let mut population_map: PopulationMap = BTreeMap::new();
-            let target_counts = self.group_value_target_counts.get(metadata_group);
+            let target_counts = element.group_value_counts.get(metadata_group);
+            let mut population_map = PopulationMap::new();
 
             for (value, &total_count) in value_totals {
-                let target_count = target_counts.and_then(|m| m.get(value)).copied().unwrap_or(0);
+                let target_count =
+                    target_counts.and_then(|counts| counts.get(value)).copied().unwrap_or(0);
 
                 population_map.insert(value.clone(), PopulationStats { total_count, target_count });
             }
@@ -113,16 +124,86 @@ impl ElementProfilerState {
                 &stem,
                 &format!("{target_element} by {metadata_group}"),
                 &population_map,
-                global.total_records,
-                self.records_with_target_element,
+                self.record_count,
+                element.record_count,
             )?;
         }
 
-        println!("Total records: {}", global.total_records);
-        println!("Records with formula: {}", global.records_with_formula);
-        println!("Records with {target_element}: {}", self.records_with_target_element);
+        println!("Profiled records: {}", self.record_count);
+        println!("Records with {target_element}: {}", element.record_count);
 
         Ok(())
+    }
+
+    fn observe_group_values(&mut self, metadata: &NormalizedMetadata<'_>) {
+        for (group, values) in metadata {
+            let counts = self.group_value_counts.entry((*group).to_string()).or_default();
+
+            for value in values {
+                *counts.entry(value.clone()).or_default() += 1;
+            }
+        }
+    }
+
+    fn observe_elements(&mut self, record: &MoleculeRecord, metadata: &NormalizedMetadata<'_>) {
+        for (element, atom_count) in &record.element_counts {
+            let profile = self.elements.entry(element.clone()).or_default();
+            profile.record_count += 1;
+            *profile.atom_count_distribution.entry(*atom_count).or_default() += 1;
+
+            for (group, values) in metadata {
+                let counts = profile.group_value_counts.entry((*group).to_string()).or_default();
+
+                for value in values {
+                    *counts.entry(value.clone()).or_default() += 1;
+                }
+            }
+        }
+    }
+
+    fn observe_element_pairs(&mut self, record: &MoleculeRecord) {
+        let elements = record.element_counts.keys().collect::<Vec<_>>();
+
+        // Diagonal counts are derived from each element profile, so only distinct pairs
+        // are stored.
+        for (index, left) in elements.iter().enumerate() {
+            for right in elements.iter().skip(index + 1) {
+                *self.pair_counts.entry(((*left).clone(), (*right).clone())).or_default() += 1;
+            }
+        }
+    }
+}
+
+#[derive(Debug, Default)]
+struct ElementProfile {
+    record_count: usize,
+    atom_count_distribution: BTreeMap<usize, usize>,
+    group_value_counts: BTreeMap<String, BTreeMap<String, usize>>,
+}
+
+type NormalizedMetadata<'a> = Vec<(&'a str, Vec<String>)>;
+
+fn normalized_metadata(record: &MoleculeRecord) -> NormalizedMetadata<'_> {
+    record
+        .metadata
+        .iter()
+        .map(|(group, value)| (group.as_str(), normalized_group_values(value)))
+        .collect()
+}
+
+fn normalized_group_values(value: &str) -> Vec<String> {
+    if value.contains('|') {
+        split_pipe(value).map(clean_group_value).collect()
+    } else {
+        vec![clean_group_value(value)]
+    }
+}
+
+fn ordered_pair(left: &str, right: &str) -> (String, String) {
+    if left < right {
+        (left.to_string(), right.to_string())
+    } else {
+        (right.to_string(), left.to_string())
     }
 }
 
@@ -146,7 +227,6 @@ fn write_population_outputs(
     )?;
 
     let summary_rows = summarize_population_map(counts, total_records, total_target_records);
-
     write_standard_population_figures(reports, stem, title, &summary_rows)?;
 
     Ok(())
@@ -155,7 +235,6 @@ fn write_population_outputs(
 fn write_summary_csv(
     reports: &ReportPaths,
     total_records: usize,
-    records_with_formula: usize,
     records_with_target_element: usize,
     target_element: &str,
 ) -> Result<()> {
@@ -164,7 +243,6 @@ fn write_summary_csv(
     writer.write_record(["metric", "value"])?;
     writer.write_record(["target_element".to_string(), target_element.to_string()])?;
     writer.write_record(["total_records".to_string(), total_records.to_string()])?;
-    writer.write_record(["records_with_formula".to_string(), records_with_formula.to_string()])?;
     writer.write_record([
         "records_with_target_element".to_string(),
         records_with_target_element.to_string(),
@@ -178,14 +256,14 @@ fn write_summary_csv(
 struct AtomCountDistributionRow {
     atom_count: usize,
     record_count: usize,
-    percent_of_formula_records: f64,
+    percent_of_profiled_records: f64,
     contains_target: bool,
 }
 
 fn write_atom_count_distribution_csv(
     reports: &ReportPaths,
     target_element: &str,
-    records_with_formula: usize,
+    total_records: usize,
     distribution: &BTreeMap<usize, usize>,
 ) -> Result<()> {
     let mut writer = csv::Writer::from_path(reports.table("target_atom_count_distribution.csv"))?;
@@ -194,7 +272,7 @@ fn write_atom_count_distribution_csv(
         writer.serialize(AtomCountDistributionRow {
             atom_count: *atom_count,
             record_count: *record_count,
-            percent_of_formula_records: percent(*record_count, records_with_formula),
+            percent_of_profiled_records: percent(*record_count, total_records),
             contains_target: *atom_count > 0,
         })?;
     }
@@ -206,10 +284,63 @@ fn write_atom_count_distribution_csv(
     Ok(())
 }
 
-pub(crate) fn percent(numerator: usize, denominator: usize) -> f64 {
-    if denominator == 0 {
-        return 0.0;
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn record(id: &str, elements: &[(&str, usize)]) -> MoleculeRecord {
+        let element_counts = elements
+            .iter()
+            .map(|(element, count)| ((*element).to_string(), *count))
+            .collect::<BTreeMap<_, _>>();
+
+        MoleculeRecord {
+            id: id.to_string(),
+            element_counts,
+            metadata: BTreeMap::new(),
+            peak_count: None,
+        }
     }
 
-    numerator as f64 / denominator as f64 * 100.0
+    #[test]
+    fn one_observation_updates_record_element_and_pair_counts() {
+        let mut profile = DatasetProfile::default();
+
+        profile.observe(&record("ns", &[("N", 1), ("S", 2)]));
+        profile.observe(&record("n", &[("N", 1)]));
+
+        assert_eq!(profile.record_count(), 2);
+        assert_eq!(profile.element_count("N"), 2);
+        assert_eq!(profile.element_count("S"), 1);
+        assert_eq!(profile.pair_count("N", "S"), 1);
+        assert_eq!(profile.pair_count("S", "N"), 1);
+        assert_eq!(profile.pair_count("N", "N"), profile.element_count("N"));
+        assert_eq!(profile.pair_counts.len(), 1);
+    }
+
+    #[test]
+    fn conditional_probability_is_column_given_row() {
+        let mut profile = DatasetProfile::default();
+
+        profile.observe(&record("ns", &[("N", 1), ("S", 1)]));
+        profile.observe(&record("n", &[("N", 1)]));
+
+        assert_eq!(profile.conditional_probability("N", "S"), 0.5);
+        assert_eq!(profile.conditional_probability("S", "N"), 1.0);
+        assert_eq!(profile.conditional_probability("F", "S"), 0.0);
+    }
+
+    #[test]
+    fn metadata_is_normalized_once_for_global_and_element_counts() {
+        let mut molecule = record("n", &[("N", 1)]);
+        molecule.metadata.insert("Class".to_string(), "A | B".to_string());
+
+        let mut profile = DatasetProfile::default();
+        profile.observe(&molecule);
+
+        assert_eq!(profile.group_value_counts["Class"]["A"], 1);
+        assert_eq!(profile.group_value_counts["Class"]["B"], 1);
+        assert_eq!(profile.elements["N"].group_value_counts["Class"]["A"], 1);
+        assert_eq!(profile.elements["N"].group_value_counts["Class"]["B"], 1);
+    }
 }

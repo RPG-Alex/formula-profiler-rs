@@ -10,8 +10,3 @@ pub struct MoleculeRecord {
     pub peak_count: Option<usize>,
 }
 
-impl MoleculeRecord {
-    pub fn atom_count(&self, element: &str) -> usize {
-        self.element_counts.get(element).copied().unwrap_or_default()
-    }
-}

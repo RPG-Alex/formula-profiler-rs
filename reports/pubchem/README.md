@@ -2,30 +2,30 @@
 
 This directory contains generated exploratory profiling reports for `pubchem`.
 
-The reports summarize element presence from molecular formula metadata and should be interpreted as dataset profiling, not direct molecular evidence.
+The reports summarize element presence from molecular formulas and should be interpreted as dataset profiling, not direct molecules evidence.
+
+Only records successfully converted into a molecular formula profile are included below; malformed or unparseable inputs are reported during dataset processing.
 
 ## Dataset facts
 
 | Metric | Value |
 |---|---:|
-| Total molecules | 123930189 |
-| Molecules with formula metadata | 123930189 |
-| Molecules without formula metadata | 0 |
+| Profiled molecules | 123930189 |
 | Observed elements | 118 |
 
 ## Dataset-level reports
 
-- [Element co-occurrence profile](cooccurrence/README.md): Contains raw and normalized atom co-occurrence heatmaps.
+- [Element co-occurrence profile](cooccurrence/README.md): Contains raw and normalized element co-occurrence heatmaps.
 
 ## Observed elements
 
-The following valid chemical elements were observed in molecular formula metadata, ordered by descending frequency.
+The following valid chemical elements were observed, ordered by descending frequency.
 
 `H`, `C`, `N`, `O`, `S`, `F`, `Cl`, `Br`, `I`, `P`, `Si`, `B`, `Na`, `Ir`, `K`, `Pt`, `Se`, `Li`, `Sn`, `Zr`, `Y`, `Al`, `Fe`, `Ti`, `Zn`, `Cu`, `Mg`, `Ni`, `Pd`, `Ca`, `Ge`, `Co`, `W`, `V`, `Ru`, `As`, `Mn`, `Cr`, `Hf`, `U`, `Te`, `Mo`, `Ag`, `Sb`, `Pb`, `Au`, `Ba`, `Bi`, `Hg`, `Rh`, `In`, `Cs`, `Ga`, `Rb`, `Re`, `Ac`, `Os`, `Sr`, `Ce`, `La`, `Cd`, `Gd`, `Nb`, `Tl`, `Ta`, `Eu`, `Nd`, `Rf`, `Ar`, `Pr`, `Tc`, `Sc`, `Sm`, `Yb`, `Be`, `Tb`, `Lu`, `Dy`, `Er`, `Fm`, `Ho`, `Th`, `Po`, `Tm`, `At`, `Lr`, `Cm`, `Xe`, `Pu`, `Np`, `He`, `Pm`, `Am`, `No`, `Es`, `Ra`, `Pa`, `Cf`, `Ne`, `Bk`, `Kr`, `Rn`, `Sg`, `Db`, `Fr`, `Md`, `Mt`, `Bh`, `Hs`, `Ds`, `Rg`, `Fl`, `Nh`, `Cn`, `Lv`, `Mc`, `Ts`, `Og`
 
 ## Top observed elements
 
-| Element | Formula count | % of formula-bearing molecules |
+| Element | Record count | % of profiled molecules |
 |---|---:|---:|
 | `H` | 123803117 | 99.90% |
 | `C` | 123718939 | 99.83% |
@@ -50,9 +50,9 @@ The following valid chemical elements were observed in molecular formula metadat
 
 ## Element reports generated in this run
 
-Each element report summarizes metadata groups for molecules whose formulas contain that element.
+Each element report summarizes metadata groups for profiled molecules whose formulas contain that element.
 
-| Element | Formula count | % of formula-bearing molecules | Report |
+| Element | Record count | % of profiled molecules | Report |
 |---|---:|---:|---|
 | `H` | 123803117 | 99.90% | [Open](./h/README.md) |
 | `C` | 123718939 | 99.83% | [Open](./c/README.md) |

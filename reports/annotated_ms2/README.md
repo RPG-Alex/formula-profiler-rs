@@ -2,30 +2,30 @@
 
 This directory contains generated exploratory profiling reports for `annotated_ms2`.
 
-The reports summarize element presence from molecular formula metadata and should be interpreted as dataset profiling, not direct spectral evidence.
+The reports summarize element presence from molecular formulas and should be interpreted as dataset profiling, not direct spectra evidence.
+
+Only records successfully converted into a molecular formula profile are included below; malformed or unparseable inputs are reported during dataset processing.
 
 ## Dataset facts
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
-| Spectra with formula metadata | 443905 |
-| Spectra without formula metadata | 0 |
+| Profiled spectra | 443905 |
 | Observed elements | 19 |
 
 ## Dataset-level reports
 
-- [Element co-occurrence profile](cooccurrence/README.md): Contains raw and normalized atom co-occurrence heatmaps.
+- [Element co-occurrence profile](cooccurrence/README.md): Contains raw and normalized element co-occurrence heatmaps.
 
 ## Observed elements
 
-The following valid chemical elements were observed in molecular formula metadata, ordered by descending frequency.
+The following valid chemical elements were observed, ordered by descending frequency.
 
 `C`, `H`, `O`, `N`, `S`, `F`, `Cl`, `P`, `Br`, `I`, `Na`, `B`, `K`, `Si`, `Se`, `As`, `Co`, `Fe`, `Mg`
 
 ## Top observed elements
 
-| Element | Formula count | % of formula-bearing spectra |
+| Element | Record count | % of profiled spectra |
 |---|---:|---:|
 | `C` | 443905 | 100.00% |
 | `H` | 443900 | 100.00% |
@@ -49,9 +49,9 @@ The following valid chemical elements were observed in molecular formula metadat
 
 ## Element reports generated in this run
 
-Each element report summarizes metadata groups for spectra whose formulas contain that element.
+Each element report summarizes metadata groups for profiled spectra whose formulas contain that element.
 
-| Element | Formula count | % of formula-bearing spectra | Report |
+| Element | Record count | % of profiled spectra | Report |
 |---|---:|---:|---|
 | `C` | 443905 | 100.00% | [Open](./c/README.md) |
 | `H` | 443900 | 100.00% | [Open](./h/README.md) |

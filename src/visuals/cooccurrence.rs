@@ -3,14 +3,14 @@ use std::path::Path;
 use plotters::prelude::*;
 
 use crate::{
-    cooccurrence::CooccurrenceProfile,
     error::Result,
+    profiler::DatasetProfile,
     visuals::common::{compact_count, figure_error},
 };
 
 pub fn write_raw_count_heatmap(
     path: impl AsRef<Path>,
-    profile: &CooccurrenceProfile,
+    profile: &DatasetProfile,
     elements: &[String],
 ) -> Result<()> {
     let values = elements
@@ -31,7 +31,7 @@ pub fn write_raw_count_heatmap(
 
 pub fn write_conditional_probability_heatmap(
     path: impl AsRef<Path>,
-    profile: &CooccurrenceProfile,
+    profile: &DatasetProfile,
     elements: &[String],
 ) -> Result<()> {
     render_heatmap(path, "P(column element | row element)", elements, |row, column| {
