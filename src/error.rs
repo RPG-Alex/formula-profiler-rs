@@ -6,9 +6,6 @@ pub type Result<T> = std::result::Result<T, FormulaProfilerError>;
 /// Errors produced by `formula-profiler-rs`.
 #[derive(Debug, thiserror::Error)]
 pub enum FormulaProfilerError {
-    /// Missing arguments
-    #[error("arguments must be provided: element name: e.g. 'F' or 'all' for all elements")]
-    MissingArguments,
     /// The requested element symbol is not a valid chemical element symbol.
     #[error(
         "invalid element symbol `{symbol}`. Expected a valid chemical element symbol, such as \
@@ -49,8 +46,4 @@ pub enum FormulaProfilerError {
         "CSV fields must contain exactly one `id` field and exactly one `smiles` field; found {id_count} `id` fields and {smiles_count} `smiles` fields"
     )]
     InvalidCsvFields { id_count: usize, smiles_count: usize },
-
-    /// Throws error for an invalid file extension for the dataset to use
-    #[error("invalid data file extension")]
-    InvalidFileExtension,
 }

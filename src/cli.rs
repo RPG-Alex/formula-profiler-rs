@@ -44,9 +44,6 @@ pub enum DatasetCommand {
     /// Process a local MGF file
     LocalMgf { path: PathBuf },
 
-    /// Process a local gzip CID/SMILES file
-    SmilesGz { path: PathBuf },
-
     /// Process a local CSV containing SMILES records
     SmilesCsv {
         path: PathBuf,
@@ -81,18 +78,15 @@ impl TryFrom<Cli> for ProfileConfig {
                 (dataset_name, DatasetSource::LocalMgf(path))
             }
 
-            DatasetCommand::SmilesGz { path } => {
-                let dataset_name = dataset_name_from_path(&path, "local_smiles");
-
-                (dataset_name, DatasetSource::LocalSmilesGz(path))
-            }
-
             DatasetCommand::SmilesCsv { path, fields, has_headers } => {
                 let dataset_name = dataset_name_from_path(&path, "local_smiles");
 
                 let data_fields = parse_data_fields(fields)?;
 
-                (dataset_name, DatasetSource::LocalSmilesCsv { path, data_fields, has_headers })
+                (
+                    dataset_name.clone(),
+                    DatasetSource::Smiles { path, data_fields, has_headers, dataset_name },
+                )
             }
         };
         let cache_dir = cache_root.join(&dataset_name);
@@ -208,7 +202,8 @@ mod tests {
         assert_eq!(config.target_selection, TargetSelection::One("Cl".to_owned()));
         assert_eq!(
             config.dataset_source,
-            DatasetSource::LocalSmilesCsv {
+            DatasetSource::Smiles {
+                dataset_name: "molecules".to_owned(),
                 path: PathBuf::from("data/molecules.csv"),
                 data_fields: vec![
                     DataField::Id,

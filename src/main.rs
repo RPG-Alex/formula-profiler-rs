@@ -37,23 +37,17 @@ async fn main() -> Result<()> {
     let mut element_profilers: BTreeMap<String, ElementProfilerState> = BTreeMap::new();
     let mut observed_all = BTreeSet::new();
 
-    process_dataset(
-        &config.dataset_name,
-        &config.dataset_source,
-        &config.cache_dir,
-        config.record_limit,
-        |record| {
-            cooccurrence.observe(&record);
-            global_stats.observe(&record);
+    process_dataset(&config.dataset_source, &config.cache_dir, config.record_limit, |record| {
+        cooccurrence.observe(&record);
+        global_stats.observe(&record);
 
-            for element in record.element_counts.keys() {
-                observed_all.insert(element.clone());
-                let profiler = element_profilers.entry(element.clone()).or_default();
-                profiler.observe_present(&record, element);
-            }
-            Ok(())
-        },
-    )
+        for element in record.element_counts.keys() {
+            observed_all.insert(element.clone());
+            let profiler = element_profilers.entry(element.clone()).or_default();
+            profiler.observe_present(&record, element);
+        }
+        Ok(())
+    })
     .await?;
 
     let target_elements: Vec<String> = match &config.target_selection {
