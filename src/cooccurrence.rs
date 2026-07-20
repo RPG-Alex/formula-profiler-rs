@@ -6,16 +6,11 @@ use std::{
 use serde::Serialize;
 
 use crate::{
-    config::DatasetSource,
-    error::Result,
-    markdown::cooccurrence::{write_cooccurrence_readme, write_dataset_index_readme},
-    records::MoleculeRecord,
-    reports::ReportPaths,
-    visuals::{write_conditional_probability_heatmap, write_raw_count_heatmap},
+    config::DatasetSource, error::Result, markdown::cooccurrence::{write_cooccurrence_readme, write_dataset_index_readme}, profiler::percent, records::MoleculeRecord, reports::ReportPaths, visuals::{write_conditional_probability_heatmap, write_raw_count_heatmap},
 };
 
 #[derive(Debug, Default)]
-pub struct CooccurrenceProfile {
+pub(crate) struct CooccurrenceProfile {
     pub total_records: usize,
     pub records_with_formula: usize,
     pub element_counts: BTreeMap<String, usize>,
@@ -23,7 +18,7 @@ pub struct CooccurrenceProfile {
 }
 
 impl CooccurrenceProfile {
-    pub fn observe(&mut self, record: &MoleculeRecord) {
+    pub(crate) fn observe(&mut self, record: &MoleculeRecord) {
         self.total_records += 1;
         self.records_with_formula += 1;
 
@@ -103,7 +98,7 @@ struct ConditionalProbabilityRow {
     conditional_probability: f64,
 }
 
-pub fn write_cooccurrence_reports(
+pub(crate) fn write_cooccurrence_reports(
     dataset_name: &str,
     profile: &CooccurrenceProfile,
     reports: &ReportPaths,
@@ -219,13 +214,7 @@ fn write_conditional_probability_csv(
     Ok(())
 }
 
-pub(crate) fn percent(numerator: usize, denominator: usize) -> f64 {
-    if denominator == 0 {
-        return 0.0;
-    }
 
-    numerator as f64 / denominator as f64 * 100.0
-}
 
 #[cfg(test)]
 mod tests {

@@ -2,26 +2,22 @@ use std::collections::BTreeMap;
 
 use serde::Serialize;
 
-use crate::{
-    error::Result,
-    population::{
+use crate::{ error::Result, population::{
         PopulationMap, PopulationStats, clean_group_value, split_pipe, summarize_population_map,
         write_population_map_csv,
-    },
-    records::MoleculeRecord,
-    reports::ReportPaths,
-    visuals::{write_atom_count_distribution_figure, write_standard_population_figures},
+    }, records::MoleculeRecord, reports::ReportPaths, visuals::{write_atom_count_distribution_figure, write_standard_population_figures},
 };
 
+
 #[derive(Debug, Default)]
-pub struct GlobalDatasetStats {
+pub(crate) struct GlobalDatasetStats {
     pub total_records: usize,
     pub records_with_formula: usize,
     pub group_value_totals: BTreeMap<String, BTreeMap<String, usize>>,
 }
 
 impl GlobalDatasetStats {
-    pub fn observe(&mut self, record: &MoleculeRecord) {
+    pub(crate) fn observe(&mut self, record: &MoleculeRecord) {
         self.total_records += 1;
         self.records_with_formula += 1;
 
@@ -39,14 +35,14 @@ impl GlobalDatasetStats {
 }
 
 #[derive(Debug, Default)]
-pub struct ElementProfilerState {
+pub(crate) struct ElementProfilerState {
     pub records_with_target_element: usize,
     pub target_atom_count_distribution: BTreeMap<usize, usize>,
     pub group_value_target_counts: BTreeMap<String, BTreeMap<String, usize>>,
 }
 
 impl ElementProfilerState {
-    pub fn observe_present(&mut self, record: &MoleculeRecord, target_element: &str) {
+    pub(crate) fn observe_present(&mut self, record: &MoleculeRecord, target_element: &str) {
         self.records_with_target_element += 1;
 
         let count = record.atom_count(target_element);
@@ -64,7 +60,7 @@ impl ElementProfilerState {
         }
     }
 
-    pub fn write_reports(
+    pub(crate) fn write_reports(
         &self,
         target_element: &str,
         global: &GlobalDatasetStats,
@@ -210,7 +206,7 @@ fn write_atom_count_distribution_csv(
     Ok(())
 }
 
-fn percent(numerator: usize, denominator: usize) -> f64 {
+pub(crate) fn percent(numerator: usize, denominator: usize) -> f64 {
     if denominator == 0 {
         return 0.0;
     }

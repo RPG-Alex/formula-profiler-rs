@@ -1,10 +1,7 @@
 use std::{fs::File, io::Write, path::Path};
 
 use crate::{
-    config::DatasetSource,
-    cooccurrence::{CooccurrenceProfile, percent},
-    error::Result,
-    reports::ReportPaths,
+    config::DatasetSource, cooccurrence::CooccurrenceProfile, error::Result, profiler::percent, reports::ReportPaths,
 };
 
 pub(crate) fn write_dataset_index_readme(
