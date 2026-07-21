@@ -45,7 +45,10 @@ pub enum DatasetCommand {
     LocalMgf { path: PathBuf },
 
     /// Process a local CSV containing SMILES records
+    #[command(name = "smiles-csv")]
     SmilesCsv {
+        /// The location of the smiles file to be added
+        #[arg(long)]
         path: PathBuf,
 
         /// Column labels, written in order - `id` and `smiles` are required
