@@ -41,7 +41,6 @@ invalid_codeblock_attributes = "forbid"
 invalid_html_tags = "forbid"
 
 [lints.clippy]
-clone_on_copy = "forbid"
 duplicated_attributes = "forbid"
 uninlined_format_args = "deny"
 wildcard_imports = "deny"
