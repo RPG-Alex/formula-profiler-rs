@@ -25,21 +25,6 @@ pub enum DatasetSource {
     Smiles { path: PathBuf, data_fields: Vec<DataField>, has_headers: bool, dataset_name: String },
 }
 
-#[derive(Debug, Clone)]
-pub(crate) enum RecordKind {
-    Spectrum,
-    Molecule,
-}
-
-impl DatasetSource {
-    pub(crate) fn record_kind(&self) -> RecordKind {
-        match self {
-            Self::AnnotatedMs2 | Self::LocalMgf(_) => RecordKind::Spectrum,
-            Self::PubChemSmiles | Self::Smiles { .. } => RecordKind::Molecule,
-        }
-    }
-}
-
 #[derive(Debug, PartialEq, Clone)]
 pub enum TargetSelection {
     One(String),

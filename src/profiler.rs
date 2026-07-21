@@ -18,16 +18,20 @@ use crate::{
 pub(crate) struct DatasetProfile {
     /// Number of records successfully added to the profile.
     record_count: usize,
-    /// Metadata value counts, key: metadata group, value: counts for each value.
+    /// Metadata value counts, key: metadata group, value: counts for each
+    /// value.
     group_value_counts: BTreeMap<String, BTreeMap<String, usize>>,
-    /// Profiles for observed elements, key: element symbol, value: element profile.
+    /// Profiles for observed elements, key: element symbol, value: element
+    /// profile.
     elements: BTreeMap<String, ElementProfile>,
-    /// Counts for co-occurring elements, key: element-symbol pair, value: record count.
+    /// Counts for co-occurring elements, key: element-symbol pair, value:
+    /// record count.
     pair_counts: BTreeMap<(String, String), usize>,
 }
 
 impl DatasetProfile {
-    /// Records one accepted molecule once and updates every derived profile from it.
+    /// Records one accepted molecule once and updates every derived profile
+    /// from it.
     pub(crate) fn observe(&mut self, record: &MoleculeRecord) {
         self.record_count += 1;
 
@@ -83,7 +87,11 @@ impl DatasetProfile {
         elements.into_iter().map(|(element, _)| element).collect()
     }
 
-    pub(crate) fn write_element_reports(&self, target_element: &str, reports: &ReportPaths) -> Result<()> {
+    pub(crate) fn write_element_reports(
+        &self,
+        target_element: &str,
+        reports: &ReportPaths,
+    ) -> Result<()> {
         let empty_profile = ElementProfile::default();
         let element = self.elements.get(target_element).unwrap_or(&empty_profile);
 
@@ -288,26 +296,21 @@ fn write_atom_count_distribution_csv(
 mod tests {
     use super::*;
 
-    fn record(id: &str, elements: &[(&str, usize)]) -> MoleculeRecord {
+    fn record(elements: &[(&str, usize)]) -> MoleculeRecord {
         let element_counts = elements
             .iter()
             .map(|(element, count)| ((*element).to_string(), *count))
             .collect::<BTreeMap<_, _>>();
 
-        MoleculeRecord {
-            id: id.to_string(),
-            element_counts,
-            metadata: BTreeMap::new(),
-            peak_count: None,
-        }
+        MoleculeRecord { element_counts, metadata: BTreeMap::new() }
     }
 
     #[test]
     fn one_observation_updates_record_element_and_pair_counts() {
         let mut profile = DatasetProfile::default();
 
-        profile.observe(&record("ns", &[("N", 1), ("S", 2)]));
-        profile.observe(&record("n", &[("N", 1)]));
+        profile.observe(&record(&[("N", 1), ("S", 2)]));
+        profile.observe(&record(&[("N", 1)]));
 
         assert_eq!(profile.record_count(), 2);
         assert_eq!(profile.element_count("N"), 2);
@@ -322,8 +325,8 @@ mod tests {
     fn conditional_probability_is_column_given_row() {
         let mut profile = DatasetProfile::default();
 
-        profile.observe(&record("ns", &[("N", 1), ("S", 1)]));
-        profile.observe(&record("n", &[("N", 1)]));
+        profile.observe(&record(&[("N", 1), ("S", 1)]));
+        profile.observe(&record(&[("N", 1)]));
 
         assert_eq!(profile.conditional_probability("N", "S"), 0.5);
         assert_eq!(profile.conditional_probability("S", "N"), 1.0);
@@ -332,7 +335,7 @@ mod tests {
 
     #[test]
     fn metadata_is_normalized_once_for_global_and_element_counts() {
-        let mut molecule = record("n", &[("N", 1)]);
+        let mut molecule = record(&[("N", 1)]);
         molecule.metadata.insert("Class".to_string(), "A | B".to_string());
 
         let mut profile = DatasetProfile::default();

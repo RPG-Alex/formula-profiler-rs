@@ -5,14 +5,14 @@ use std::{
 };
 
 #[derive(Debug, Clone)]
-pub struct ReportPaths {
+pub(crate) struct ReportPaths {
     pub root: PathBuf,
     pub tables: PathBuf,
     pub figures: PathBuf,
 }
 
 impl ReportPaths {
-    pub fn prepare(root: impl AsRef<Path>) -> std::io::Result<Self> {
+    pub(crate) fn prepare(root: impl AsRef<Path>) -> std::io::Result<Self> {
         let root = root.as_ref().to_path_buf();
         let tables = root.join("tables");
         let figures = root.join("figures");
@@ -23,15 +23,15 @@ impl ReportPaths {
         Ok(Self { root, tables, figures })
     }
 
-    pub fn table(&self, filename: &str) -> PathBuf {
+    pub(crate) fn table(&self, filename: &str) -> PathBuf {
         self.tables.join(filename)
     }
 
-    pub fn figure(&self, filename: &str) -> PathBuf {
+    pub(crate) fn figure(&self, filename: &str) -> PathBuf {
         self.figures.join(filename)
     }
 
-    pub fn readme(&self) -> PathBuf {
+    pub(crate) fn readme(&self) -> PathBuf {
         self.root.join("README.md")
     }
 }
@@ -41,7 +41,7 @@ impl ReportPaths {
 /// # Parameters
 /// - `reports_dir`: Directory containing generated dataset report folders.
 /// - `index_path`: Path to the top-level reports index file.
-pub fn write_reports_index(
+pub(crate) fn write_reports_index(
     reports_dir: impl AsRef<Path>,
     index_path: impl AsRef<Path>,
 ) -> std::io::Result<()> {

@@ -77,16 +77,13 @@ where
             continue;
         }
 
-        let mut id = None;
         let mut smiles_text = None;
         let mut metadata = BTreeMap::new();
         metadata.insert("Source dataset".to_string(), dataset_name.to_string());
 
         for (data_field, value) in data_fields.iter().zip(record.iter()) {
             match data_field {
-                DataField::Id => {
-                    id = Some(value);
-                }
+                DataField::Id => {}
                 DataField::Smiles => {
                     smiles_text = Some(value);
                 }
@@ -96,18 +93,12 @@ where
             }
         }
 
-        let Some(id) = id.filter(|value| !value.is_empty()) else {
-            skipped += 1;
-            continue;
-        };
         let Some(smiles_text) = smiles_text.filter(|value| !value.is_empty()) else {
             skipped += 1;
             continue;
         };
 
-        let Some(molecule_record) =
-            molecule_record_from_smiles(id.to_string(), smiles_text, metadata)
-        else {
+        let Some(molecule_record) = molecule_record_from_smiles(smiles_text, metadata) else {
             skipped += 1;
             continue;
         };
@@ -122,19 +113,13 @@ where
 }
 
 fn molecule_record_from_smiles(
-    id: String,
     smiles_text: &str,
     metadata: BTreeMap<String, String>,
 ) -> Option<MoleculeRecord> {
     let smiles = smiles_text.parse::<Smiles>().ok()?;
     let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(&smiles);
 
-    Some(MoleculeRecord {
-        id,
-        element_counts: element_counts_in_formula(&formula),
-        metadata,
-        peak_count: None,
-    })
+    Some(MoleculeRecord { element_counts: element_counts_in_formula(&formula), metadata })
 }
 
 fn open_smiles_reader(path: &Path) -> Result<Box<dyn Read>> {
@@ -165,8 +150,8 @@ where
     println!("Skipped {} malformed records", loaded.skipped_records());
     println!("Dataset path: {}", loaded.path().display());
 
-    for (index, record) in loaded.into_spectra().into_iter().enumerate().take(record_limit) {
-        if let Some(mol_record) = extract_mgf_record(index, &record) {
+    for record in loaded.into_spectra().into_iter().take(record_limit) {
+        if let Some(mol_record) = extract_mgf_record(&record) {
             on_record(mol_record)?;
         }
     }
@@ -180,15 +165,15 @@ where
     let spectra = MGFVec::<f64>::from_path(path)
         .map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
 
-    for (index, record) in spectra.into_iter().enumerate().take(record_limit) {
-        if let Some(mol_record) = extract_mgf_record(index, &record) {
+    for record in spectra.into_iter().take(record_limit) {
+        if let Some(mol_record) = extract_mgf_record(&record) {
             on_record(mol_record)?;
         }
     }
     Ok(())
 }
 
-fn extract_mgf_record(index: usize, record: &MascotGenericFormat<f64>) -> Option<MoleculeRecord> {
+fn extract_mgf_record(record: &MascotGenericFormat<f64>) -> Option<MoleculeRecord> {
     let formula = record.metadata().formula()?;
     let metadata = record.metadata();
     let mut groups = BTreeMap::new();
@@ -203,15 +188,7 @@ fn extract_mgf_record(index: usize, record: &MascotGenericFormat<f64>) -> Option
     groups
         .insert("Source instrument".to_string(), optional_debug_label(record.source_instrument()));
 
-    Some(MoleculeRecord {
-        id: record
-            .feature_id()
-            .map(ToString::to_string)
-            .unwrap_or_else(|| format!("record-{index}")),
-        element_counts: element_counts_in_formula(formula),
-        metadata: groups,
-        peak_count: Some(record.len()),
-    })
+    Some(MoleculeRecord { element_counts: element_counts_in_formula(formula), metadata: groups })
 }
 
 fn process_pubchem_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record: F) -> Result<()>
@@ -252,10 +229,8 @@ where
         metadata.insert("Source dataset".to_string(), "PubChem".to_string());
 
         on_record(MoleculeRecord {
-            id: record.id().to_string(),
             element_counts: element_counts_in_formula(&formula),
             metadata,
-            peak_count: None,
         })?;
         processed += 1;
     }
