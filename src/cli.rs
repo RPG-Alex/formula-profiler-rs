@@ -147,16 +147,38 @@ fn dataset_name_from_path(path: &Path, fallback: &str) -> String {
 
 #[cfg(test)]
 mod tests {
+    use std::fs;
+
+    use tempfile::TempDir;
+
     use super::*;
+    // helper for tmp file creation for testing
+    fn molecule_csv_fixture() -> (TempDir, PathBuf) {
+        let temp_dir = tempfile::tempdir().expect("failed to create temporary test directory");
+        let path = temp_dir.path().join("molecules.csv");
+
+        fs::write(
+            &path,
+            "id,smiles,class\n\
+         1,CCO,alcohol\n\
+         2,CCCl,halogen\n",
+        )
+        .expect("failed to write temporary molecule CSV");
+
+        (temp_dir, path)
+    }
 
     #[test]
     fn parses_smiles_csv_command() {
+        let (_tmp_dir, path) = molecule_csv_fixture();
+        let path = path.to_str().expect("temp path should be utf");
         let cli = Cli::try_parse_from([
             "spectra-profiler-rs",
             "--target",
             "all",
             "smiles-csv",
-            "data/molecules.csv",
+            "--path",
+            path,
             "--fields",
             "id",
             "smiles",
@@ -172,7 +194,7 @@ mod tests {
         assert_eq!(
             cli.dataset,
             DatasetCommand::SmilesCsv {
-                path: PathBuf::from("data/molecules.csv"),
+                path: PathBuf::from(path),
                 fields: vec!["id".to_owned(), "smiles".to_owned(), "class".to_owned()],
                 has_headers: true
             }
@@ -181,6 +203,8 @@ mod tests {
 
     #[test]
     fn converts_smiles_csv_command_into_profile_config() {
+        let (_tmp_dir, path) = molecule_csv_fixture();
+        let path = path.to_str().expect("temp path should be utf");
         let cli = Cli::try_parse_from([
             "spectra-profiler-rs",
             "--target",
@@ -188,7 +212,8 @@ mod tests {
             "--limit",
             "1000",
             "smiles-csv",
-            "data/molecules.csv",
+            "--path",
+            path,
             "--fields",
             "id",
             "smiles",
@@ -207,7 +232,7 @@ mod tests {
             config.dataset_source,
             DatasetSource::Smiles {
                 dataset_name: "molecules".to_owned(),
-                path: PathBuf::from("data/molecules.csv"),
+                path: PathBuf::from(path),
                 data_fields: vec![
                     DataField::Id,
                     DataField::Smiles,
@@ -220,12 +245,15 @@ mod tests {
 
     #[test]
     fn reject_csv_without_smiles_field() {
+        let (_tmp_dir, path) = molecule_csv_fixture();
+        let path = path.to_str().expect("temp path should be utf");
         let cli = Cli::try_parse_from([
             "spectra-profiler-rs",
             "--target",
             "F",
             "smiles-csv",
-            "data/molecules.csv",
+            "--path",
+            path,
             "--fields",
             "id",
             "class",
