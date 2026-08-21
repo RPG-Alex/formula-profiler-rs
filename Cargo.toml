@@ -24,6 +24,7 @@ tokio = { version = "1.52.3", features = ["macros", "rt-multi-thread"] }
 smiles-parser = { git = "https://github.com/earth-metabolome-initiative/smiles-parser", features = ["datasets"] }
 flate2 = "1.1.9"
 indicatif = "0.18.4"
+clap = { version = "4.6.1", features = ["derive"] }
 
 [lints.rust]
 unused_macro_rules = "forbid"
@@ -40,7 +41,6 @@ invalid_codeblock_attributes = "forbid"
 invalid_html_tags = "forbid"
 
 [lints.clippy]
-clone_on_copy = "forbid"
 duplicated_attributes = "forbid"
 uninlined_format_args = "deny"
 wildcard_imports = "deny"

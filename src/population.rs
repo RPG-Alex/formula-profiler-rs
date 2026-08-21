@@ -105,7 +105,7 @@ pub fn clean_group_value(value: &str) -> String {
     if value.is_empty() || value == "None" { "UNKNOWN".to_string() } else { value.to_string() }
 }
 
-fn percent(numerator: usize, denominator: usize) -> f64 {
+pub(crate) fn percent(numerator: usize, denominator: usize) -> f64 {
     if denominator == 0 {
         return 0.0;
     }

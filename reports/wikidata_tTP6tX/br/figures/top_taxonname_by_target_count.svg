@@ -1,0 +1,163 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="1400" height="900" opacity="1" fill="#FFFFFF" stroke="none"/>
+<text x="700" y="30" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="24.193548387096776" opacity="1" fill="#000000">
+Br by taxonName: Top groups by target count
+</text>
+<text x="840" y="875" dy="-0.5ex" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+Target-positive records
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="304,60 304,814 "/>
+<text x="295" y="814" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Synoicum
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,814 304,814 "/>
+<text x="295" y="764" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Laurencia majuscula
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,764 304,764 "/>
+<text x="295" y="714" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Sphaerococcus coronopifolius
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,714 304,714 "/>
+<text x="295" y="664" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Delisea pulchra
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,664 304,664 "/>
+<text x="295" y="613" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Rhodomela confervoides
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,613 304,613 "/>
+<text x="295" y="563" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Plocamium cartilagineum
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,563 304,563 "/>
+<text x="295" y="513" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Portieria hornemannii
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,513 304,513 "/>
+<text x="295" y="463" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Ianthella basta
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,463 304,463 "/>
+<text x="295" y="412" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Xestospongia testudinaria
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,412 304,412 "/>
+<text x="295" y="362" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Laurencia
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,362 304,362 "/>
+<text x="295" y="312" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Laurencia nipponica
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,312 304,312 "/>
+<text x="295" y="262" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Aplysia dactylomela
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,262 304,262 "/>
+<text x="295" y="211" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Pseudoceratina purpurea
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,211 304,211 "/>
+<text x="295" y="161" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Laurencia obtusa
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,161 304,161 "/>
+<text x="295" y="111" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+Laurencia dendroidea
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,111 304,111 "/>
+<text x="295" y="60" dy="0.5ex" text-anchor="end" font-family="sans-serif" font-size="14.516129032258064" opacity="1" fill="#000000">
+
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="299,60 304,60 "/>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="305,815 1374,815 "/>
+<text x="305" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+0.0
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="305,815 305,820 "/>
+<text x="460" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+50.0
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="460,815 460,820 "/>
+<text x="615" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+100.0
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="615,815 615,820 "/>
+<text x="771" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+150.0
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="771,815 771,820 "/>
+<text x="926" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+200.0
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="926,815 926,820 "/>
+<text x="1082" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+250.0
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1082,815 1082,820 "/>
+<text x="1237" y="825" dy="0.76em" text-anchor="middle" font-family="sans-serif" font-size="9.67741935483871" opacity="1" fill="#000000">
+300.0
+</text>
+<polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1237,815 1237,820 "/>
+<rect x="305" y="764" width="130" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="444" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+42 (85.71%)
+</text>
+<rect x="305" y="714" width="146" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="460" y="764" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+47 (83.93%)
+</text>
+<rect x="305" y="664" width="149" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="463" y="714" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+48 (80.00%)
+</text>
+<rect x="305" y="613" width="161" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="475" y="664" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+52 (98.11%)
+</text>
+<rect x="305" y="563" width="180" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="494" y="613" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+58 (100.00%)
+</text>
+<rect x="305" y="513" width="186" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="500" y="563" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+60 (73.17%)
+</text>
+<rect x="305" y="463" width="202" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="516" y="513" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+65 (62.50%)
+</text>
+<rect x="305" y="412" width="220" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="535" y="463" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+71 (100.00%)
+</text>
+<rect x="305" y="362" width="245" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="559" y="412" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+79 (75.96%)
+</text>
+<rect x="305" y="312" width="251" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="566" y="362" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+81 (84.38%)
+</text>
+<rect x="305" y="262" width="292" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="606" y="312" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+94 (69.63%)
+</text>
+<rect x="305" y="211" width="301" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="615" y="262" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+97 (86.61%)
+</text>
+<rect x="305" y="161" width="348" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="662" y="211" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+112 (92.56%)
+</text>
+<rect x="305" y="111" width="544" height="50" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="858" y="161" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+175 (75.76%)
+</text>
+<rect x="305" y="60" width="929" height="51" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="1243" y="111" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+299 (77.46%)
+</text>
+</svg>

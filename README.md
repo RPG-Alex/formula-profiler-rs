@@ -6,37 +6,67 @@ This project is intended to support careful dataset inspection before training m
 
 ## Dataset sources
 
-By default, this tool uses the `annotated_ms2` dataset exposed by [`mascot-rs`](https://github.com/earth-metabolome-initiative/mascot-rs).
-
-Local datasets are also supported.
+Datasets that are supported:
+- `annotated_ms2` MS/MS dataset exposed by [`mascot-rs`](https://github.com/earth-metabolome-initiative/mascot-rs).
+- `pubchem` dataset available from [PubChem](https://pubchem.ncbi.nlm.nih.gov/docs/downloads)
+- `local-mgf` for a local MGF files
+- `smiles-csv` for a local CSV file containing SMILES records (can specify CSV fields)
 
 ## Usage
 
-### Profile one element
-
-The element symbol is normalized automatically, so these are equivalent:
+The general command format is:
 
 ```bash
-cargo run --release -- f
-cargo run --release -- F
+cargo run --release -- --target <ELEMENT> <DATASET>
 ```
 
-### Profile all observed elements
+Use an element symbol such as `F` or `Cl`, or use `all` to profile every observed element.
 
-Profile every observed element in the default dataset:
+### Profile annotated MS/MS data
 
 ```bash
-cargo run --release -- all
+cargo run --release -- --target F annotated
 ```
 
-This generates one report directory per observed element.
+### Profile PubChem
+
+```bash
+cargo run --release -- --target all pubchem
+```
 
 ### Profile a local MGF file
 
-Profile all observed elements in a local MGF file:
+```bash
+cargo run --release -- --target all local-mgf path/to/local_file.mgf
+```
+
+### Profile a local SMILES CSV
+
+Provide the CSV path followed by the column labels in their actual file order:
 
 ```bash
-cargo run --release -- all path/to/local_file.mgf
+cargo run --release -- \
+  --target all \
+  smiles-csv path/to/molecules.csv \
+  --fields id smiles class \
+  --has-headers
+```
+
+The `--fields` values must describe every CSV column in order. Exactly one `id` field and one `smiles` field are required.
+
+Omit `--has-headers` when the first row contains data rather than column headers.
+
+### Limit the number of records
+
+```bash
+cargo run --release -- --target F --limit 1000 pubchem
+```
+
+### View command help
+
+```bash
+cargo run --release -- --help
+cargo run --release -- smiles-csv --help
 ```
 
 # Reports

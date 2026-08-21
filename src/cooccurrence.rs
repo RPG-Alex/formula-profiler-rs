@@ -1,7 +1,4 @@
-use std::{
-    collections::{BTreeMap, BTreeSet},
-    path::Path,
-};
+use std::path::Path;
 
 use serde::Serialize;
 
@@ -9,76 +6,11 @@ use crate::{
     config::DatasetSource,
     error::Result,
     markdown::cooccurrence::{write_cooccurrence_readme, write_dataset_index_readme},
-    records::MoleculeRecord,
+    population::percent,
+    profiler::DatasetProfile,
     reports::ReportPaths,
     visuals::{write_conditional_probability_heatmap, write_raw_count_heatmap},
 };
-
-#[derive(Debug, Default)]
-pub struct CooccurrenceProfile {
-    pub total_records: usize,
-    pub records_with_formula: usize,
-    pub element_counts: BTreeMap<String, usize>,
-    pub pair_counts: BTreeMap<(String, String), usize>,
-}
-
-impl CooccurrenceProfile {
-    pub fn observe(&mut self, record: &MoleculeRecord) {
-        self.total_records += 1;
-        self.records_with_formula += 1;
-
-        let elements: BTreeSet<String> = record.element_counts.keys().cloned().collect();
-        self.observe_elements(&elements);
-    }
-
-    fn observe_elements(&mut self, elements: &BTreeSet<String>) {
-        for element in elements {
-            *self.element_counts.entry(element.clone()).or_default() += 1;
-        }
-
-        for row_element in elements {
-            for column_element in elements {
-                *self
-                    .pair_counts
-                    .entry((row_element.clone(), column_element.clone()))
-                    .or_default() += 1;
-            }
-        }
-    }
-
-    pub(crate) fn element_count(&self, element: &str) -> usize {
-        self.element_counts.get(element).copied().unwrap_or_default()
-    }
-
-    pub(crate) fn pair_count(&self, row_element: &str, column_element: &str) -> usize {
-        self.pair_counts
-            .get(&(row_element.to_string(), column_element.to_string()))
-            .copied()
-            .unwrap_or_default()
-    }
-
-    pub(crate) fn conditional_probability(&self, row_element: &str, column_element: &str) -> f64 {
-        let row_count = self.element_count(row_element);
-
-        if row_count == 0 {
-            return 0.0;
-        }
-
-        self.pair_count(row_element, column_element) as f64 / row_count as f64
-    }
-
-    fn heatmap_elements(&self) -> Vec<String> {
-        let mut elements = self
-            .element_counts
-            .iter()
-            .map(|(element, count)| (element.clone(), *count))
-            .collect::<Vec<_>>();
-
-        elements.sort_by(|left, right| right.1.cmp(&left.1).then_with(|| left.0.cmp(&right.0)));
-
-        elements.into_iter().map(|(element, _)| element).collect()
-    }
-}
 
 #[derive(Debug, Serialize)]
 struct ElementCountRow {
@@ -105,7 +37,7 @@ struct ConditionalProbabilityRow {
 
 pub fn write_cooccurrence_reports(
     dataset_name: &str,
-    profile: &CooccurrenceProfile,
+    profile: &DatasetProfile,
     reports: &ReportPaths,
     dataset_reports_root: impl AsRef<Path>,
     reported_elements: &[String],
@@ -143,27 +75,17 @@ pub fn write_cooccurrence_reports(
     Ok(())
 }
 
-fn write_element_counts_csv(profile: &CooccurrenceProfile, reports: &ReportPaths) -> Result<()> {
+fn write_element_counts_csv(profile: &DatasetProfile, reports: &ReportPaths) -> Result<()> {
     let mut writer = csv::Writer::from_path(reports.table("element_counts.csv"))?;
 
-    let mut rows = profile
-        .element_counts
-        .iter()
-        .map(|(element, count)| {
-            ElementCountRow {
-                element: element.clone(),
-                count: *count,
-                percent_of_records: percent(*count, profile.records_with_formula),
-            }
-        })
-        .collect::<Vec<_>>();
+    for element in profile.heatmap_elements() {
+        let count = profile.element_count(&element);
 
-    rows.sort_by(|left, right| {
-        right.count.cmp(&left.count).then_with(|| left.element.cmp(&right.element))
-    });
-
-    for row in rows {
-        writer.serialize(row)?;
+        writer.serialize(ElementCountRow {
+            element,
+            count,
+            percent_of_records: percent(count, profile.record_count()),
+        })?;
     }
 
     writer.flush()?;
@@ -171,12 +93,9 @@ fn write_element_counts_csv(profile: &CooccurrenceProfile, reports: &ReportPaths
     Ok(())
 }
 
-fn write_cooccurrence_counts_csv(
-    profile: &CooccurrenceProfile,
-    reports: &ReportPaths,
-) -> Result<()> {
+fn write_cooccurrence_counts_csv(profile: &DatasetProfile, reports: &ReportPaths) -> Result<()> {
     let mut writer = csv::Writer::from_path(reports.table("element_cooccurrence_counts.csv"))?;
-    let elements = profile.element_counts.keys().cloned().collect::<Vec<_>>();
+    let elements = profile.observed_elements();
 
     for row_element in &elements {
         for column_element in &elements {
@@ -194,12 +113,12 @@ fn write_cooccurrence_counts_csv(
 }
 
 fn write_conditional_probability_csv(
-    profile: &CooccurrenceProfile,
+    profile: &DatasetProfile,
     reports: &ReportPaths,
 ) -> Result<()> {
     let mut writer =
         csv::Writer::from_path(reports.table("element_cooccurrence_conditional_probability.csv"))?;
-    let elements = profile.element_counts.keys().cloned().collect::<Vec<_>>();
+    let elements = profile.observed_elements();
 
     for row_element in &elements {
         for column_element in &elements {
@@ -217,65 +136,4 @@ fn write_conditional_probability_csv(
     writer.flush()?;
 
     Ok(())
-}
-
-pub(crate) fn percent(numerator: usize, denominator: usize) -> f64 {
-    if denominator == 0 {
-        return 0.0;
-    }
-
-    numerator as f64 / denominator as f64 * 100.0
-}
-
-#[cfg(test)]
-mod tests {
-    use std::collections::BTreeMap;
-
-    use super::*;
-    use crate::records::MoleculeRecord;
-
-    fn record(id: &str, elements: &[&str]) -> MoleculeRecord {
-        let element_counts = elements
-            .iter()
-            .map(|element| ((*element).to_string(), 1usize))
-            .collect::<BTreeMap<_, _>>();
-
-        MoleculeRecord {
-            id: id.to_string(),
-            element_counts,
-            metadata: BTreeMap::new(),
-            peak_count: None,
-        }
-    }
-
-    #[test]
-    fn cooccurrence_counts_are_symmetric_and_diagonal_matches_element_count() {
-        let mut profile = CooccurrenceProfile::default();
-
-        profile.observe(&record("ns", &["N", "S"]));
-        profile.observe(&record("n", &["N"]));
-
-        assert_eq!(profile.pair_count("N", "S"), 1);
-        assert_eq!(profile.pair_count("S", "N"), 1);
-        assert_eq!(profile.pair_count("N", "N"), profile.element_count("N"));
-        assert_eq!(profile.pair_count("S", "S"), profile.element_count("S"));
-    }
-
-    #[test]
-    fn conditional_probability_is_column_given_row() {
-        let mut profile = CooccurrenceProfile::default();
-
-        profile.observe(&record("ns", &["N", "S"]));
-        profile.observe(&record("n", &["N"]));
-
-        assert_eq!(profile.conditional_probability("N", "S"), 0.5);
-        assert_eq!(profile.conditional_probability("S", "N"), 1.0);
-    }
-
-    #[test]
-    fn conditional_probability_handles_zero_denominator() {
-        let profile = CooccurrenceProfile::default();
-
-        assert_eq!(profile.conditional_probability("F", "S"), 0.0);
-    }
 }

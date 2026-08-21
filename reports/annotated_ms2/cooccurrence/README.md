@@ -6,8 +6,7 @@ This report summarizes which chemical elements appear together in molecular form
 
 | Metric | Value |
 |---|---:|
-| Total spectra | 443905 |
-| Spectra with formula | 443905 |
+| Profiled spectra | 443905 |
 | Observed elements | 19 |
 
 Heatmap elements shown: `C`, `H`, `O`, `N`, `S`, `F`, `Cl`, `P`, `Br`, `I`, `Na`, `B`, `K`, `Si`, `Se`, `As`, `Co`, `Fe`, `Mg`.

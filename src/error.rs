@@ -6,9 +6,6 @@ pub type Result<T> = std::result::Result<T, FormulaProfilerError>;
 /// Errors produced by `formula-profiler-rs`.
 #[derive(Debug, thiserror::Error)]
 pub enum FormulaProfilerError {
-    /// Missing arguments
-    #[error("arguments must be provided: element name: e.g. 'F' or 'all' for all elements")]
-    MissingArguments,
     /// The requested element symbol is not a valid chemical element symbol.
     #[error(
         "invalid element symbol `{symbol}`. Expected a valid chemical element symbol, such as \
@@ -42,4 +39,11 @@ pub enum FormulaProfilerError {
     /// Figure generation failed.
     #[error("failed to render figure: {message}")]
     FigureGeneration { message: String },
+
+    /// The positional CSV field declaration is missing required fields or
+    /// contains duplicate required fields.
+    #[error(
+        "CSV fields must contain exactly one `id` field and exactly one `smiles` field; found {id_count} `id` fields and {smiles_count} `smiles` fields"
+    )]
+    InvalidCsvFields { id_count: usize, smiles_count: usize },
 }

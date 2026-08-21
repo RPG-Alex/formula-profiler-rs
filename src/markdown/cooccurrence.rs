@@ -1,20 +1,19 @@
 use std::{fs::File, io::Write, path::Path};
 
 use crate::{
-    config::DatasetSource,
-    cooccurrence::{CooccurrenceProfile, percent},
-    error::Result,
+    config::DatasetSource, error::Result, population::percent, profiler::DatasetProfile,
     reports::ReportPaths,
 };
 
 pub(crate) fn write_dataset_index_readme(
     dataset_name: &str,
     dataset_reports_root: impl AsRef<Path>,
-    profile: &CooccurrenceProfile,
+    profile: &DatasetProfile,
     observed_elements: &[String],
     reported_elements: &[String],
     source: &DatasetSource,
 ) -> Result<()> {
+    let unit = record_unit(source);
     let readme_path = dataset_reports_root.as_ref().join("README.md");
     let mut file = File::create(readme_path)?;
 
@@ -25,163 +24,80 @@ pub(crate) fn write_dataset_index_readme(
         "This directory contains generated exploratory profiling reports for `{dataset_name}`."
     )?;
     writeln!(file)?;
+    writeln!(
+        file,
+        "The reports summarize element presence from molecular formulas and should be interpreted as dataset profiling, not direct {unit} evidence."
+    )?;
+    writeln!(file)?;
+    writeln!(
+        file,
+        "Only records successfully converted into a molecular formula profile are included below; malformed or unparseable inputs are reported during dataset processing."
+    )?;
 
-    match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => {
-            writeln!(
-                file,
-                "The reports summarize element presence from molecular formula metadata and should be \
-             interpreted as dataset profiling, not direct spectral evidence."
-            )?;
+    writeln!(file)?;
+    writeln!(file, "## Dataset facts")?;
+    writeln!(file)?;
+    writeln!(file, "| Metric | Value |")?;
+    writeln!(file, "|---|---:|")?;
+    writeln!(file, "| Profiled {unit} | {} |", profile.record_count())?;
+    writeln!(file, "| Observed elements | {} |", profile.observed_element_count())?;
 
-            writeln!(file)?;
-            writeln!(file, "## Dataset facts")?;
-            writeln!(file)?;
-            writeln!(file, "| Metric | Value |")?;
-            writeln!(file, "|---|---:|")?;
-            writeln!(file, "| Total spectra | {} |", profile.total_records)?;
-            writeln!(file, "| Spectra with formula metadata | {} |", profile.records_with_formula)?;
-            writeln!(
-                file,
-                "| Spectra without formula metadata | {} |",
-                profile.total_records.saturating_sub(profile.records_with_formula)
-            )?;
-            writeln!(file, "| Observed elements | {} |", profile.element_counts.len())?;
+    writeln!(file)?;
+    writeln!(file, "## Dataset-level reports")?;
+    writeln!(file)?;
+    writeln!(
+        file,
+        "- [Element co-occurrence profile](cooccurrence/README.md): Contains raw and normalized element co-occurrence heatmaps."
+    )?;
 
-            writeln!(file)?;
-            writeln!(file, "## Dataset-level reports")?;
-            writeln!(file)?;
-            writeln!(
-                file,
-                "- [Element co-occurrence profile](cooccurrence/README.md): Contains raw and normalized atom co-occurrence heatmaps."
-            )?;
+    writeln!(file)?;
+    writeln!(file, "## Observed elements")?;
+    writeln!(file)?;
+    writeln!(
+        file,
+        "The following valid chemical elements were observed, ordered by descending frequency."
+    )?;
+    writeln!(file)?;
+    writeln!(file, "`{}`", observed_elements.join("`, `"))?;
 
-            writeln!(file)?;
-            writeln!(file, "## Observed elements")?;
-            writeln!(file)?;
-            writeln!(
-                file,
-                "The following valid chemical elements were observed in molecular formula metadata, \
-             ordered by descending frequency."
-            )?;
-            writeln!(file)?;
-            writeln!(file, "`{}`", observed_elements.join("`, `"))?;
+    writeln!(file)?;
+    writeln!(file, "## Top observed elements")?;
+    writeln!(file)?;
+    writeln!(file, "| Element | Record count | % of profiled {unit} |")?;
+    writeln!(file, "|---|---:|---:|")?;
 
-            writeln!(file)?;
-            writeln!(file, "## Top observed elements")?;
-            writeln!(file)?;
-            writeln!(file, "| Element | Formula count | % of formula-bearing spectra |")?;
-            writeln!(file, "|---|---:|---:|")?;
+    for element in observed_elements.iter().take(20) {
+        let count = profile.element_count(element);
+        let percent_of_records = percent(count, profile.record_count());
 
-            for element in observed_elements.iter().take(20) {
-                let count = profile.element_count(element);
-                let percent_of_formula_records = percent(count, profile.records_with_formula);
-
-                writeln!(file, "| `{element}` | {count} | {percent_of_formula_records:.2}% |")?;
-            }
-
-            writeln!(file)?;
-            writeln!(file, "## Element reports generated in this run")?;
-            writeln!(file)?;
-            writeln!(
-                file,
-                "Each element report summarizes metadata groups for spectra whose formulas contain that element."
-            )?;
-            writeln!(file)?;
-            writeln!(file, "| Element | Formula count | % of formula-bearing spectra | Report |")?;
-        }
-
-        DatasetSource::PubChemSmiles | DatasetSource::LocalSmilesGz(_) => {
-            writeln!(
-                file,
-                "The reports summarize element presence from molecular formula metadata and should be \
-             interpreted as dataset profiling, not direct molecular evidence."
-            )?;
-
-            writeln!(file)?;
-            writeln!(file, "## Dataset facts")?;
-            writeln!(file)?;
-            writeln!(file, "| Metric | Value |")?;
-            writeln!(file, "|---|---:|")?;
-            writeln!(file, "| Total molecules | {} |", profile.total_records)?;
-            writeln!(
-                file,
-                "| Molecules with formula metadata | {} |",
-                profile.records_with_formula
-            )?;
-            writeln!(
-                file,
-                "| Molecules without formula metadata | {} |",
-                profile.total_records.saturating_sub(profile.records_with_formula)
-            )?;
-            writeln!(file, "| Observed elements | {} |", profile.element_counts.len())?;
-
-            writeln!(file)?;
-            writeln!(file, "## Dataset-level reports")?;
-            writeln!(file)?;
-            writeln!(
-                file,
-                "- [Element co-occurrence profile](cooccurrence/README.md): Contains raw and normalized atom co-occurrence heatmaps."
-            )?;
-
-            writeln!(file)?;
-            writeln!(file, "## Observed elements")?;
-            writeln!(file)?;
-            writeln!(
-                file,
-                "The following valid chemical elements were observed in molecular formula metadata, \
-             ordered by descending frequency."
-            )?;
-            writeln!(file)?;
-            writeln!(file, "`{}`", observed_elements.join("`, `"))?;
-
-            writeln!(file)?;
-            writeln!(file, "## Top observed elements")?;
-            writeln!(file)?;
-            writeln!(file, "| Element | Formula count | % of formula-bearing molecules |")?;
-            writeln!(file, "|---|---:|---:|")?;
-
-            for element in observed_elements.iter().take(20) {
-                let count = profile.element_count(element);
-                let percent_of_formula_records = percent(count, profile.records_with_formula);
-
-                writeln!(file, "| `{element}` | {count} | {percent_of_formula_records:.2}% |")?;
-            }
-
-            writeln!(file)?;
-            writeln!(file, "## Element reports generated in this run")?;
-            writeln!(file)?;
-            writeln!(
-                file,
-                "Each element report summarizes metadata groups for molecules whose formulas contain that element."
-            )?;
-            writeln!(file)?;
-            writeln!(
-                file,
-                "| Element | Formula count | % of formula-bearing molecules | Report |"
-            )?;
-        }
-        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
+        writeln!(file, "| `{element}` | {count} | {percent_of_records:.2}% |")?;
     }
+
+    writeln!(file)?;
+    writeln!(file, "## Element reports generated in this run")?;
+    writeln!(file)?;
+    writeln!(
+        file,
+        "Each element report summarizes metadata groups for profiled {unit} whose formulas contain that element."
+    )?;
+    writeln!(file)?;
+    writeln!(file, "| Element | Record count | % of profiled {unit} | Report |")?;
     writeln!(file, "|---|---:|---:|---|")?;
 
     let mut report_rows = reported_elements
         .iter()
-        .map(|element| {
-            let count = profile.element_count(element);
-            (element, count)
-        })
+        .map(|element| (element, profile.element_count(element)))
         .collect::<Vec<_>>();
 
     report_rows.sort_by(|left, right| right.1.cmp(&left.1).then_with(|| left.0.cmp(right.0)));
 
     for (element, count) in report_rows {
-        let percent_of_formula_records = percent(count, profile.records_with_formula);
+        let percent_of_records = percent(count, profile.record_count());
         let report_dir = element.to_ascii_lowercase();
 
         writeln!(
             file,
-            "| `{element}` | {count} | {percent_of_formula_records:.2}% | [Open](./{report_dir}/README.md) |"
+            "| `{element}` | {count} | {percent_of_records:.2}% | [Open](./{report_dir}/README.md) |"
         )?;
     }
 
@@ -190,10 +106,11 @@ pub(crate) fn write_dataset_index_readme(
 
 pub(crate) fn write_cooccurrence_readme(
     reports: &ReportPaths,
-    profile: &CooccurrenceProfile,
+    profile: &DatasetProfile,
     heatmap_elements: &[String],
     source: &DatasetSource,
 ) -> Result<()> {
+    let unit = record_unit(source);
     let mut file = File::create(reports.readme())?;
 
     writeln!(file, "# Element co-occurrence profile")?;
@@ -202,31 +119,13 @@ pub(crate) fn write_cooccurrence_readme(
         file,
         "This report summarizes which chemical elements appear together in molecular formulas across the dataset."
     )?;
-
-    match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => {
-            writeln!(file)?;
-            writeln!(file, "## Summary")?;
-            writeln!(file)?;
-            writeln!(file, "| Metric | Value |")?;
-            writeln!(file, "|---|---:|")?;
-            writeln!(file, "| Total spectra | {} |", profile.total_records)?;
-            writeln!(file, "| Spectra with formula | {} |", profile.records_with_formula)?;
-        }
-
-        DatasetSource::PubChemSmiles | DatasetSource::LocalSmilesGz(_) => {
-            writeln!(file)?;
-            writeln!(file, "## Summary")?;
-            writeln!(file)?;
-            writeln!(file, "| Metric | Value |")?;
-            writeln!(file, "|---|---:|")?;
-            writeln!(file, "| Total molecules | {} |", profile.total_records)?;
-            writeln!(file, "| Molecules with formula | {} |", profile.records_with_formula)?;
-        }
-        DatasetSource::LocalSmilesCsv(path_buf, data_fields) => todo!(),
-    }
-
-    writeln!(file, "| Observed elements | {} |", profile.element_counts.len())?;
+    writeln!(file)?;
+    writeln!(file, "## Summary")?;
+    writeln!(file)?;
+    writeln!(file, "| Metric | Value |")?;
+    writeln!(file, "|---|---:|")?;
+    writeln!(file, "| Profiled {unit} | {} |", profile.record_count())?;
+    writeln!(file, "| Observed elements | {} |", profile.observed_element_count())?;
     writeln!(file)?;
     writeln!(file, "Heatmap elements shown: `{}`.", heatmap_elements.join("`, `"))?;
     writeln!(file)?;
@@ -239,12 +138,6 @@ pub(crate) fn write_cooccurrence_readme(
         "- [Conditional probabilities](tables/element_cooccurrence_conditional_probability.csv)"
     )?;
     writeln!(file)?;
-    writeln!(
-        file,
-        "**Interpretation:** Conditional probabilities are row-normalized. A cell at row `A` \
-         and column `B` is `P(B | A) = cooccurrence(A, B) / count(A)`. Raw counts are \
-         symmetric, but conditional probabilities do not need to be symmetric."
-    )?;
     writeln!(file)?;
     writeln!(file, "## Heatmaps")?;
     writeln!(file)?;
@@ -263,4 +156,11 @@ pub(crate) fn write_cooccurrence_readme(
     )?;
 
     Ok(())
+}
+
+fn record_unit(source: &DatasetSource) -> &'static str {
+    match source {
+        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => "spectra",
+        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => "molecules",
+    }
 }

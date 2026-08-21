@@ -1,4 +1,4 @@
-atom_count,record_count,percent_of_formula_records,contains_target
+atom_count,record_count,percent_of_profiled_records,contains_target
 0,123930021,99.99986443980974,false
 1,149,0.00012022897826775687,true
 2,6,4.841435366486854e-6,true
