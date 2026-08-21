@@ -6,10 +6,10 @@ This report summarizes which chemical elements appear together in molecular form
 
 | Metric | Value |
 |---|---:|
-| Profiled molecules | 123930189 |
+| Profiled molecules | 124589269 |
 | Observed elements | 118 |
 
-Heatmap elements shown: `H`, `C`, `N`, `O`, `S`, `F`, `Cl`, `Br`, `I`, `P`, `Si`, `B`, `Na`, `Ir`, `K`, `Pt`, `Se`, `Li`, `Sn`, `Zr`, `Y`, `Al`, `Fe`, `Ti`, `Zn`, `Cu`, `Mg`, `Ni`, `Pd`, `Ca`, `Ge`, `Co`, `W`, `V`, `Ru`, `As`, `Mn`, `Cr`, `Hf`, `U`, `Te`, `Mo`, `Ag`, `Sb`, `Pb`, `Au`, `Ba`, `Bi`, `Hg`, `Rh`, `In`, `Cs`, `Ga`, `Rb`, `Re`, `Ac`, `Os`, `Sr`, `Ce`, `La`, `Cd`, `Gd`, `Nb`, `Tl`, `Ta`, `Eu`, `Nd`, `Rf`, `Ar`, `Pr`, `Tc`, `Sc`, `Sm`, `Yb`, `Be`, `Tb`, `Lu`, `Dy`, `Er`, `Fm`, `Ho`, `Th`, `Po`, `Tm`, `At`, `Lr`, `Cm`, `Xe`, `Pu`, `Np`, `He`, `Pm`, `Am`, `No`, `Es`, `Ra`, `Pa`, `Cf`, `Ne`, `Bk`, `Kr`, `Rn`, `Sg`, `Db`, `Fr`, `Md`, `Mt`, `Bh`, `Hs`, `Ds`, `Rg`, `Fl`, `Nh`, `Cn`, `Lv`, `Mc`, `Ts`, `Og`.
+Heatmap elements shown: `H`, `C`, `N`, `O`, `S`, `F`, `Cl`, `Br`, `I`, `P`, `Si`, `B`, `Na`, `Ir`, `K`, `Pt`, `Se`, `Li`, `Sn`, `Zr`, `Y`, `Al`, `Fe`, `Ti`, `Zn`, `Cu`, `Mg`, `Ni`, `Pd`, `Ge`, `Ca`, `Co`, `W`, `V`, `Ru`, `As`, `Mn`, `Cr`, `Hf`, `U`, `Te`, `Mo`, `Sb`, `Ag`, `Pb`, `Au`, `Ba`, `Bi`, `Hg`, `Rh`, `In`, `Cs`, `Ga`, `Rb`, `Re`, `Ac`, `Os`, `Sr`, `Ce`, `La`, `Cd`, `Gd`, `Nb`, `Tl`, `Ta`, `Eu`, `Nd`, `Rf`, `Ar`, `Pr`, `Tc`, `Sc`, `Sm`, `Yb`, `Be`, `Tb`, `Lu`, `Dy`, `Er`, `Fm`, `Ho`, `Th`, `Po`, `Tm`, `At`, `Lr`, `Cm`, `Xe`, `Pu`, `Np`, `He`, `Pm`, `Am`, `No`, `Es`, `Ra`, `Pa`, `Cf`, `Ne`, `Bk`, `Kr`, `Rn`, `Sg`, `Db`, `Fr`, `Md`, `Mt`, `Bh`, `Hs`, `Ds`, `Rg`, `Fl`, `Nh`, `Cn`, `Lv`, `Mc`, `Ts`, `Og`.
 
 ## Tables
 
@@ -17,7 +17,6 @@ Heatmap elements shown: `H`, `C`, `N`, `O`, `S`, `F`, `Cl`, `Br`, `I`, `P`, `Si`
 - [Raw co-occurrence counts](tables/element_cooccurrence_counts.csv)
 - [Conditional probabilities](tables/element_cooccurrence_conditional_probability.csv)
 
-**Interpretation:** Conditional probabilities are row-normalized. A cell at row `A` and column `B` is `P(B | A) = cooccurrence(A, B) / count(A)`. Raw counts are symmetric, but conditional probabilities do not need to be symmetric.
 
 ## Heatmaps
 

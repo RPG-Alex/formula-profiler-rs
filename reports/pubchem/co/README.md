@@ -30,10 +30,10 @@ Important caveats:
 
 | Metric | Value |
 |---|---:|
-| Total molecules | 123930189 |
-| Positive count | 45675 |
-| Negative count | 123884514 |
-| Positive percentage | 0.0369% |
+| Total molecules | 124589269 |
+| Positive count | 45781 |
+| Negative count | 124543488 |
+| Positive percentage | 0.0367% |
 
 ## Atom-count distribution
 
@@ -54,9 +54,9 @@ This table answers: **where is the target element unusually common?** It does no
 
 | Metadata group | Value | Total | Positive | Positive % | % of positives |
 |---|---|---:|---:|---:|---:|
-| Source dataset | PubChem | 123930189 | 45675 | 0.04% | 100.00% |
-| Source dataset | TOTAL_RECORDS | 123930189 | 45675 | 0.04% | 100.00% |
-| Source dataset | TOTAL_ASSIGNMENTS | 123930189 | 45675 | 0.04% | 100.00% |
+| Source dataset | PubChem | 124589269 | 45781 | 0.04% | 100.00% |
+| Source dataset | TOTAL_RECORDS | 124589269 | 45781 | 0.04% | 100.00% |
+| Source dataset | TOTAL_ASSIGNMENTS | 124589269 | 45781 | 0.04% | 100.00% |
 
 ## Low-support warning summary
 
