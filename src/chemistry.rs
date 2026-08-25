@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 use molecular_formulas::prelude::{MolecularFormula, MolecularFormulaMetadata};
 
 /// Canonical chemical element symbols.
-pub const ELEMENT_SYMBOLS: &[&str] = &[
+pub(crate) const ELEMENT_SYMBOLS: &[&str] = &[
     "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl",
     "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As",
     "Se", "Br", "Kr", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In",
@@ -15,7 +15,7 @@ pub const ELEMENT_SYMBOLS: &[&str] = &[
 ];
 
 /// Returns `true` if `symbol` is a canonical element symbol.
-pub fn is_valid_element_symbol(symbol: &str) -> bool {
+pub(crate) fn is_valid_element_symbol(symbol: &str) -> bool {
     ELEMENT_SYMBOLS.contains(&symbol)
 }
 
@@ -23,7 +23,7 @@ pub fn is_valid_element_symbol(symbol: &str) -> bool {
 ///
 /// # Parameters
 /// - `input`: Element symbol passed from CLI input.
-pub fn normalize_element_symbol(input: &str) -> Option<String> {
+pub(crate) fn normalize_element_symbol(input: &str) -> Option<String> {
     let input = input.trim();
 
     if input.is_empty() {
@@ -41,7 +41,7 @@ pub fn normalize_element_symbol(input: &str) -> Option<String> {
 
 /// Counts atoms for each valid element symbol in a structured molecular
 /// formula.
-pub fn element_counts_in_formula<F>(formula: &F) -> BTreeMap<String, usize>
+pub(crate) fn element_counts_in_formula<F>(formula: &F) -> BTreeMap<String, usize>
 where
     F: MolecularFormula,
     u32: From<<F as MolecularFormulaMetadata>::Count>,

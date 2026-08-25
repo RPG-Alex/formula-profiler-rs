@@ -10,29 +10,29 @@ use crate::{
 
 #[derive(Debug, Parser)]
 #[command(version, about)]
-pub struct Cli {
+pub(crate) struct Cli {
     /// Element to profile, such as `F`, `Cl`, or `all` for all elements
     #[arg(long)]
-    pub target: String,
+    pub(crate) target: String,
 
     /// Optional maximum number of input records to process
     #[arg(long = "limit")]
-    pub record_limit: Option<usize>,
+    pub(crate) record_limit: Option<usize>,
 
     /// Root directory used for downloaded datasets (default is "cache")
     #[arg(long, default_value = "cache")]
-    pub cache_root: PathBuf,
+    pub(crate) cache_root: PathBuf,
 
     /// Root directory used for generated reports (default is "reports")
     #[arg(long, default_value = "reports")]
-    pub reports_root: PathBuf,
+    pub(crate) reports_root: PathBuf,
 
     #[command(subcommand)]
-    pub dataset: DatasetCommand,
+    pub(crate) dataset: DatasetCommand,
 }
 
 #[derive(Debug, PartialEq, Subcommand)]
-pub enum DatasetCommand {
+pub(crate) enum DatasetCommand {
     /// Use the annotated MS2 data (will download if needed)
     #[command(name = "annotated")]
     AnnotatedMs2,

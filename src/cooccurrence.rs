@@ -35,7 +35,7 @@ struct ConditionalProbabilityRow {
     conditional_probability: f64,
 }
 
-pub fn write_cooccurrence_reports(
+pub(crate) fn write_cooccurrence_reports(
     dataset_name: &str,
     profile: &DatasetProfile,
     reports: &ReportPaths,

@@ -8,7 +8,7 @@ use crate::{
     visuals::common::{compact_count, figure_error},
 };
 
-pub fn write_raw_count_heatmap(
+pub(crate) fn write_raw_count_heatmap(
     path: impl AsRef<Path>,
     profile: &DatasetProfile,
     elements: &[String],
@@ -29,7 +29,7 @@ pub fn write_raw_count_heatmap(
     })
 }
 
-pub fn write_conditional_probability_heatmap(
+pub(crate) fn write_conditional_probability_heatmap(
     path: impl AsRef<Path>,
     profile: &DatasetProfile,
     elements: &[String],

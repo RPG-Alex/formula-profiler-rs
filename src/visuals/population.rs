@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[derive(Debug, Copy, Clone)]
-pub enum PopulationMetric {
+pub(crate) enum PopulationMetric {
     TargetCount,
     PercentTargetWithinGroup,
 }
@@ -36,7 +36,7 @@ impl PopulationMetric {
     }
 }
 
-pub fn write_standard_population_figures(
+pub(crate) fn write_standard_population_figures(
     reports: &ReportPaths,
     stem: &str,
     title_root: &str,

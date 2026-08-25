@@ -6,9 +6,9 @@ use std::{
 
 #[derive(Debug, Clone)]
 pub(crate) struct ReportPaths {
-    pub root: PathBuf,
-    pub tables: PathBuf,
-    pub figures: PathBuf,
+    pub(crate) root: PathBuf,
+    pub(crate) tables: PathBuf,
+    pub(crate) figures: PathBuf,
 }
 
 impl ReportPaths {

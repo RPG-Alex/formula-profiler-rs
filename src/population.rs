@@ -8,26 +8,26 @@ const LOW_TOTAL_SUPPORT_THRESHOLD: usize = 30;
 const LOW_TARGET_SUPPORT_THRESHOLD: usize = 10;
 
 #[derive(Debug, Default, Clone)]
-pub struct PopulationStats {
-    pub total_count: usize,
-    pub target_count: usize,
+pub(crate) struct PopulationStats {
+    pub(crate) total_count: usize,
+    pub(crate) target_count: usize,
 }
 
 #[derive(Debug, Clone, Serialize)]
-pub struct PopulationSummaryRow {
-    pub value: String,
-    pub total_count: usize,
-    pub target_count: usize,
-    pub non_target_count: usize,
-    pub percent_target_within_group: f64,
-    pub percent_of_all_records: f64,
-    pub percent_of_all_target: f64,
-    pub support_warning: String,
+pub(crate) struct PopulationSummaryRow {
+    pub(crate) value: String,
+    pub(crate) total_count: usize,
+    pub(crate) target_count: usize,
+    pub(crate) non_target_count: usize,
+    pub(crate) percent_target_within_group: f64,
+    pub(crate) percent_of_all_records: f64,
+    pub(crate) percent_of_all_target: f64,
+    pub(crate) support_warning: String,
 }
 
-pub type PopulationMap = BTreeMap<String, PopulationStats>;
+pub(crate) type PopulationMap = BTreeMap<String, PopulationStats>;
 
-pub fn summarize_population_map(
+pub(crate) fn summarize_population_map(
     counts: &PopulationMap,
     total_records: usize,
     total_target_records: usize,
@@ -51,7 +51,7 @@ pub fn summarize_population_map(
         .collect()
 }
 
-pub fn write_population_map_csv(
+pub(crate) fn write_population_map_csv(
     path: impl AsRef<Path>,
     counts: &PopulationMap,
     total_records: usize,
@@ -95,11 +95,11 @@ pub fn write_population_map_csv(
     Ok(())
 }
 
-pub fn split_pipe(value: &str) -> impl Iterator<Item = &str> {
+pub(crate) fn split_pipe(value: &str) -> impl Iterator<Item = &str> {
     value.split('|').map(str::trim).filter(|part| !part.is_empty())
 }
 
-pub fn clean_group_value(value: &str) -> String {
+pub(crate) fn clean_group_value(value: &str) -> String {
     let value = value.trim();
 
     if value.is_empty() || value == "None" { "UNKNOWN".to_string() } else { value.to_string() }

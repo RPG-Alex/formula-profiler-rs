@@ -11,7 +11,7 @@ use crate::{
     visuals::common::{compact_count, figure_error, percent},
 };
 
-pub fn write_atom_count_distribution_figure(
+pub(crate) fn write_atom_count_distribution_figure(
     reports: &ReportPaths,
     target_element: &str,
     total_records: usize,

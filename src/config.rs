@@ -1,7 +1,7 @@
 use std::{fmt::Display, path::PathBuf};
 
 #[derive(Debug, PartialEq, Clone)]
-pub enum DataField {
+pub(crate) enum DataField {
     Id,
     Smiles,
     Custom(String),
@@ -18,7 +18,7 @@ impl Display for DataField {
 }
 
 #[derive(Debug, PartialEq, Clone)]
-pub enum DatasetSource {
+pub(crate) enum DatasetSource {
     AnnotatedMs2,
     LocalMgf(PathBuf),
     PubChemSmiles,
@@ -26,23 +26,23 @@ pub enum DatasetSource {
 }
 
 #[derive(Debug, PartialEq, Clone)]
-pub enum TargetSelection {
+pub(crate) enum TargetSelection {
     One(String),
     AllObserved,
 }
 
 #[derive(Debug, Clone)]
-pub struct ProfileConfig {
-    pub dataset_name: String,
-    pub dataset_source: DatasetSource,
-    pub target_selection: TargetSelection,
-    pub cache_dir: PathBuf,
-    pub reports_root: PathBuf,
-    pub record_limit: usize,
+pub(crate) struct ProfileConfig {
+    pub(crate) dataset_name: String,
+    pub(crate) dataset_source: DatasetSource,
+    pub(crate) target_selection: TargetSelection,
+    pub(crate) cache_dir: PathBuf,
+    pub(crate) reports_root: PathBuf,
+    pub(crate) record_limit: usize,
 }
 
 impl ProfileConfig {
-    pub fn report_dir_for(&self, target_element: &str) -> PathBuf {
+    pub(crate) fn report_dir_for(&self, target_element: &str) -> PathBuf {
         self.reports_root.join(target_element.to_ascii_lowercase())
     }
 }

@@ -1,4 +1,4 @@
-pub mod cooccurrence;
+pub(crate) mod cooccurrence;
 mod data;
 mod render;
 mod sections;
@@ -16,7 +16,7 @@ use self::{
 };
 use crate::{config::DatasetSource, error::Result, reports::ReportPaths};
 
-pub fn write_markdown_report(
+pub(crate) fn write_markdown_report(
     dataset_name: &str,
     target_element: &str,
     reports: &ReportPaths,
