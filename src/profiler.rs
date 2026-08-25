@@ -87,6 +87,35 @@ impl DatasetProfile {
         elements.into_iter().map(|(element, _)| element).collect()
     }
 
+    pub(crate) fn normalized_pmi(&self, left: &str, right: &str) -> Option<f64> {
+        if left == right || self.record_count == 0 {
+            return None;
+        }
+
+        let left_count = self.element_count(left);
+        let right_count = self.element_count(right);
+
+        if left_count == 0 || right_count == 0 {
+            return None;
+        }
+        let pair_count = self.pair_count(left, right);
+
+        if pair_count == 0 {
+            return Some(-1.0);
+        }
+        if pair_count == self.record_count {
+            return Some(1.0);
+        }
+        let total = self.record_count as f64;
+        let p_left = left_count as f64 / total;
+        let p_right = right_count as f64 / total;
+        let p_pair = pair_count as f64 / total;
+
+        let pmi = (p_pair / (p_left * p_right)).ln();
+        let npmi = pmi / -p_pair.ln();
+        Some(npmi.clamp(-1.0, 1.0))
+    }
+
     pub(crate) fn write_element_reports(
         &self,
         target_element: &str,
@@ -345,5 +374,63 @@ mod tests {
         assert_eq!(profile.group_value_counts["Class"]["B"], 1);
         assert_eq!(profile.elements["N"].group_value_counts["Class"]["A"], 1);
         assert_eq!(profile.elements["N"].group_value_counts["Class"]["B"], 1);
+    }
+
+    #[test]
+    fn normalized_pmi_correct_value() {
+        let mut profile = DatasetProfile::default();
+        profile.observe(&record(&[("N", 1), ("S", 2)]));
+        profile.observe(&record(&[("N", 1)]));
+
+        let npmi = profile.normalized_pmi("N", "S").unwrap_or_else(|| panic!("Value not found!"));
+
+        assert_eq!(npmi, 0.0)
+    }
+
+    #[test]
+    fn normalized_pmi_is_zero_for_independent_elements() {
+        let mut profile = DatasetProfile::default();
+
+        profile.observe(&record(&[("N", 1), ("S", 1)]));
+        profile.observe(&record(&[("N", 1)]));
+        profile.observe(&record(&[("S", 1)]));
+        profile.observe(&record(&[]));
+
+        let npmi = profile.normalized_pmi("N", "S").unwrap();
+
+        assert!(npmi.abs() < 1e-12);
+    }
+
+    #[test]
+    fn normalized_pmi_is_one_for_elements_that_always_cooccur() {
+        let mut profile = DatasetProfile::default();
+
+        profile.observe(&record(&[("N", 1), ("S", 1)]));
+        profile.observe(&record(&[("N", 1), ("S", 1)]));
+        profile.observe(&record(&[]));
+        profile.observe(&record(&[]));
+
+        let npmi = profile.normalized_pmi("N", "S").unwrap();
+
+        assert!((npmi - 1.0).abs() < 1e-12);
+    }
+
+    #[test]
+    fn normalized_pmi_is_negative_one_for_elements_that_never_cooccur() {
+        let mut profile = DatasetProfile::default();
+
+        profile.observe(&record(&[("N", 1)]));
+        profile.observe(&record(&[("S", 1)]));
+
+        assert_eq!(profile.normalized_pmi("N", "S"), Some(-1.0));
+    }
+
+    #[test]
+    fn normalized_pmi_is_none_for_same_element() {
+        let mut profile = DatasetProfile::default();
+
+        profile.observe(&record(&[("N", 1)]));
+
+        assert_eq!(profile.normalized_pmi("N", "N"), None);
     }
 }
