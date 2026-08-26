@@ -40,8 +40,8 @@ PubChem
 1.0
 </text>
 <polyline fill="none" opacity="1" stroke="#000000" stroke-width="1" points="1234,815 1234,820 "/>
-<rect x="305" y="60" width="88" height="754" opacity="0.6" fill="#0000FF" stroke="none"/>
-<text x="402" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
-0.10% (n=118139)
+<rect x="305" y="60" width="89" height="754" opacity="0.6" fill="#0000FF" stroke="none"/>
+<text x="404" y="814" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.903225806451614" opacity="1" fill="#000000">
+0.10% (n=120337)
 </text>
 </svg>
