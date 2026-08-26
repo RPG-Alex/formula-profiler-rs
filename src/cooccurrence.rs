@@ -9,7 +9,10 @@ use crate::{
     population::percent,
     profiler::DatasetProfile,
     reports::ReportPaths,
-    visuals::{write_conditional_probability_heatmap, write_raw_count_heatmap},
+    visuals::{
+        write_conditional_probability_heatmap, write_normalized_pmi_heatmap,
+        write_raw_count_heatmap,
+    },
 };
 
 #[derive(Debug, Serialize)]
@@ -91,6 +94,12 @@ pub(crate) fn write_cooccurrence_reports(
 
     write_conditional_probability_heatmap(
         reports.figure("element_cooccurrence_conditional_probability_heatmap.svg"),
+        profile,
+        &heatmap_elements,
+    )?;
+
+    write_normalized_pmi_heatmap(
+        reports.figure("element_cooccurence_normalized_pmi_heatmap.svg"),
         profile,
         &heatmap_elements,
     )?;

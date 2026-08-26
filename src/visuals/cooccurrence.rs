@@ -21,12 +21,18 @@ pub(crate) fn write_raw_count_heatmap(
     let max_log_value =
         values.iter().map(|value| (value + 1.0).log10()).fold(0.0_f64, f64::max).max(1.0);
 
-    render_heatmap(path, "Element co-occurrence counts", elements, |row, column| {
-        let count = profile.pair_count(row, column);
-        let scaled = ((count as f64 + 1.0).log10() / max_log_value).clamp(0.0, 1.0);
+    render_heatmap(
+        path,
+        "Element co-occurrence counts",
+        elements,
+        |row, column| {
+            let count = profile.pair_count(row, column);
+            let scaled = ((count as f64 + 1.0).log10() / max_log_value).clamp(0.0, 1.0);
 
-        (scaled, compact_count(count))
-    })
+            (scaled, compact_count(count))
+        },
+        heatmap_color,
+    )
 }
 
 pub(crate) fn write_conditional_probability_heatmap(
@@ -34,21 +40,63 @@ pub(crate) fn write_conditional_probability_heatmap(
     profile: &DatasetProfile,
     elements: &[String],
 ) -> Result<()> {
-    render_heatmap(path, "P(column element | row element)", elements, |row, column| {
-        let probability = profile.conditional_probability(row, column);
+    render_heatmap(
+        path,
+        "P(column element | row element)",
+        elements,
+        |row, column| {
+            let probability = profile.conditional_probability(row, column);
 
-        (probability.clamp(0.0, 1.0), format!("{:.0}%", probability * 100.0))
-    })
+            (probability.clamp(0.0, 1.0), format!("{:.0}%", probability * 100.0))
+        },
+        heatmap_color,
+    )
 }
 
-fn render_heatmap<F>(
+pub(crate) fn write_normalized_pmi_heatmap(
+    path: impl AsRef<Path>,
+    profile: &DatasetProfile,
+    elements: &[String],
+) -> Result<()> {
+    render_heatmap(
+        path,
+        "Normalized element association (NPMI)",
+        elements,
+        |row, column| {
+            let Some(npmi) = profile.normalized_pmi(row, column) else {
+                return (0.5, "—".to_string());
+            };
+            // converts NPMI from -1 to 1 to 0-1
+            let scaled = ((npmi + 1.0) / 2.0).clamp(0.0, 1.0);
+            (scaled, format!("{npmi:.2}"))
+        },
+        association_heatmap_color,
+    )
+}
+
+fn association_heatmap_color(value: f64) -> RGBColor {
+    let value = value.clamp(0.0, 1.0);
+
+    if value < 0.5 {
+        let intensity = value * 2.0;
+
+        RGBColor((255.0 * intensity) as u8, (255.0 * intensity) as u8, 255)
+    } else {
+        let intensity = (1.0 - value) * 2.0;
+        RGBColor(255, (255.0 * intensity) as u8, (255.0 * intensity) as u8)
+    }
+}
+
+fn render_heatmap<F, C>(
     path: impl AsRef<Path>,
     title: &str,
     elements: &[String],
     value_for: F,
+    color_for: C,
 ) -> Result<()>
 where
     F: Fn(&str, &str) -> (f64, String),
+    C: Fn(f64) -> RGBColor,
 {
     if elements.is_empty() {
         return Ok(());
@@ -113,7 +161,7 @@ where
             let y1 = y0 + cell_size;
 
             let (scaled_value, label) = value_for(row_element, column_element);
-            let color = heatmap_color(scaled_value);
+            let color = color_for(scaled_value);
 
             root.draw(&Rectangle::new([(x0, y0), (x1, y1)], color.filled()))
                 .map_err(figure_error)?;
@@ -124,7 +172,11 @@ where
             ))
             .map_err(figure_error)?;
 
-            let text_color = if scaled_value > 0.58 { WHITE } else { BLACK };
+            let luminance = 0.299 * f64::from(color.0)
+                + 0.587 * f64::from(color.1)
+                + 0.114 * f64::from(color.2);
+
+            let text_color = if luminance < 150.0 { WHITE } else { BLACK };
 
             root.draw(&Text::new(
                 label,
