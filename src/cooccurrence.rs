@@ -99,7 +99,7 @@ pub(crate) fn write_cooccurrence_reports(
     )?;
 
     write_normalized_pmi_heatmap(
-        reports.figure("element_cooccurence_normalized_pmi_heatmap.svg"),
+        reports.figure("element_cooccurrence_normalized_pmi_heatmap.svg"),
         profile,
         &heatmap_elements,
     )?;
@@ -160,7 +160,7 @@ fn write_conditional_probability_csv(
     reports: &ReportPaths,
 ) -> Result<()> {
     let mut writer =
-        csv::Writer::from_path(reports.table("element_cooccurrence_conditional_probability.csv"))?;
+        csv::Writer::from_path(reports.table("element_cooccurrence_normalized_pmi_heatmap.svg.csv"))?;
     let elements = profile.observed_elements();
 
     for row_element in &elements {
