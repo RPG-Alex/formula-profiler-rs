@@ -160,7 +160,7 @@ fn write_conditional_probability_csv(
     reports: &ReportPaths,
 ) -> Result<()> {
     let mut writer =
-        csv::Writer::from_path(reports.table("element_cooccurrence_normalized_pmi_heatmap.svg.csv"))?;
+        csv::Writer::from_path(reports.table("element_cooccurrence_conditional_probability.csv"))?;
     let elements = profile.observed_elements();
 
     for row_element in &elements {
