@@ -137,6 +137,7 @@ pub(crate) fn write_cooccurrence_readme(
         file,
         "- [Conditional probabilities](tables/element_cooccurrence_conditional_probability.csv)"
     )?;
+    writeln!(file, "- [Normalized PMI](tables/element_cooccurrence_normalized_pmi.csv)")?;
     writeln!(file)?;
     writeln!(file)?;
     writeln!(file, "## Heatmaps")?;
@@ -154,7 +155,18 @@ pub(crate) fn write_cooccurrence_readme(
         file,
         "<img src=\"figures/element_cooccurrence_conditional_probability_heatmap.svg\" alt=\"Conditional probability element co-occurrence heatmap\" />"
     )?;
-
+    writeln!(file)?;
+    writeln!(file, "### Normalized element association (NPMI)")?;
+    writeln!(file)?;
+    writeln!(
+        file,
+        "NPMI measures whether two elements co-occur more or less often than expected from their individual frequencies. Values range from -1 to 1: negative values indicate less co-occurrence than expected, 0 indicates independence, and positive values indicate greater co-occurrence than expected."
+    )?;
+    writeln!(file)?;
+    writeln!(
+        file,
+        "<img src=\"figures/element_cooccurrence_normalized_pmi_heatmap.svg\" alt=\"Normalized PMI element co-occurrence heatmap\" />"
+    )?;
     Ok(())
 }
 

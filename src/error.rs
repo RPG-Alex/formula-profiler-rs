@@ -1,11 +1,11 @@
 use std::io;
 
 /// Project-wide result type.
-pub type Result<T> = std::result::Result<T, FormulaProfilerError>;
+pub(crate) type Result<T> = std::result::Result<T, FormulaProfilerError>;
 
 /// Errors produced by `formula-profiler-rs`.
 #[derive(Debug, thiserror::Error)]
-pub enum FormulaProfilerError {
+pub(crate) enum FormulaProfilerError {
     /// The requested element symbol is not a valid chemical element symbol.
     #[error(
         "invalid element symbol `{symbol}`. Expected a valid chemical element symbol, such as \

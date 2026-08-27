@@ -9,7 +9,10 @@ use crate::{
     population::percent,
     profiler::DatasetProfile,
     reports::ReportPaths,
-    visuals::{write_conditional_probability_heatmap, write_raw_count_heatmap},
+    visuals::{
+        write_conditional_probability_heatmap, write_normalized_pmi_heatmap,
+        write_raw_count_heatmap,
+    },
 };
 
 #[derive(Debug, Serialize)]
@@ -35,7 +38,41 @@ struct ConditionalProbabilityRow {
     conditional_probability: f64,
 }
 
-pub fn write_cooccurrence_reports(
+#[derive(Debug, Serialize)]
+struct NormalizedPmiRow {
+    row_element: String,
+    column_element: String,
+    cooccurrence_count: usize,
+    row_element_count: usize,
+    column_element_count: usize,
+    normalized_pmi: Option<f64>,
+}
+
+fn write_normalized_pmi_csv(profile: &DatasetProfile, reports: &ReportPaths) -> Result<()> {
+    let mut writer =
+        csv::Writer::from_path(reports.table("element_cooccurrence_normalized_pmi.csv"))?;
+
+    let elements = profile.observed_elements();
+
+    for row_element in &elements {
+        for column_element in &elements {
+            writer.serialize(NormalizedPmiRow {
+                row_element: row_element.clone(),
+                column_element: column_element.clone(),
+                cooccurrence_count: profile.pair_count(row_element, column_element),
+                row_element_count: profile.element_count(row_element),
+                column_element_count: profile.element_count(column_element),
+                normalized_pmi: profile.normalized_pmi(row_element, column_element),
+            })?;
+        }
+    }
+
+    writer.flush()?;
+
+    Ok(())
+}
+
+pub(crate) fn write_cooccurrence_reports(
     dataset_name: &str,
     profile: &DatasetProfile,
     reports: &ReportPaths,
@@ -48,7 +85,7 @@ pub fn write_cooccurrence_reports(
     write_element_counts_csv(profile, reports)?;
     write_cooccurrence_counts_csv(profile, reports)?;
     write_conditional_probability_csv(profile, reports)?;
-
+    write_normalized_pmi_csv(profile, reports)?;
     write_raw_count_heatmap(
         reports.figure("element_cooccurrence_raw_counts_heatmap.svg"),
         profile,
@@ -57,6 +94,12 @@ pub fn write_cooccurrence_reports(
 
     write_conditional_probability_heatmap(
         reports.figure("element_cooccurrence_conditional_probability_heatmap.svg"),
+        profile,
+        &heatmap_elements,
+    )?;
+
+    write_normalized_pmi_heatmap(
+        reports.figure("element_cooccurrence_normalized_pmi_heatmap.svg"),
         profile,
         &heatmap_elements,
     )?;

@@ -16,7 +16,7 @@ use crate::{
     records::MoleculeRecord,
 };
 
-pub async fn process_dataset<F>(
+pub(crate) async fn process_dataset<F>(
     source: &DatasetSource,
     cache_dir: &Path,
     record_limit: usize,
