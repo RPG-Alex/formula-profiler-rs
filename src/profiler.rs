@@ -199,9 +199,16 @@ impl DatasetProfile {
 
         for (element, atom_count) in &record.element_counts {
             let profile = self.elements.entry(element.clone()).or_default();
+            
             profile.record_count += 1;
+
             *profile.atom_count_distribution.entry(*atom_count).or_default() += 1;
-            *profile.mass_atom_count_distribution.entry((mass_bin, *atom_count)).or_default() += 1;
+            
+            if let Some(mass_bin) = mass_bin {
+                *profile.mass_atom_count_distribution.entry((mass_bin, *atom_count)).or_default() += 1;
+            }
+
+            
             for (group, values) in metadata {
                 let counts = profile.group_value_counts.entry((*group).to_string()).or_default();
 
