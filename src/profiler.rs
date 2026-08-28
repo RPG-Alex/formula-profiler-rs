@@ -183,11 +183,13 @@ impl DatasetProfile {
     }
 
     fn observe_elements(&mut self, record: &MoleculeRecord, metadata: &NormalizedMetadata<'_>) {
+        let mass_bin = mass_bin(record.monoisotopic_mass_da);
+
         for (element, atom_count) in &record.element_counts {
             let profile = self.elements.entry(element.clone()).or_default();
             profile.record_count += 1;
             *profile.atom_count_distribution.entry(*atom_count).or_default() += 1;
-
+            *profile.mass_atom_count_distribution.entry((mass_bin, *atom_count)).or_default() += 1;
             for (group, values) in metadata {
                 let counts = profile.group_value_counts.entry((*group).to_string()).or_default();
 
@@ -216,6 +218,8 @@ struct ElementProfile {
     record_count: usize,
     atom_count_distribution: BTreeMap<usize, usize>,
     group_value_counts: BTreeMap<String, BTreeMap<String, usize>>,
+    // (mass bin, atom count), records
+    mass_atom_count_distribution: BTreeMap<(usize, usize), usize>,
 }
 
 type NormalizedMetadata<'a> = Vec<(&'a str, Vec<String>)>;
