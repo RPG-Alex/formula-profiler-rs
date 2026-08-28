@@ -35,7 +35,7 @@ mod tests {
 
     #[test]
     fn from_formula_derivs_count_and_monoisotopic_mass() {
-        let formula = ChemicalFormula::<u32, i32>::from_str("C6H1206").unwrap();
+        let formula = ChemicalFormula::<u32, i32>::from_str("C6H12O6").unwrap();
         let record = MoleculeRecord::from_formula(&formula, BTreeMap::new());
         assert_eq!(record.element_counts.get("C"), Some(&6));
         assert_eq!(record.element_counts.get("H"), Some(&12));

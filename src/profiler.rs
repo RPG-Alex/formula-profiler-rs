@@ -24,7 +24,6 @@ fn mass_bin_index(mass_da: f64) -> Option<usize> {
     Some((mass_da / MASS_BIN_WIDTH_DA).floor() as usize)
 }
 
-
 /// Aggregated statistics collected across all successfully profiled records.
 #[derive(Debug, Default)]
 pub(crate) struct DatasetProfile {
@@ -199,16 +198,18 @@ impl DatasetProfile {
 
         for (element, atom_count) in &record.element_counts {
             let profile = self.elements.entry(element.clone()).or_default();
-            
+
             profile.record_count += 1;
 
             *profile.atom_count_distribution.entry(*atom_count).or_default() += 1;
-            
+
             if let Some(mass_bin) = mass_bin {
-                *profile.mass_atom_count_distribution.entry((mass_bin, *atom_count)).or_default() += 1;
+                *profile
+                    .mass_atom_count_distribution
+                    .entry((mass_bin, *atom_count))
+                    .or_default() += 1;
             }
 
-            
             for (group, values) in metadata {
                 let counts = profile.group_value_counts.entry((*group).to_string()).or_default();
 
@@ -349,12 +350,16 @@ mod tests {
     use super::*;
 
     fn record(elements: &[(&str, usize)]) -> MoleculeRecord {
+        record_with_mass(elements, 0.0)
+    }
+
+    fn record_with_mass(elements: &[(&str, usize)], monoisotopic_mass_da: f64) -> MoleculeRecord {
         let element_counts = elements
             .iter()
             .map(|(element, count)| ((*element).to_string(), *count))
             .collect::<BTreeMap<_, _>>();
 
-        MoleculeRecord { element_counts, monoisotopic_mass_da: 0.0,metadata: BTreeMap::new() }
+        MoleculeRecord { element_counts, monoisotopic_mass_da, metadata: BTreeMap::new() }
     }
 
     #[test]
@@ -458,15 +463,28 @@ mod tests {
     }
 
     #[test]
-fn molecular_mass_is_assigned_to_expected_bin() {
-    assert_eq!(mass_bin_index(0.0), Some(0));
-    assert_eq!(mass_bin_index(24.999), Some(0));
-    assert_eq!(mass_bin_index(25.0), Some(1));
+    fn molecular_mass_is_assigned_to_expected_bin() {
+        assert_eq!(mass_bin_index(0.0), Some(0));
+        assert_eq!(mass_bin_index(24.999), Some(0));
+        assert_eq!(mass_bin_index(25.0), Some(1));
 
-    assert_eq!(mass_bin_index(124.999), Some(4));
-    assert_eq!(mass_bin_index(125.0), Some(5));
+        assert_eq!(mass_bin_index(124.999), Some(4));
+        assert_eq!(mass_bin_index(125.0), Some(5));
 
-    assert_eq!(mass_bin_index(-1.0), None);
-    assert_eq!(mass_bin_index(f64::NAN), None);
-}
+        assert_eq!(mass_bin_index(-1.0), None);
+        assert_eq!(mass_bin_index(f64::NAN), None);
+    }
+
+    #[test]
+    fn records_are_aggregated_by_mass_bin_and_atom_count() {
+        let mut profile = DatasetProfile::default();
+        profile.observe(&record_with_mass(&[("C", 6), ("H", 12)], 110.0));
+        profile.observe(&record_with_mass(&[("C", 8), ("H", 16)], 112.0));
+        profile.observe(&record_with_mass(&[("C", 6), ("H", 12)], 130.0));
+        let carbon = &profile.elements["C"];
+
+        assert_eq!(carbon.mass_atom_count_distribution.get(&(4, 6)), Some(&1));
+        assert_eq!(carbon.mass_atom_count_distribution.get(&(4, 8)), Some(&1));
+        assert_eq!(carbon.mass_atom_count_distribution.get(&(5, 6)), Some(&1));
+    }
 }
