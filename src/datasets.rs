@@ -9,7 +9,6 @@ use smiles_parser::{
 };
 
 use crate::{
-    chemistry::element_counts_in_formula,
     config::{DataField, DatasetSource},
     error::{FormulaProfilerError, Result},
     metadata::{metadata_value, optional_debug_label},
@@ -119,7 +118,7 @@ fn molecule_record_from_smiles(
     let smiles = smiles_text.parse::<Smiles>().ok()?;
     let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(&smiles);
 
-    Some(MoleculeRecord { element_counts: element_counts_in_formula(&formula), metadata })
+    Some(MoleculeRecord::from_formula(&formula, metadata))
 }
 
 fn open_smiles_reader(path: &Path) -> Result<Box<dyn Read>> {
@@ -188,7 +187,7 @@ fn extract_mgf_record(record: &MascotGenericFormat<f64>) -> Option<MoleculeRecor
     groups
         .insert("Source instrument".to_string(), optional_debug_label(record.source_instrument()));
 
-    Some(MoleculeRecord { element_counts: element_counts_in_formula(formula), metadata: groups })
+    Some(MoleculeRecord::from_formula(formula, groups))
 }
 
 fn process_pubchem_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record: F) -> Result<()>
@@ -228,10 +227,7 @@ where
         let mut metadata = BTreeMap::new();
         metadata.insert("Source dataset".to_string(), "PubChem".to_string());
 
-        on_record(MoleculeRecord {
-            element_counts: element_counts_in_formula(&formula),
-            metadata,
-        })?;
+        on_record(MoleculeRecord::from_formula(&formula, metadata))?;
         processed += 1;
     }
 

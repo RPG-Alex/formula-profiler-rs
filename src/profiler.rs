@@ -13,6 +13,18 @@ use crate::{
     visuals::{write_atom_count_distribution_figure, write_standard_population_figures},
 };
 
+/// Bin width for Masses
+pub(crate) const MASS_BIN_WIDTH_DA: f64 = 25.0;
+
+// should be binning 0-24.999 as bin 0 and so on
+fn mass_bin_index(mass_da: f64) -> Option<usize> {
+    if !mass_da.is_finite() || mass_da < 0.0 {
+        return None;
+    }
+    Some((mass_da / MASS_BIN_WIDTH_DA).floor() as usize)
+}
+
+
 /// Aggregated statistics collected across all successfully profiled records.
 #[derive(Debug, Default)]
 pub(crate) struct DatasetProfile {
@@ -183,7 +195,7 @@ impl DatasetProfile {
     }
 
     fn observe_elements(&mut self, record: &MoleculeRecord, metadata: &NormalizedMetadata<'_>) {
-        let mass_bin = mass_bin(record.monoisotopic_mass_da);
+        let mass_bin = mass_bin_index(record.monoisotopic_mass_da);
 
         for (element, atom_count) in &record.element_counts {
             let profile = self.elements.entry(element.clone()).or_default();
@@ -335,7 +347,7 @@ mod tests {
             .map(|(element, count)| ((*element).to_string(), *count))
             .collect::<BTreeMap<_, _>>();
 
-        MoleculeRecord { element_counts, metadata: BTreeMap::new() }
+        MoleculeRecord { element_counts, monoisotopic_mass_da: 0.0,metadata: BTreeMap::new() }
     }
 
     #[test]
@@ -437,4 +449,17 @@ mod tests {
 
         assert_eq!(profile.normalized_pmi("N", "N"), None);
     }
+
+    #[test]
+fn molecular_mass_is_assigned_to_expected_bin() {
+    assert_eq!(mass_bin_index(0.0), Some(0));
+    assert_eq!(mass_bin_index(24.999), Some(0));
+    assert_eq!(mass_bin_index(25.0), Some(1));
+
+    assert_eq!(mass_bin_index(124.999), Some(4));
+    assert_eq!(mass_bin_index(125.0), Some(5));
+
+    assert_eq!(mass_bin_index(-1.0), None);
+    assert_eq!(mass_bin_index(f64::NAN), None);
+}
 }
