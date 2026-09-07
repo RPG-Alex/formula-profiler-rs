@@ -172,8 +172,8 @@ impl DatasetProfile {
     fn observe_element_pairs(&mut self, record: &MoleculeRecord) {
         let elements = record.element_counts.keys().collect::<Vec<_>>();
 
-        // Diagonal counts are derived from each element profile, so only distinct pairs
-        // are stored.
+        // Diagonal counts are derived from each element profile, so only
+        // distinct pairs are stored.
         for (index, left) in elements.iter().enumerate() {
             for right in elements.iter().skip(index + 1) {
                 *self.pair_counts.entry(((*left).clone(), (*right).clone())).or_default() += 1;

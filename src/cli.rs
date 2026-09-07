@@ -152,7 +152,7 @@ mod tests {
     #[test]
     fn parses_smiles_csv_command() {
         let cli = Cli::try_parse_from([
-            "spectra-profiler-rs",
+            "formula-profiler-rs",
             "--target",
             "all",
             "smiles-csv",
@@ -182,7 +182,7 @@ mod tests {
     #[test]
     fn converts_smiles_csv_command_into_profile_config() {
         let cli = Cli::try_parse_from([
-            "spectra-profiler-rs",
+            "formula-profiler-rs",
             "--target",
             "cl",
             "--limit",
@@ -221,7 +221,7 @@ mod tests {
     #[test]
     fn reject_csv_without_smiles_field() {
         let cli = Cli::try_parse_from([
-            "spectra-profiler-rs",
+            "formula-profiler-rs",
             "--target",
             "F",
             "smiles-csv",
@@ -240,7 +240,7 @@ mod tests {
 
     #[test]
     fn defaults_record_limit_to_usize_max() {
-        let cli = Cli::try_parse_from(["spectra-profiler-rs", "--target", "F", "pubchem"]).unwrap();
+        let cli = Cli::try_parse_from(["formula-profiler-rs", "--target", "F", "pubchem"]).unwrap();
 
         let config = ProfileConfig::try_from(cli).unwrap();
 

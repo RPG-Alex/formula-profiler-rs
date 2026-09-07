@@ -1,11 +1,11 @@
 [package]
-name = "spectra-profiler-rs"
+name = "formula-profiler-rs"
 version = "0.1.0"
 edition = "2024"
 authors = ["rpg-alex"]
 description = "Rust tooling for profiling annotated MS/MS spectral datasets before machine-learning workflows"
 license = "MIT"
-repository = "https://github.com/rpg-alex/spectra-profiler-rs"
+repository = "https://github.com/rpg-alex/formula-profiler-rs"
 readme = "README.md"
 keywords = ["mass-spectrometry", "metabolomics", "machine-learning", "rust"]
 categories = ["science", "command-line-utilities"]
