@@ -13,6 +13,17 @@ use crate::{
     visuals::{write_atom_count_distribution_figure, write_standard_population_figures},
 };
 
+/// Bin width for Masses
+pub(crate) const MASS_BIN_WIDTH_DA: f64 = 25.0;
+
+// should be binning 0-24.999 as bin 0 and so on
+fn mass_bin_index(mass_da: f64) -> Option<usize> {
+    if !mass_da.is_finite() || mass_da < 0.0 {
+        return None;
+    }
+    Some((mass_da / MASS_BIN_WIDTH_DA).floor() as usize)
+}
+
 /// Aggregated statistics collected across all successfully profiled records.
 #[derive(Debug, Default)]
 pub(crate) struct DatasetProfile {
@@ -183,10 +194,21 @@ impl DatasetProfile {
     }
 
     fn observe_elements(&mut self, record: &MoleculeRecord, metadata: &NormalizedMetadata<'_>) {
+        let mass_bin = mass_bin_index(record.monoisotopic_mass_da);
+
         for (element, atom_count) in &record.element_counts {
             let profile = self.elements.entry(element.clone()).or_default();
+
             profile.record_count += 1;
+
             *profile.atom_count_distribution.entry(*atom_count).or_default() += 1;
+
+            if let Some(mass_bin) = mass_bin {
+                *profile
+                    .mass_atom_count_distribution
+                    .entry((mass_bin, *atom_count))
+                    .or_default() += 1;
+            }
 
             for (group, values) in metadata {
                 let counts = profile.group_value_counts.entry((*group).to_string()).or_default();
@@ -216,6 +238,8 @@ struct ElementProfile {
     record_count: usize,
     atom_count_distribution: BTreeMap<usize, usize>,
     group_value_counts: BTreeMap<String, BTreeMap<String, usize>>,
+    // (mass bin, atom count), records
+    mass_atom_count_distribution: BTreeMap<(usize, usize), usize>,
 }
 
 type NormalizedMetadata<'a> = Vec<(&'a str, Vec<String>)>;
@@ -326,12 +350,16 @@ mod tests {
     use super::*;
 
     fn record(elements: &[(&str, usize)]) -> MoleculeRecord {
+        record_with_mass(elements, 0.0)
+    }
+
+    fn record_with_mass(elements: &[(&str, usize)], monoisotopic_mass_da: f64) -> MoleculeRecord {
         let element_counts = elements
             .iter()
             .map(|(element, count)| ((*element).to_string(), *count))
             .collect::<BTreeMap<_, _>>();
 
-        MoleculeRecord { element_counts, metadata: BTreeMap::new() }
+        MoleculeRecord { element_counts, monoisotopic_mass_da, metadata: BTreeMap::new() }
     }
 
     #[test]
@@ -432,5 +460,31 @@ mod tests {
         profile.observe(&record(&[("N", 1)]));
 
         assert_eq!(profile.normalized_pmi("N", "N"), None);
+    }
+
+    #[test]
+    fn molecular_mass_is_assigned_to_expected_bin() {
+        assert_eq!(mass_bin_index(0.0), Some(0));
+        assert_eq!(mass_bin_index(24.999), Some(0));
+        assert_eq!(mass_bin_index(25.0), Some(1));
+
+        assert_eq!(mass_bin_index(124.999), Some(4));
+        assert_eq!(mass_bin_index(125.0), Some(5));
+
+        assert_eq!(mass_bin_index(-1.0), None);
+        assert_eq!(mass_bin_index(f64::NAN), None);
+    }
+
+    #[test]
+    fn records_are_aggregated_by_mass_bin_and_atom_count() {
+        let mut profile = DatasetProfile::default();
+        profile.observe(&record_with_mass(&[("C", 6), ("H", 12)], 110.0));
+        profile.observe(&record_with_mass(&[("C", 8), ("H", 16)], 112.0));
+        profile.observe(&record_with_mass(&[("C", 6), ("H", 12)], 130.0));
+        let carbon = &profile.elements["C"];
+
+        assert_eq!(carbon.mass_atom_count_distribution.get(&(4, 6)), Some(&1));
+        assert_eq!(carbon.mass_atom_count_distribution.get(&(4, 8)), Some(&1));
+        assert_eq!(carbon.mass_atom_count_distribution.get(&(5, 6)), Some(&1));
     }
 }
