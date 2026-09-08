@@ -173,7 +173,7 @@ mod tests {
         let (_tmp_dir, path) = molecule_csv_fixture();
         let path = path.to_str().expect("temp path should be utf");
         let cli = Cli::try_parse_from([
-            "spectra-profiler-rs",
+            "formula-profiler-rs",
             "--target",
             "all",
             "smiles-csv",
@@ -206,7 +206,7 @@ mod tests {
         let (_tmp_dir, path) = molecule_csv_fixture();
         let path = path.to_str().expect("temp path should be utf");
         let cli = Cli::try_parse_from([
-            "spectra-profiler-rs",
+            "formula-profiler-rs",
             "--target",
             "cl",
             "--limit",
@@ -248,7 +248,7 @@ mod tests {
         let (_tmp_dir, path) = molecule_csv_fixture();
         let path = path.to_str().expect("temp path should be utf");
         let cli = Cli::try_parse_from([
-            "spectra-profiler-rs",
+            "formula-profiler-rs",
             "--target",
             "F",
             "smiles-csv",
@@ -268,7 +268,7 @@ mod tests {
 
     #[test]
     fn defaults_record_limit_to_usize_max() {
-        let cli = Cli::try_parse_from(["spectra-profiler-rs", "--target", "F", "pubchem"]).unwrap();
+        let cli = Cli::try_parse_from(["formula-profiler-rs", "--target", "F", "pubchem"]).unwrap();
 
         let config = ProfileConfig::try_from(cli).unwrap();
 

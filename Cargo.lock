@@ -530,6 +530,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "formula-profiler-rs"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "csv",
+ "flate2",
+ "indicatif",
+ "mascot-rs",
+ "molecular-formulas",
+ "plotters",
+ "serde",
+ "smiles-parser 0.1.0 (git+https://github.com/earth-metabolome-initiative/smiles-parser)",
+ "tempfile",
+ "thiserror",
+ "tokio",
+]
+
+[[package]]
 name = "fs_extra"
 version = "1.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1815,24 +1833,6 @@ checksum = "c3d1e2c7f27f8d4cb10542a02c49005dbd6e93095799d6f3be745fae9f8fedd4"
 dependencies = [
  "libc",
  "windows-sys 0.61.2",
-]
-
-[[package]]
-name = "spectra-profiler-rs"
-version = "0.1.0"
-dependencies = [
- "clap",
- "csv",
- "flate2",
- "indicatif",
- "mascot-rs",
- "molecular-formulas",
- "plotters",
- "serde",
- "smiles-parser 0.1.0 (git+https://github.com/earth-metabolome-initiative/smiles-parser)",
- "tempfile",
- "thiserror",
- "tokio",
 ]
 
 [[package]]
