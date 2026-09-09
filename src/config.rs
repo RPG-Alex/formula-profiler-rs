@@ -21,6 +21,7 @@ impl Display for DataField {
 pub(crate) enum DatasetSource {
     AnnotatedMs2,
     LocalMgf(PathBuf),
+    Lotus,
     PubChemSmiles,
     Smiles { path: PathBuf, data_fields: Vec<DataField>, has_headers: bool, dataset_name: String },
 }

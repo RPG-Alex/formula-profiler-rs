@@ -4,8 +4,8 @@ use flate2::read::GzDecoder;
 use indicatif::ProgressBar;
 use mascot_rs::prelude::*;
 use molecular_formulas::prelude::ChemicalFormula;
-use smiles_parser::{
-    DatasetFetchOptions, PUBCHEM_SMILES, SmilesDatasetRecordSource, smiles::Smiles,
+use smiles_rs::{
+    DatasetFetchOptions, LOTUS_SMILES, PUBCHEM_SMILES, SmilesDatasetRecordSource, smiles::Smiles,
 };
 
 use crate::{
@@ -43,6 +43,7 @@ where
                 on_record,
             )
         }
+        DatasetSource::Lotus => process_lotus_smiles(cache_dir, record_limit, on_record),
     }
 }
 
@@ -235,5 +236,45 @@ where
 
     println!("Processed {processed} PubChem records");
     println!("Skipped {skipped} PubChem records");
+    Ok(())
+}
+
+
+fn process_lotus_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record: F) -> Result<()> where F: FnMut(MoleculeRecord) -> Result<()>, {
+    let options = DatasetFetchOptions {
+        cache_dir: Some(cache_dir.to_path_buf()),
+        ..DatasetFetchOptions::default()
+    };
+
+    let lotus_record = LOTUS_SMILES.iter_records_with_options(&options).map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
+
+    let mut skipped = 0usize;
+    let mut processed = 0usize;
+
+    let bar = if record_limit == usize::MAX {
+        ProgressBar::new_spinner()
+    } else {
+        ProgressBar::new(record_limit as u64)
+    };
+
+    for record in lotus_record.take(record_limit) {
+        bar.inc(1);
+
+        let record = record.map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
+
+        let Ok(smiles) = record.smiles().parse::<Smiles>() else {
+            skipped += 1;
+            continue;
+        };
+
+        let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(&smiles);
+        let mut metadata = BTreeMap::new();
+        metadata.insert("Source dataset".to_string(), "Lotus".to_string());
+        on_record(MoleculeRecord::from_formula(&formula, metadata))?;
+        processed += 1;
+    }
+    bar.finish_and_clear();;
+    println!("Processed {processed} Lotus records");
+    println!("Skipped {skipped} Lotus records");
     Ok(())
 }
