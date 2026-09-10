@@ -32,7 +32,7 @@ pub(crate) fn write_markdown_report(
         "This report summarizes how often the target element `{target_element}` appears across metadata groups in `{dataset_name}`.",
     )?;
 
-    write_interpretation_guide(&mut file, source, target_element)?;
+    write_interpretation_guide(&mut file, target_element)?;
     write_glossary_and_references(&mut file, source)?;
     write_numeric_summary(&mut file, &summary.numeric, source)?;
     write_atom_count_distribution_section(&mut file, source, target_element)?;

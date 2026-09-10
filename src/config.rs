@@ -21,8 +21,18 @@ impl Display for DataField {
 pub(crate) enum DatasetSource {
     AnnotatedMs2,
     LocalMgf(PathBuf),
+    Lotus,
     PubChemSmiles,
     Smiles { path: PathBuf, data_fields: Vec<DataField>, has_headers: bool, dataset_name: String },
+}
+
+impl DatasetSource {
+    pub(crate) fn record_unit(&self) -> &str {
+        match self {
+            Self::AnnotatedMs2 | Self::LocalMgf(_) => "spectra",
+            Self::PubChemSmiles | Self::Lotus | Self::Smiles { .. } => "molecules",
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Clone)]

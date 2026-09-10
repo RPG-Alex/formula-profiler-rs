@@ -10,10 +10,7 @@ pub(super) fn write_numeric_summary(
     summary: &NumericSummary,
     source: &DatasetSource,
 ) -> Result<()> {
-    let unit = match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => "spectra",
-        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => "molecules",
-    };
+    let unit = source.record_unit();
 
     writeln!(file)?;
     writeln!(file, "## Numeric summary")?;
@@ -36,30 +33,12 @@ pub(super) fn write_atom_count_distribution_section(
     writeln!(file)?;
     writeln!(file, "## Atom-count distribution")?;
     writeln!(file)?;
-
-    match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => {
-            writeln!(
-                file,
-                "This section shows how many formula-bearing spectra have exactly `k` atoms of `{target_element}`."
-            )?;
-            writeln!(
-                file,
-                "The `0` row represents formulas that do not contain `{target_element}`."
-            )?;
-        }
-
-        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => {
-            writeln!(
-                file,
-                "This section shows how many formula-bearing molecules have exactly `k` atoms of `{target_element}`."
-            )?;
-            writeln!(
-                file,
-                "The `0` row represents formulas that do not contain `{target_element}`."
-            )?;
-        }
-    }
+    let unit = source.record_unit();
+    writeln!(
+        file,
+        "This section shows how many formula-bearing {unit} have exactly `k` atoms of `{target_element}`."
+    )?;
+    writeln!(file, "The `0` row represents formulas that do not contain `{target_element}`.")?;
 
     writeln!(file)?;
     writeln!(file, "[CSV table](tables/target_atom_count_distribution.csv)")?;
@@ -82,6 +61,8 @@ pub(super) fn write_top_enriched_groups(
     writeln!(file, "## Top enriched groups")?;
     writeln!(file)?;
 
+    let unit = source.record_unit();
+
     writeln!(
         file,
         "This table compares **metadata groups** across all population-map tables. \
@@ -90,25 +71,12 @@ pub(super) fn write_top_enriched_groups(
     )?;
     writeln!(file)?;
 
-    match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => {
-            writeln!(
-                file,
-                "The table is sorted by **Positive %**, meaning the percentage of spectra inside that \
+    writeln!(
+        file,
+        "The table is sorted by **Positive %**, meaning the percentage of {unit} inside that \
                  group whose formulas contain the target element. Only groups with at least \
-                 `{TOP_ENRICHED_MIN_TOTAL_SUPPORT}` total spectra are included."
-            )?;
-        }
-
-        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => {
-            writeln!(
-                file,
-                "The table is sorted by **Positive %**, meaning the percentage of molecules inside that \
-                 group whose formulas contain the target element. Only groups with at least \
-                 `{TOP_ENRICHED_MIN_TOTAL_SUPPORT}` total molecules are included."
-            )?;
-        }
-    }
+                 `{TOP_ENRICHED_MIN_TOTAL_SUPPORT}` total {unit} are included."
+    )?;
 
     writeln!(file)?;
     writeln!(
@@ -151,25 +119,14 @@ pub(super) fn write_warning_summary(
     writeln!(file, "## Low-support warning summary")?;
     writeln!(file)?;
 
-    match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => {
-            writeln!(
-                file,
-                "This section summarizes warning flags from the population-map CSV tables. \
-                 The `Count` column is the number of metadata-group rows with that warning, \
-                 not the number of spectra."
-            )?;
-        }
+    let unit = source.record_unit();
 
-        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => {
-            writeln!(
-                file,
-                "This section summarizes warning flags from the population-map CSV tables. \
+    writeln!(
+        file,
+        "This section summarizes warning flags from the population-map CSV tables. \
                  The `Count` column is the number of metadata-group rows with that warning, \
-                 not the number of molecules."
-            )?;
-        }
-    }
+                 not the number of {unit}."
+    )?;
 
     writeln!(file)?;
     writeln!(file, "Warning meanings:")?;
@@ -209,34 +166,17 @@ pub(super) fn write_warning_summary(
     Ok(())
 }
 
-pub(super) fn write_interpretation_guide(
-    file: &mut File,
-    source: &DatasetSource,
-    target_element: &str,
-) -> Result<()> {
+pub(super) fn write_interpretation_guide(file: &mut File, target_element: &str) -> Result<()> {
     writeln!(file)?;
     writeln!(file, "## How to interpret this report")?;
     writeln!(file)?;
 
-    match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => {
-            writeln!(
-                file,
-                "This report treats each spectrum as **positive** when its molecular formula contains \
-                 the target element `{target_element}`. A spectrum is **negative** when its formula does \
-                 not contain `{target_element}`."
-            )?;
-        }
-
-        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => {
-            writeln!(
-                file,
-                "This report treats each molecule as **positive** when its molecular formula contains \
-                 the target element `{target_element}`. A molecule is **negative** when its formula does \
-                 not contain `{target_element}`."
-            )?;
-        }
-    }
+    writeln!(
+        file,
+        "This report treats a record as **positive** when its molecular formula contains \
+     the target element `{target_element}`. A record is **negative** when its formula \
+     does not contain `{target_element}`."
+    )?;
 
     writeln!(file)?;
     writeln!(
@@ -326,7 +266,7 @@ pub(super) fn write_glossary_and_references(file: &mut File, source: &DatasetSou
             )?;
         }
 
-        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => {
+        DatasetSource::PubChemSmiles | DatasetSource::Lotus | DatasetSource::Smiles { .. } => {
             writeln!(
                 file,
                 "| Target-positive molecule | A molecule whose molecular formula contains the selected target element. | Local report definition |"
@@ -368,7 +308,7 @@ pub(super) fn write_report_links(file: &mut File, source: &DatasetSource) -> Res
             )?;
         }
 
-        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => {
+        DatasetSource::PubChemSmiles | DatasetSource::Lotus | DatasetSource::Smiles { .. } => {
             writeln!(
                 file,
                 "- **Target count** shows which groups contribute the most target-positive molecules."

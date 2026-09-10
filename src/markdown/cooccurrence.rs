@@ -13,7 +13,7 @@ pub(crate) fn write_dataset_index_readme(
     reported_elements: &[String],
     source: &DatasetSource,
 ) -> Result<()> {
-    let unit = record_unit(source);
+    let unit = source.record_unit();
     let readme_path = dataset_reports_root.as_ref().join("README.md");
     let mut file = File::create(readme_path)?;
 
@@ -110,7 +110,7 @@ pub(crate) fn write_cooccurrence_readme(
     heatmap_elements: &[String],
     source: &DatasetSource,
 ) -> Result<()> {
-    let unit = record_unit(source);
+    let unit = source.record_unit();
     let mut file = File::create(reports.readme())?;
 
     writeln!(file, "# Element co-occurrence profile")?;
@@ -168,11 +168,4 @@ pub(crate) fn write_cooccurrence_readme(
         "<img src=\"figures/element_cooccurrence_normalized_pmi_heatmap.svg\" alt=\"Normalized PMI element co-occurrence heatmap\" />"
     )?;
     Ok(())
-}
-
-fn record_unit(source: &DatasetSource) -> &'static str {
-    match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => "spectra",
-        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => "molecules",
-    }
 }
