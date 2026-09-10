@@ -173,6 +173,8 @@ pub(crate) fn write_cooccurrence_readme(
 fn record_unit(source: &DatasetSource) -> &'static str {
     match source {
         DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => "spectra",
-        DatasetSource::PubChemSmiles | DatasetSource::Smiles { .. } => "molecules",
+        DatasetSource::PubChemSmiles | DatasetSource::Lotus | DatasetSource::Smiles { .. } => {
+            "molecules"
+        }
     }
 }

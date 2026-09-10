@@ -1,0 +1,4 @@
+value,total_count,target_count,non_target_count,percent_target_within_group,percent_of_all_records,percent_of_all_target,support_warning
+Lotus,276518,6106,270412,2.208174513051592,100.0,100.0,
+TOTAL_RECORDS,276518,6106,270412,2.208174513051592,100.0,100.0,
+TOTAL_ASSIGNMENTS,276518,6106,270412,2.208174513051592,100.0,100.0,

@@ -239,14 +239,18 @@ where
     Ok(())
 }
 
-
-fn process_lotus_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record: F) -> Result<()> where F: FnMut(MoleculeRecord) -> Result<()>, {
+fn process_lotus_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record: F) -> Result<()>
+where
+    F: FnMut(MoleculeRecord) -> Result<()>,
+{
     let options = DatasetFetchOptions {
         cache_dir: Some(cache_dir.to_path_buf()),
         ..DatasetFetchOptions::default()
     };
 
-    let lotus_record = LOTUS_SMILES.iter_records_with_options(&options).map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
+    let lotus_record = LOTUS_SMILES
+        .iter_records_with_options(&options)
+        .map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
 
     let mut skipped = 0usize;
     let mut processed = 0usize;
@@ -260,7 +264,8 @@ fn process_lotus_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record:
     for record in lotus_record.take(record_limit) {
         bar.inc(1);
 
-        let record = record.map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
+        let record =
+            record.map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
 
         let Ok(smiles) = record.smiles().parse::<Smiles>() else {
             skipped += 1;
@@ -273,7 +278,7 @@ fn process_lotus_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record:
         on_record(MoleculeRecord::from_formula(&formula, metadata))?;
         processed += 1;
     }
-    bar.finish_and_clear();;
+    bar.finish_and_clear();
     println!("Processed {processed} Lotus records");
     println!("Skipped {skipped} Lotus records");
     Ok(())
