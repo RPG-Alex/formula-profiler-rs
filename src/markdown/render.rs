@@ -166,11 +166,7 @@ pub(super) fn write_warning_summary(
     Ok(())
 }
 
-pub(super) fn write_interpretation_guide(
-    file: &mut File,
-    source: &DatasetSource,
-    target_element: &str,
-) -> Result<()> {
+pub(super) fn write_interpretation_guide(file: &mut File, target_element: &str) -> Result<()> {
     writeln!(file)?;
     writeln!(file, "## How to interpret this report")?;
     writeln!(file)?;

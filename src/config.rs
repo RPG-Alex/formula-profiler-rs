@@ -29,8 +29,8 @@ pub(crate) enum DatasetSource {
 impl DatasetSource {
     pub(crate) fn record_unit(&self) -> &str {
         match self {
-            Self::AnnotatedMs2 | Self::LocalMgf(_) => return "spectra",
-            Self::PubChemSmiles | Self::Lotus | Self::Smiles { .. } => return "molecules",
+            Self::AnnotatedMs2 | Self::LocalMgf(_) => "spectra",
+            Self::PubChemSmiles | Self::Lotus | Self::Smiles { .. } => "molecules",
         }
     }
 }
