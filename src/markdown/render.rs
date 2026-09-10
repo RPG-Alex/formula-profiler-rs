@@ -10,12 +10,7 @@ pub(super) fn write_numeric_summary(
     summary: &NumericSummary,
     source: &DatasetSource,
 ) -> Result<()> {
-    let unit = match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => "spectra",
-        DatasetSource::PubChemSmiles | DatasetSource::Lotus | DatasetSource::Smiles { .. } => {
-            "molecules"
-        }
-    };
+    let unit = source.record_unit();
 
     writeln!(file)?;
     writeln!(file, "## Numeric summary")?;
@@ -390,3 +385,5 @@ pub(super) fn write_report_links(file: &mut File, source: &DatasetSource) -> Res
 
     Ok(())
 }
+
+

@@ -26,6 +26,17 @@ pub(crate) enum DatasetSource {
     Smiles { path: PathBuf, data_fields: Vec<DataField>, has_headers: bool, dataset_name: String },
 }
 
+impl DatasetSource {
+    pub(crate) fn record_unit(&self) -> &str {
+        match self {
+                Self::AnnotatedMs2 | Self::LocalMgf(_) => return "spectra",
+        Self::PubChemSmiles | Self::Lotus | Self::Smiles { .. } => {
+            return "molecules"
+        }
+    }
+}
+}
+
 #[derive(Debug, PartialEq, Clone)]
 pub(crate) enum TargetSelection {
     One(String),
