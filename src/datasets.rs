@@ -31,8 +31,6 @@ where
 
         DatasetSource::LocalMgf(path) => process_local_mgf(path, record_limit, on_record),
 
-        DatasetSource::PubChemSmiles => process_pubchem_smiles(cache_dir, record_limit, on_record),
-
         DatasetSource::Smiles { path, data_fields, has_headers, dataset_name } => {
             process_smiles_file(
                 path,
@@ -43,7 +41,14 @@ where
                 on_record,
             )
         }
-        DatasetSource::Lotus => process_lotus_smiles(cache_dir, record_limit, on_record),
+
+        DatasetSource::PubChemSmiles => {
+            process_smiles_cache(&PUBCHEM_SMILES, "PubChem", cache_dir, record_limit, on_record)
+        }
+
+        DatasetSource::Lotus => {
+            process_smiles_cache(&LOTUS_SMILES, "Lotus", cache_dir, record_limit, on_record)
+        }
     }
 }
 
@@ -191,7 +196,13 @@ fn extract_mgf_record(record: &MascotGenericFormat<f64>) -> Option<MoleculeRecor
     Some(MoleculeRecord::from_formula(formula, groups))
 }
 
-fn process_pubchem_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record: F) -> Result<()>
+fn process_smiles_cache<F>(
+    dataset: &dyn SmilesDatasetRecordSource,
+    dataset_name: &str,
+    cache_dir: &Path,
+    record_limit: usize,
+    mut on_record: F,
+) -> Result<()>
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
@@ -200,7 +211,7 @@ where
         ..DatasetFetchOptions::default()
     };
 
-    let pubchem_records = PUBCHEM_SMILES
+    let records = dataset
         .iter_records_with_options(&options)
         .map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
 
@@ -213,7 +224,7 @@ where
         ProgressBar::new(record_limit as u64)
     };
 
-    for record in pubchem_records.take(record_limit) {
+    for record in records.take(record_limit) {
         bar.inc(1);
 
         let record =
@@ -226,7 +237,7 @@ where
 
         let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(&smiles);
         let mut metadata = BTreeMap::new();
-        metadata.insert("Source dataset".to_string(), "PubChem".to_string());
+        metadata.insert("Source dataset".to_string(), dataset_name.to_string());
 
         on_record(MoleculeRecord::from_formula(&formula, metadata))?;
         processed += 1;
@@ -234,52 +245,7 @@ where
 
     bar.finish_and_clear();
 
-    println!("Processed {processed} PubChem records");
-    println!("Skipped {skipped} PubChem records");
-    Ok(())
-}
-
-fn process_lotus_smiles<F>(cache_dir: &Path, record_limit: usize, mut on_record: F) -> Result<()>
-where
-    F: FnMut(MoleculeRecord) -> Result<()>,
-{
-    let options = DatasetFetchOptions {
-        cache_dir: Some(cache_dir.to_path_buf()),
-        ..DatasetFetchOptions::default()
-    };
-
-    let lotus_record = LOTUS_SMILES
-        .iter_records_with_options(&options)
-        .map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
-
-    let mut skipped = 0usize;
-    let mut processed = 0usize;
-
-    let bar = if record_limit == usize::MAX {
-        ProgressBar::new_spinner()
-    } else {
-        ProgressBar::new(record_limit as u64)
-    };
-
-    for record in lotus_record.take(record_limit) {
-        bar.inc(1);
-
-        let record =
-            record.map_err(|source| FormulaProfilerError::DatasetLoad { source: source.into() })?;
-
-        let Ok(smiles) = record.smiles().parse::<Smiles>() else {
-            skipped += 1;
-            continue;
-        };
-
-        let formula: ChemicalFormula<u32, i32> = ChemicalFormula::from(&smiles);
-        let mut metadata = BTreeMap::new();
-        metadata.insert("Source dataset".to_string(), "Lotus".to_string());
-        on_record(MoleculeRecord::from_formula(&formula, metadata))?;
-        processed += 1;
-    }
-    bar.finish_and_clear();
-    println!("Processed {processed} Lotus records");
-    println!("Skipped {skipped} Lotus records");
+    println!("Processed {processed} {dataset_name} records");
+    println!("Skipped {skipped} {dataset_name}");
     Ok(())
 }
