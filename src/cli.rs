@@ -45,6 +45,10 @@ pub(crate) enum DatasetCommand {
     #[command(name = "lotus")]
     Lotus,
 
+    /// Use the Coconut dataset (will download if needed)
+    #[command(name = "coconut")]
+    Coconut,
+
     /// Process a local MGF file
     LocalMgf { path: PathBuf },
 
@@ -80,6 +84,8 @@ impl TryFrom<Cli> for ProfileConfig {
             DatasetCommand::PubChem => ("pubchem".to_string(), DatasetSource::PubChemSmiles),
 
             DatasetCommand::Lotus => ("lotus".to_string(), DatasetSource::Lotus),
+
+            DatasetCommand::Coconut => ("coconut".to_string(), DatasetSource::Coconut),
 
             DatasetCommand::LocalMgf { path } => {
                 let dataset_name = dataset_name_from_path(&path, "local_mgf");

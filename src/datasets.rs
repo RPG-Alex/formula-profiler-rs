@@ -5,7 +5,8 @@ use indicatif::ProgressBar;
 use mascot_rs::prelude::*;
 use molecular_formulas::prelude::ChemicalFormula;
 use smiles_rs::{
-    DatasetFetchOptions, LOTUS_SMILES, PUBCHEM_SMILES, SmilesDatasetRecordSource, smiles::Smiles,
+    DatasetFetchOptions, LOTUS_SMILES, PUBCHEM_SMILES, SmilesDatasetRecordSource,
+    datasets::COCONUT_SMILES, smiles::Smiles,
 };
 
 use crate::{
@@ -48,6 +49,10 @@ where
 
         DatasetSource::Lotus => {
             process_smiles_cache(&LOTUS_SMILES, "Lotus", cache_dir, record_limit, on_record)
+        }
+
+        DatasetSource::Coconut => {
+            process_smiles_cache(&COCONUT_SMILES, "Coconut", cache_dir, record_limit, on_record)
         }
     }
 }

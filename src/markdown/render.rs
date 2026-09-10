@@ -266,7 +266,10 @@ pub(super) fn write_glossary_and_references(file: &mut File, source: &DatasetSou
             )?;
         }
 
-        DatasetSource::PubChemSmiles | DatasetSource::Lotus | DatasetSource::Smiles { .. } => {
+        DatasetSource::PubChemSmiles
+        | DatasetSource::Lotus
+        | DatasetSource::Smiles { .. }
+        | DatasetSource::Coconut => {
             writeln!(
                 file,
                 "| Target-positive molecule | A molecule whose molecular formula contains the selected target element. | Local report definition |"
@@ -308,7 +311,10 @@ pub(super) fn write_report_links(file: &mut File, source: &DatasetSource) -> Res
             )?;
         }
 
-        DatasetSource::PubChemSmiles | DatasetSource::Lotus | DatasetSource::Smiles { .. } => {
+        DatasetSource::PubChemSmiles
+        | DatasetSource::Lotus
+        | DatasetSource::Smiles { .. }
+        | DatasetSource::Coconut => {
             writeln!(
                 file,
                 "- **Target count** shows which groups contribute the most target-positive molecules."
