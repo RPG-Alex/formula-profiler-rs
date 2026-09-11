@@ -6,7 +6,6 @@ authors = ["rpg-alex"]
 description = "Rust tooling for profiling annotated MS/MS spectral datasets before machine-learning workflows"
 license = "MIT"
 repository = "https://github.com/rpg-alex/formula-profiler-rs"
-readme = "README.md"
 keywords = ["mass-spectrometry", "metabolomics", "machine-learning", "rust"]
 categories = ["science", "command-line-utilities"]
 
