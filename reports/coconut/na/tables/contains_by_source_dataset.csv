@@ -1,0 +1,4 @@
+value,total_count,target_count,non_target_count,percent_target_within_group,percent_of_all_records,percent_of_all_target,support_warning
+Coconut,738816,1822,736994,0.24661079348579348,100.0,100.0,
+TOTAL_RECORDS,738816,1822,736994,0.24661079348579348,100.0,100.0,
+TOTAL_ASSIGNMENTS,738816,1822,736994,0.24661079348579348,100.0,100.0,
