@@ -1,6 +1,6 @@
 use std::path::Path;
 
-use plotters::prelude::*;
+use plotters::{coord::Shift, prelude::*};
 
 use crate::{
     error::Result,
@@ -118,7 +118,6 @@ where
     let heatmap_center_x = left_margin + heatmap_width / 2;
 
     let root = SVGBackend::new(path.as_ref(), (width as u32, height as u32)).into_drawing_area();
-
     root.fill(&WHITE).map_err(figure_error)?;
 
     let title_font_size = 34_i32;
@@ -128,6 +127,57 @@ where
     root.draw(&Text::new(title, (title_x, 42), ("sans-serif", title_font_size).into_font()))
         .map_err(figure_error)?;
 
+    render_columns(elements, left_margin, top_margin, cell_size, label_font_size, &root)?;
+
+    render_rows(
+        elements,
+        left_margin,
+        top_margin,
+        cell_size,
+        value_for,
+        color_for,
+        &root,
+        value_font_size,
+    )?;
+
+    root.present().map_err(figure_error)?;
+
+    Ok(())
+}
+
+fn heatmap_color(value: f64) -> RGBColor {
+    let value = value.clamp(0.0, 1.0);
+
+    let red = (255.0 * value) as u8;
+    let green = (245.0 * (1.0 - (value * 0.65))) as u8;
+    let blue = (255.0 * (1.0 - value)) as u8;
+
+    RGBColor(red, green, blue)
+}
+
+fn heatmap_font_size(cell_size: i32, scale: f64, min: i32, max: i32) -> i32 {
+    ((cell_size as f64 * scale).round() as i32).clamp(min, max)
+}
+
+fn heatmap_cell_size(element_count: usize) -> i32 {
+    match element_count {
+        0..=10 => 72,
+        11..=16 => 58,
+        17..=24 => 46,
+        25..=36 => 36,
+        37..=50 => 28,
+        _ => 22,
+    }
+}
+
+fn render_columns(
+    elements: &[String],
+    left_margin: i32,
+    top_margin: i32,
+    cell_size: i32,
+    label_font_size: i32,
+    root: &DrawingArea<plotters::prelude::SVGBackend<'_>, Shift>,
+) -> Result<()> {
     for (index, element) in elements.iter().enumerate() {
         let index = index as i32;
         let x = left_margin + index * cell_size + cell_size / 2;
@@ -149,7 +199,23 @@ where
         ))
         .map_err(figure_error)?;
     }
+    Ok(())
+}
 
+fn render_rows<F, C>(
+    elements: &[String],
+    left_margin: i32,
+    top_margin: i32,
+    cell_size: i32,
+    value_for: F,
+    color_for: C,
+    root: &DrawingArea<plotters::prelude::SVGBackend<'_>, Shift>,
+    value_font_size: i32,
+) -> Result<()>
+where
+    F: Fn(&str, &str) -> (f64, String),
+    C: Fn(f64) -> RGBColor,
+{
     for (row_index, row_element) in elements.iter().enumerate() {
         for (column_index, column_element) in elements.iter().enumerate() {
             let row_index = row_index as i32;
@@ -186,33 +252,5 @@ where
             .map_err(figure_error)?;
         }
     }
-
-    root.present().map_err(figure_error)?;
-
     Ok(())
-}
-
-fn heatmap_color(value: f64) -> RGBColor {
-    let value = value.clamp(0.0, 1.0);
-
-    let red = (255.0 * value) as u8;
-    let green = (245.0 * (1.0 - (value * 0.65))) as u8;
-    let blue = (255.0 * (1.0 - value)) as u8;
-
-    RGBColor(red, green, blue)
-}
-
-fn heatmap_font_size(cell_size: i32, scale: f64, min: i32, max: i32) -> i32 {
-    ((cell_size as f64 * scale).round() as i32).clamp(min, max)
-}
-
-fn heatmap_cell_size(element_count: usize) -> i32 {
-    match element_count {
-        0..=10 => 72,
-        11..=16 => 58,
-        17..=24 => 46,
-        25..=36 => 36,
-        37..=50 => 28,
-        _ => 22,
-    }
 }
