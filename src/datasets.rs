@@ -233,11 +233,11 @@ fn process_smiles_cache<F>(
 where
     F: FnMut(MoleculeRecord) -> Result<()>,
 {
-let options = DatasetFetchOptions {
-    cache_dir: Some(cache_dir.to_path_buf()),
-    archive_mode,
-    ..DatasetFetchOptions::default()
-};
+    let options = DatasetFetchOptions {
+        cache_dir: Some(cache_dir.to_path_buf()),
+        archive_mode,
+        ..DatasetFetchOptions::default()
+    };
 
     let records = dataset
         .iter_records_with_options(&options)
