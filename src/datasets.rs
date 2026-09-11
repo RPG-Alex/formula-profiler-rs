@@ -5,7 +5,8 @@ use indicatif::ProgressBar;
 use mascot_rs::prelude::*;
 use molecular_formulas::prelude::ChemicalFormula;
 use smiles_rs::{
-    DatasetFetchOptions, LOTUS_SMILES, PUBCHEM_SMILES, SmilesDatasetRecordSource, smiles::Smiles,
+    ArchiveMode, DatasetFetchOptions, LOTUS_SMILES, PUBCHEM_SMILES, SmilesDatasetRecordSource,
+    datasets::COCONUT_SMILES, smiles::Smiles,
 };
 
 use crate::{
@@ -42,13 +43,32 @@ where
             )
         }
 
-        DatasetSource::PubChemSmiles => {
-            process_smiles_cache(&PUBCHEM_SMILES, "PubChem", cache_dir, record_limit, on_record)
-        }
+        DatasetSource::PubChemSmiles => process_smiles_cache(
+            &PUBCHEM_SMILES,
+            "PubChem",
+            cache_dir,
+            ArchiveMode::KeepCompressed,
+            record_limit,
+            on_record,
+        ),
 
-        DatasetSource::Lotus => {
-            process_smiles_cache(&LOTUS_SMILES, "Lotus", cache_dir, record_limit, on_record)
-        }
+        DatasetSource::Lotus => process_smiles_cache(
+            &LOTUS_SMILES,
+            "Lotus",
+            cache_dir,
+            ArchiveMode::KeepCompressed,
+            record_limit,
+            on_record,
+        ),
+
+        DatasetSource::Coconut => process_smiles_cache(
+            &COCONUT_SMILES,
+            "Coconut",
+            cache_dir,
+            ArchiveMode::Decompress,
+            record_limit,
+            on_record,
+        ),
     }
 }
 
@@ -200,6 +220,7 @@ fn process_smiles_cache<F>(
     dataset: &dyn SmilesDatasetRecordSource,
     dataset_name: &str,
     cache_dir: &Path,
+    archive_mode: ArchiveMode,
     record_limit: usize,
     mut on_record: F,
 ) -> Result<()>
@@ -208,6 +229,7 @@ where
 {
     let options = DatasetFetchOptions {
         cache_dir: Some(cache_dir.to_path_buf()),
+        archive_mode,
         ..DatasetFetchOptions::default()
     };
 
