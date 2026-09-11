@@ -13,7 +13,7 @@ pub(super) const TOP_ENRICHED_MIN_TOTAL_SUPPORT: usize = 30;
 
 #[derive(Debug)]
 pub(super) struct NumericSummary {
-    pub(super) total_spectra: usize,
+    pub(super) total_records: usize,
     pub(super) positive_count: usize,
     pub(super) negative_count: usize,
     pub(super) positive_percentage: f64,
@@ -67,14 +67,14 @@ pub(super) fn read_numeric_summary(reports: &ReportPaths) -> Result<NumericSumma
         metrics.insert(row.metric, row.value);
     }
 
-    let total_spectra = read_usize_metric(&metrics, "total_records")?;
+    let total_records = read_usize_metric(&metrics, "total_records")?;
     let positive_count = read_usize_metric(&metrics, "records_with_target_element")?;
-    let negative_count = total_spectra.saturating_sub(positive_count);
+    let negative_count = total_records.saturating_sub(positive_count);
 
     let positive_percentage =
-        if total_spectra == 0 { 0.0 } else { positive_count as f64 / total_spectra as f64 * 100.0 };
+        if total_records == 0 { 0.0 } else { positive_count as f64 / total_records as f64 * 100.0 };
 
-    Ok(NumericSummary { total_spectra, positive_count, negative_count, positive_percentage })
+    Ok(NumericSummary { total_records, positive_count, negative_count, positive_percentage })
 }
 
 pub(super) fn read_markdown_report_summary(reports: &ReportPaths) -> Result<MarkdownReportSummary> {

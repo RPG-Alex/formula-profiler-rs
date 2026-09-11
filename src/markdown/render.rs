@@ -17,7 +17,7 @@ pub(super) fn write_numeric_summary(
     writeln!(file)?;
     writeln!(file, "| Metric | Value |")?;
     writeln!(file, "|---|---:|")?;
-    writeln!(file, "| Total {unit} | {} |", summary.total_spectra)?;
+    writeln!(file, "| Total {unit} | {} |", summary.total_records)?;
     writeln!(file, "| Positive count | {} |", summary.positive_count)?;
     writeln!(file, "| Negative count | {} |", summary.negative_count)?;
     writeln!(file, "| Positive percentage | {:.4}% |", summary.positive_percentage)?;
@@ -57,11 +57,26 @@ pub(super) fn write_top_enriched_groups(
     groups: &[EnrichedGroupSummary],
     source: &DatasetSource,
 ) -> Result<()> {
+    let unit = source.record_unit();
+
+    write_top_enriched_groups_intro(file, unit)?;
+
+    if groups.is_empty() {
+        writeln!(
+            file,
+            "No enriched groups met the minimum support threshold."
+        )?;
+
+        return Ok(());
+    }
+
+    write_enriched_groups_table(file, groups)
+}
+
+fn write_top_enriched_groups_intro(file: &mut File, unit: &str) -> Result<()> {
     writeln!(file)?;
     writeln!(file, "## Top enriched groups")?;
     writeln!(file)?;
-
-    let unit = source.record_unit();
 
     writeln!(
         file,
@@ -86,10 +101,10 @@ pub(super) fn write_top_enriched_groups(
     )?;
     writeln!(file)?;
 
-    if groups.is_empty() {
-        writeln!(file, "No enriched groups met the minimum support threshold.")?;
-        return Ok(());
-    }
+    Ok(())
+}
+
+fn write_enriched_groups_table(file: &mut File, groups: &[EnrichedGroupSummary]) -> Result<()> {
 
     writeln!(file, "| Metadata group | Value | Total | Positive | Positive % | % of positives |")?;
     writeln!(file, "|---|---|---:|---:|---:|---:|")?;
@@ -115,44 +130,68 @@ pub(super) fn write_warning_summary(
     source: &DatasetSource,
     warnings: &[WarningSummary],
 ) -> Result<()> {
+    let unit = source.record_unit();
+
     writeln!(file)?;
     writeln!(file, "## Low-support warning summary")?;
     writeln!(file)?;
-
-    let unit = source.record_unit();
-
     writeln!(
         file,
         "This section summarizes warning flags from the population-map CSV tables. \
-                 The `Count` column is the number of metadata-group rows with that warning, \
-                 not the number of {unit}."
+         The `Count` column is the number of metadata-group rows with that warning, \
+         not the number of {unit}."
     )?;
-
     writeln!(file)?;
+
+    write_warning_meanings(file)?;
+    write_warning_counts(file, warnings)?;
+
+    Ok(())
+}
+
+const WARNING_MEANINGS: &[(&str, &str)] = &[
+    (
+        "LOW_TOTAL_SUPPORT",
+        "The group has fewer than the minimum number of records.",
+    ),
+    (
+        "LOW_TARGET_SUPPORT",
+        "The group has some target-positive records, but too few for confident interpretation.",
+    ),
+    (
+        "NO_TARGET_POSITIVES",
+        "The group has no records whose formulas contain the target element.",
+    ),
+];
+
+fn write_warning_meanings(file: &mut File) -> Result<()> {
     writeln!(file, "Warning meanings:")?;
     writeln!(file)?;
     writeln!(file, "| Warning | Meaning |")?;
     writeln!(file, "|---|---|")?;
 
-    writeln!(
-        file,
-        "| `LOW_TOTAL_SUPPORT` | The group has fewer than the minimum number of records. |"
-    )?;
+    for (warning, meaning) in WARNING_MEANINGS {
+        writeln!(
+            file,
+            "| `{warning}` | {meaning} |"
+        )?;
+    }
 
-    writeln!(
-        file,
-        "| `LOW_TARGET_SUPPORT` | The group has some target-positive records, but too few for confident interpretation. |"
-    )?;
+    Ok(())
+}
 
-    writeln!(
-        file,
-        "| `NO_TARGET_POSITIVES` | The group has no records whose formulas contain the target element. |"
-    )?;
-
+fn write_warning_counts(
+    file: &mut File,
+    warnings: &[WarningSummary],
+) -> Result<()> {
     writeln!(file)?;
 
     if warnings.is_empty() {
-        writeln!(file, "No low-support warnings were found in the population tables.")?;
+        writeln!(
+            file,
+            "No low-support warnings were found in the population tables."
+        )?;
+
         return Ok(());
     }
 
@@ -160,7 +199,12 @@ pub(super) fn write_warning_summary(
     writeln!(file, "|---|---:|")?;
 
     for warning in warnings {
-        writeln!(file, "| `{}` | {} |", warning.warning, warning.count)?;
+        writeln!(
+            file,
+            "| `{}` | {} |",
+            warning.warning,
+            warning.count
+        )?;
     }
 
     Ok(())
@@ -198,7 +242,7 @@ pub(super) fn write_interpretation_guide(file: &mut File, target_element: &str) 
 
     writeln!(
         file,
-        "- These reports are based on formula metadata, not direct spectral proof of the element."
+        "- These reports are based on molecular formulas and should not be interpreted as direct experimental evidence of the element."
     )?;
 
     writeln!(
@@ -216,71 +260,119 @@ pub(super) fn write_interpretation_guide(file: &mut File, target_element: &str) 
     Ok(())
 }
 
-pub(super) fn write_glossary_and_references(file: &mut File, source: &DatasetSource) -> Result<()> {
+pub(super) fn write_glossary_and_references(
+    file: &mut File,
+    source: &DatasetSource,
+) -> Result<()> {
     writeln!(file)?;
     writeln!(file, "## Glossary and external references")?;
     writeln!(file)?;
-    writeln!(file, "| Term | Meaning in this report | Reference |")?;
+    writeln!(
+        file,
+        "| Term | Meaning in this report | Reference |"
+    )?;
     writeln!(file, "|---|---|---|")?;
 
-    writeln!(
+    write_common_glossary_rows(file)?;
+
+    let unit = source.record_unit_singular();
+
+    write_glossary_row(
         file,
-        "| Molecular formula | Formula metadata used to decide whether a record is target-positive. | [PubChem glossary - Molecular Formula](https://pubchem.ncbi.nlm.nih.gov/docs/glossary#section=Molecular-Formula) |"
+        &format!("Target-positive {unit}"),
+        &format!(
+            "A {unit} whose molecular formula contains the selected target element."
+        ),
+        "Local report definition",
     )?;
 
-    writeln!(
-        file,
-        "| Metadata group | A group formed from one metadata field and one value, such as `NPC classes = Carboline alkaloids`. | Local report definition |"
-    )?;
-
-    writeln!(
-        file,
-        "| Source dataset | The dataset or library source from which the metadata originated. | [GNPS libraries](https://ccms-ucsd.github.io/GNPSDocumentation/gnpslibraries/) / [MassSpecGym](https://github.com/pluskal-lab/MassSpecGym) |"
-    )?;
-
-    writeln!(
-        file,
-        "| Enrichment | A group has high enrichment when a large percentage of records in that group are target-positive. | Local report definition |"
-    )?;
-
-    writeln!(
-        file,
-        "| Low support | A warning that a group has too few total records, too few target-positive records, or no target-positive records. | Local report definition |"
-    )?;
-
-    match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => {
-            writeln!(
-                file,
-                "| Target-positive spectrum | A spectrum whose molecular formula contains the selected target element. | Local report definition |"
-            )?;
-
-            writeln!(
-                file,
-                "| NPC pathways / superclasses / classes | Natural-product classification fields from NPClassifier-style annotations. | [NPClassifier](https://npclassifier.ucsd.edu/) |"
-            )?;
-
-            writeln!(
-                file,
-                "| ClassyFire taxonomy | Chemical taxonomy fields such as kingdom, superclass, class, subclass, and direct parent. | [ClassyFire paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC5096306/) |"
-            )?;
-        }
-
-        DatasetSource::PubChemSmiles
-        | DatasetSource::Lotus
-        | DatasetSource::Smiles { .. }
-        | DatasetSource::Coconut => {
-            writeln!(
-                file,
-                "| Target-positive molecule | A molecule whose molecular formula contains the selected target element. | Local report definition |"
-            )?;
-        }
+    if matches!(
+        source,
+        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_)
+    ) {
+        write_spectral_glossary_rows(file)?;
     }
 
     Ok(())
 }
 
-pub(super) fn write_report_links(file: &mut File, source: &DatasetSource) -> Result<()> {
+fn write_common_glossary_rows(file: &mut File) -> Result<()> {
+    write_glossary_row(
+        file,
+        "Molecular formula",
+        "Formula metadata used to decide whether a record is target-positive.",
+        "[PubChem glossary - Molecular Formula](https://pubchem.ncbi.nlm.nih.gov/docs/glossary#section=Molecular-Formula)",
+    )?;
+
+    write_glossary_row(
+        file,
+        "Metadata group",
+        "A group formed from one metadata field and one value, such as `NPC classes = Carboline alkaloids`.",
+        "Local report definition",
+    )?;
+
+    write_glossary_row(
+        file,
+        "Source dataset",
+        "The dataset or library source from which the metadata originated.",
+        "[GNPS libraries](https://ccms-ucsd.github.io/GNPSDocumentation/gnpslibraries/) / [MassSpecGym](https://github.com/pluskal-lab/MassSpecGym)",
+    )?;
+
+    write_glossary_row(
+        file,
+        "Enrichment",
+        "A group has high enrichment when a large percentage of records in that group are target-positive.",
+        "Local report definition",
+    )?;
+
+    write_glossary_row(
+        file,
+        "Low support",
+        "A warning that a group has too few total records, too few target-positive records, or no target-positive records.",
+        "Local report definition",
+    )?;
+
+    Ok(())
+}
+
+fn write_glossary_row(
+    file: &mut File,
+    term: &str,
+    meaning: &str,
+    reference: &str,
+) -> Result<()> {
+    writeln!(
+        file,
+        "| {term} | {meaning} | {reference} |"
+    )?;
+
+    Ok(())
+}
+
+fn write_spectral_glossary_rows(file: &mut File) -> Result<()> {
+    write_glossary_row(
+        file,
+        "NPC pathways / superclasses / classes",
+        "Natural-product classification fields from NPClassifier-style annotations.",
+        "[NPClassifier](https://npclassifier.ucsd.edu/)",
+    )?;
+
+    write_glossary_row(
+        file,
+        "ClassyFire taxonomy",
+        "Chemical taxonomy fields such as kingdom, superclass, class, subclass, and direct parent.",
+        "[ClassyFire paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC5096306/)",
+    )?;
+
+    Ok(())
+}
+
+pub(super) fn write_report_links(
+    file: &mut File,
+    source: &DatasetSource,
+) -> Result<()> {
+    let unit = source.record_unit();
+
     writeln!(file)?;
     writeln!(file, "## Summary")?;
     writeln!(file)?;
@@ -293,44 +385,20 @@ pub(super) fn write_report_links(file: &mut File, source: &DatasetSource) -> Res
     writeln!(file, "## How to read the figures")?;
     writeln!(file)?;
 
-    match source {
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_) => {
-            writeln!(
-                file,
-                "- **Target count** shows which groups contribute the most target-positive spectra."
-            )?;
+    writeln!(
+        file,
+        "- **Target count** shows which groups contribute the most target-positive {unit}."
+    )?;
 
-            writeln!(
-                file,
-                "- **Percent target** shows which groups are most enriched for the target element across spectra."
-            )?;
+    writeln!(
+        file,
+        "- **Percent target** shows which groups are most enriched for the target element across {unit}."
+    )?;
 
-            writeln!(
-                file,
-                "- Small groups can look highly enriched, so check the linked CSV tables for support counts."
-            )?;
-        }
-
-        DatasetSource::PubChemSmiles
-        | DatasetSource::Lotus
-        | DatasetSource::Smiles { .. }
-        | DatasetSource::Coconut => {
-            writeln!(
-                file,
-                "- **Target count** shows which groups contribute the most target-positive molecules."
-            )?;
-
-            writeln!(
-                file,
-                "- **Percent target** shows which groups are most enriched for the target element across molecules."
-            )?;
-
-            writeln!(
-                file,
-                "- Small groups can look highly enriched, so check the linked CSV tables for support counts (molecule-level support)."
-            )?;
-        }
-    }
+    writeln!(
+        file,
+        "- Small groups can look highly enriched, so check the linked CSV tables for support counts."
+    )?;
 
     Ok(())
 }
