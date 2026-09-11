@@ -9,6 +9,8 @@ This project is intended to support careful dataset inspection before training m
 Datasets that are supported:
 - `annotated_ms2` MS/MS dataset exposed by [`mascot-rs`](https://github.com/earth-metabolome-initiative/mascot-rs).
 - `pubchem` dataset available from [PubChem](https://pubchem.ncbi.nlm.nih.gov/docs/downloads)
+- `lotus` dataset available from [Natural Products](https://lotus.naturalproducts.net/)
+- `coconut` dataset available from [Natural Products](https://coconut.naturalproducts.net/)
 - `local-mgf` for a local MGF files
 - `smiles-csv` for a local CSV file containing SMILES records (can specify CSV fields)
 
