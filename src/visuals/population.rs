@@ -1,6 +1,12 @@
 use std::{cmp::Ordering, path::Path};
 
-use plotters::prelude::*;
+use plotters::{
+    coord::{
+        Shift,
+        types::{RangedCoordf64, RangedCoordi32},
+    },
+    prelude::*,
+};
 
 use crate::{
     error::Result, population::PopulationSummaryRow, reports::ReportPaths,
@@ -75,18 +81,7 @@ fn render_top_population_chart(
     max_items: usize,
     min_total_count: usize,
 ) -> Result<()> {
-    let mut filtered: Vec<PopulationSummaryRow> = rows
-        .iter()
-        .filter(|row| row.total_count >= min_total_count)
-        .filter(|row| !row.value.starts_with("TOTAL_"))
-        .cloned()
-        .collect();
-
-    filtered
-        .sort_by(|a, b| metric.value(b).partial_cmp(&metric.value(a)).unwrap_or(Ordering::Equal));
-
-    filtered.truncate(max_items);
-    filtered.reverse();
+    let filtered = filter_and_sort(rows, max_items, min_total_count, metric)?;
 
     if filtered.is_empty() {
         return Ok(());
@@ -99,29 +94,7 @@ fn render_top_population_chart(
 
     let y_count = filtered.len() as i32;
 
-    let mut chart = ChartBuilder::on(&root)
-        .caption(title, ("sans-serif", 30))
-        .margin(25)
-        .x_label_area_size(60)
-        .y_label_area_size(280)
-        .build_cartesian_2d(0f64..(max_value * 1.15), 0i32..y_count)
-        .map_err(figure_error)?;
-
-    chart
-        .configure_mesh()
-        .disable_mesh()
-        .x_desc(metric.axis_label())
-        .y_labels(filtered.len())
-        .y_label_style(("sans-serif", 18))
-        .y_label_formatter(&|y| {
-            usize::try_from(*y)
-                .ok()
-                .and_then(|index| filtered.get(index))
-                .map(|row| row.value.clone())
-                .unwrap_or_default()
-        })
-        .draw()
-        .map_err(figure_error)?;
+    let mut chart = generate_chart(&root, title, max_value, y_count, metric, &filtered)?;
 
     for (idx, row) in filtered.iter().enumerate() {
         let y0 = idx as i32;
@@ -156,4 +129,67 @@ fn render_top_population_chart(
     root.present().map_err(figure_error)?;
 
     Ok(())
+}
+
+fn filter_and_sort(
+    rows: &[PopulationSummaryRow],
+    max_items: usize,
+    min_total_count: usize,
+    metric: PopulationMetric,
+) -> Result<Vec<PopulationSummaryRow>> {
+    let mut filtered: Vec<PopulationSummaryRow> = rows
+        .iter()
+        .filter(|row| row.total_count >= min_total_count)
+        .filter(|row| !row.value.starts_with("TOTAL_"))
+        .cloned()
+        .collect();
+
+    filtered
+        .sort_by(|a, b| metric.value(b).partial_cmp(&metric.value(a)).unwrap_or(Ordering::Equal));
+
+    filtered.truncate(max_items);
+    filtered.reverse();
+
+    Ok(filtered)
+}
+
+fn generate_chart<'a>(
+    root: &DrawingArea<plotters::prelude::SVGBackend<'a>, Shift>,
+    title: &'a str,
+    max_value: f64,
+    y_count: i32,
+    metric: PopulationMetric,
+    filtered: &[PopulationSummaryRow],
+) -> Result<
+    ChartContext<
+        'a,
+        plotters::prelude::SVGBackend<'a>,
+        Cartesian2d<RangedCoordf64, RangedCoordi32>,
+    >,
+> {
+    let mut chart = ChartBuilder::on(root)
+        .caption(title, ("sans-serif", 30))
+        .margin(25)
+        .x_label_area_size(60)
+        .y_label_area_size(280)
+        .build_cartesian_2d(0f64..(max_value * 1.15), 0i32..y_count)
+        .map_err(figure_error)?;
+
+    chart
+        .configure_mesh()
+        .disable_mesh()
+        .x_desc(metric.axis_label())
+        .y_labels(filtered.len())
+        .y_label_style(("sans-serif", 18))
+        .y_label_formatter(&|y| {
+            usize::try_from(*y)
+                .ok()
+                .and_then(|index| filtered.get(index))
+                .map(|row| row.value.clone())
+                .unwrap_or_default()
+        })
+        .draw()
+        .map_err(figure_error)?;
+
+    Ok(chart)
 }

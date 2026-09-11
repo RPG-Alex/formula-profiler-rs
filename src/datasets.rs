@@ -43,32 +43,38 @@ where
             )
         }
 
-        DatasetSource::PubChemSmiles => process_smiles_cache(
-            &PUBCHEM_SMILES,
-            "PubChem",
-            cache_dir,
-            ArchiveMode::KeepCompressed,
-            record_limit,
-            on_record,
-        ),
+        DatasetSource::PubChemSmiles => {
+            process_smiles_cache(
+                &PUBCHEM_SMILES,
+                "PubChem",
+                cache_dir,
+                ArchiveMode::KeepCompressed,
+                record_limit,
+                on_record,
+            )
+        }
 
-        DatasetSource::Lotus => process_smiles_cache(
-            &LOTUS_SMILES,
-            "Lotus",
-            cache_dir,
-            ArchiveMode::KeepCompressed,
-            record_limit,
-            on_record,
-        ),
+        DatasetSource::Lotus => {
+            process_smiles_cache(
+                &LOTUS_SMILES,
+                "Lotus",
+                cache_dir,
+                ArchiveMode::KeepCompressed,
+                record_limit,
+                on_record,
+            )
+        }
 
-        DatasetSource::Coconut => process_smiles_cache(
-            &COCONUT_SMILES,
-            "Coconut",
-            cache_dir,
-            ArchiveMode::Decompress,
-            record_limit,
-            on_record,
-        ),
+        DatasetSource::Coconut => {
+            process_smiles_cache(
+                &COCONUT_SMILES,
+                "Coconut",
+                cache_dir,
+                ArchiveMode::Decompress,
+                record_limit,
+                on_record,
+            )
+        }
     }
 }
 
