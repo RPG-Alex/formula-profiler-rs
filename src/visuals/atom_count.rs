@@ -3,7 +3,7 @@ use std::{
     path::Path,
 };
 
-use plotters::prelude::*;
+use plotters::{coord::Shift, prelude::*};
 
 use crate::{
     error::Result,
@@ -35,13 +35,28 @@ fn render_atom_count_distribution_chart(
         return Ok(());
     }
 
-    let max_count = distribution.values().copied().max().unwrap_or(1).max(1) as f64;
-    let max_atom_count = distribution.keys().copied().max().unwrap_or(0) as i32;
-
     let root = SVGBackend::new(path.as_ref(), (1200, 800)).into_drawing_area();
+
     root.fill(&WHITE).map_err(figure_error)?;
 
-    let mut chart = ChartBuilder::on(&root)
+    draw_atom_count_chart(&root, target_element, total_records, distribution)?;
+
+    root.present().map_err(figure_error)?;
+
+    Ok(())
+}
+
+fn draw_atom_count_chart(
+    root: &DrawingArea<SVGBackend<'_>, Shift>,
+    target_element: &str,
+    total_records: usize,
+    distribution: &BTreeMap<usize, usize>,
+) -> Result<()> {
+    let max_count = distribution.values().copied().max().unwrap_or(1).max(1) as f64;
+
+    let max_atom_count = distribution.keys().copied().max().unwrap_or(0) as i32;
+
+    let mut chart = ChartBuilder::on(root)
         .caption(format!("{target_element} atom-count distribution"), ("sans-serif", 32))
         .margin(30)
         .x_label_area_size(60)
@@ -69,37 +84,35 @@ fn render_atom_count_distribution_chart(
         }))
         .map_err(figure_error)?;
 
-    let mut labeled_atom_counts = distribution
+    let labeled_atom_counts = top_labeled_atom_counts(distribution, 15);
+
+    chart
+        .draw_series(
+            distribution
+                .iter()
+                .filter(|(atom_count, _)| labeled_atom_counts.contains(atom_count))
+                .map(|(atom_count, record_count)| {
+                    let percentage = percent(*record_count, total_records);
+
+                    Text::new(
+                        format!("{} ({percentage:.1}%)", compact_count(*record_count)),
+                        (*atom_count as i32, *record_count as f64 + max_count * 0.015),
+                        ("sans-serif", 16).into_font(),
+                    )
+                }),
+        )
+        .map_err(figure_error)?;
+
+    Ok(())
+}
+
+fn top_labeled_atom_counts(distribution: &BTreeMap<usize, usize>, limit: usize) -> BTreeSet<usize> {
+    let mut counts = distribution
         .iter()
         .map(|(atom_count, record_count)| (*atom_count, *record_count))
         .collect::<Vec<_>>();
 
-    labeled_atom_counts
-        .sort_by(|left, right| right.1.cmp(&left.1).then_with(|| left.0.cmp(&right.0)));
+    counts.sort_by(|left, right| right.1.cmp(&left.1).then_with(|| left.0.cmp(&right.0)));
 
-    let labeled_atom_counts = labeled_atom_counts
-        .into_iter()
-        .take(15)
-        .map(|(atom_count, _)| atom_count)
-        .collect::<BTreeSet<_>>();
-
-    for (atom_count, record_count) in distribution {
-        if !labeled_atom_counts.contains(atom_count) {
-            continue;
-        }
-
-        let percent = percent(*record_count, total_records);
-
-        chart
-            .draw_series(std::iter::once(Text::new(
-                format!("{} ({:.1}%)", compact_count(*record_count), percent),
-                (*atom_count as i32, *record_count as f64 + max_count * 0.015),
-                ("sans-serif", 16).into_font(),
-            )))
-            .map_err(figure_error)?;
-    }
-
-    root.present().map_err(figure_error)?;
-
-    Ok(())
+    counts.into_iter().take(limit).map(|(atom_count, _)| atom_count).collect()
 }

@@ -34,13 +34,10 @@ impl DatasetSource {
             Self::PubChemSmiles | Self::Lotus | Self::Smiles { .. } | Self::Coconut => "molecules",
         }
     }
-        pub(crate) fn record_unit_singular(&self) -> &'static str {
+    pub(crate) fn record_unit_singular(&self) -> &'static str {
         match self {
             Self::AnnotatedMs2 | Self::LocalMgf(_) => "spectrum",
-            Self::PubChemSmiles
-            | Self::Lotus
-            | Self::Coconut
-            | Self::Smiles { .. } => "molecule",
+            Self::PubChemSmiles | Self::Lotus | Self::Coconut | Self::Smiles { .. } => "molecule",
         }
     }
 }

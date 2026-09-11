@@ -62,10 +62,7 @@ pub(super) fn write_top_enriched_groups(
     write_top_enriched_groups_intro(file, unit)?;
 
     if groups.is_empty() {
-        writeln!(
-            file,
-            "No enriched groups met the minimum support threshold."
-        )?;
+        writeln!(file, "No enriched groups met the minimum support threshold.")?;
 
         return Ok(());
     }
@@ -105,7 +102,6 @@ fn write_top_enriched_groups_intro(file: &mut File, unit: &str) -> Result<()> {
 }
 
 fn write_enriched_groups_table(file: &mut File, groups: &[EnrichedGroupSummary]) -> Result<()> {
-
     writeln!(file, "| Metadata group | Value | Total | Positive | Positive % | % of positives |")?;
     writeln!(file, "|---|---|---:|---:|---:|---:|")?;
 
@@ -150,18 +146,12 @@ pub(super) fn write_warning_summary(
 }
 
 const WARNING_MEANINGS: &[(&str, &str)] = &[
-    (
-        "LOW_TOTAL_SUPPORT",
-        "The group has fewer than the minimum number of records.",
-    ),
+    ("LOW_TOTAL_SUPPORT", "The group has fewer than the minimum number of records."),
     (
         "LOW_TARGET_SUPPORT",
         "The group has some target-positive records, but too few for confident interpretation.",
     ),
-    (
-        "NO_TARGET_POSITIVES",
-        "The group has no records whose formulas contain the target element.",
-    ),
+    ("NO_TARGET_POSITIVES", "The group has no records whose formulas contain the target element."),
 ];
 
 fn write_warning_meanings(file: &mut File) -> Result<()> {
@@ -171,26 +161,17 @@ fn write_warning_meanings(file: &mut File) -> Result<()> {
     writeln!(file, "|---|---|")?;
 
     for (warning, meaning) in WARNING_MEANINGS {
-        writeln!(
-            file,
-            "| `{warning}` | {meaning} |"
-        )?;
+        writeln!(file, "| `{warning}` | {meaning} |")?;
     }
 
     Ok(())
 }
 
-fn write_warning_counts(
-    file: &mut File,
-    warnings: &[WarningSummary],
-) -> Result<()> {
+fn write_warning_counts(file: &mut File, warnings: &[WarningSummary]) -> Result<()> {
     writeln!(file)?;
 
     if warnings.is_empty() {
-        writeln!(
-            file,
-            "No low-support warnings were found in the population tables."
-        )?;
+        writeln!(file, "No low-support warnings were found in the population tables.")?;
 
         return Ok(());
     }
@@ -199,12 +180,7 @@ fn write_warning_counts(
     writeln!(file, "|---|---:|")?;
 
     for warning in warnings {
-        writeln!(
-            file,
-            "| `{}` | {} |",
-            warning.warning,
-            warning.count
-        )?;
+        writeln!(file, "| `{}` | {} |", warning.warning, warning.count)?;
     }
 
     Ok(())
@@ -260,17 +236,11 @@ pub(super) fn write_interpretation_guide(file: &mut File, target_element: &str) 
     Ok(())
 }
 
-pub(super) fn write_glossary_and_references(
-    file: &mut File,
-    source: &DatasetSource,
-) -> Result<()> {
+pub(super) fn write_glossary_and_references(file: &mut File, source: &DatasetSource) -> Result<()> {
     writeln!(file)?;
     writeln!(file, "## Glossary and external references")?;
     writeln!(file)?;
-    writeln!(
-        file,
-        "| Term | Meaning in this report | Reference |"
-    )?;
+    writeln!(file, "| Term | Meaning in this report | Reference |")?;
     writeln!(file, "|---|---|---|")?;
 
     write_common_glossary_rows(file)?;
@@ -280,16 +250,11 @@ pub(super) fn write_glossary_and_references(
     write_glossary_row(
         file,
         &format!("Target-positive {unit}"),
-        &format!(
-            "A {unit} whose molecular formula contains the selected target element."
-        ),
+        &format!("A {unit} whose molecular formula contains the selected target element."),
         "Local report definition",
     )?;
 
-    if matches!(
-        source,
-        DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_)
-    ) {
+    if matches!(source, DatasetSource::AnnotatedMs2 | DatasetSource::LocalMgf(_)) {
         write_spectral_glossary_rows(file)?;
     }
 
@@ -335,16 +300,8 @@ fn write_common_glossary_rows(file: &mut File) -> Result<()> {
     Ok(())
 }
 
-fn write_glossary_row(
-    file: &mut File,
-    term: &str,
-    meaning: &str,
-    reference: &str,
-) -> Result<()> {
-    writeln!(
-        file,
-        "| {term} | {meaning} | {reference} |"
-    )?;
+fn write_glossary_row(file: &mut File, term: &str, meaning: &str, reference: &str) -> Result<()> {
+    writeln!(file, "| {term} | {meaning} | {reference} |")?;
 
     Ok(())
 }
@@ -367,10 +324,7 @@ fn write_spectral_glossary_rows(file: &mut File) -> Result<()> {
     Ok(())
 }
 
-pub(super) fn write_report_links(
-    file: &mut File,
-    source: &DatasetSource,
-) -> Result<()> {
+pub(super) fn write_report_links(file: &mut File, source: &DatasetSource) -> Result<()> {
     let unit = source.record_unit();
 
     writeln!(file)?;
